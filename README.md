@@ -9,6 +9,7 @@ A fully-featured starter template made with Next.js, Sanity, TypeScript, Tailwin
 * [Next.js](https://nextjs.org/) (App Router)
 * [Sanity](https://sanity.io/)
 * [TypeScript](https://www.typescriptlang.org/)
+* [Bun](https://bun.sh/)
 * [Tailwind](https://tailwindcss.com/)
 * [Shadcn](https://ui.shadcn.com/)
 * [Resend](https://resend.com/)
@@ -23,6 +24,10 @@ A fully-featured starter template made with Next.js, Sanity, TypeScript, Tailwin
 * Robust website settings implementation.
 * Custom input components for an enchanced content editing experience.
 * Fully-featured blog with table of contents generation, custom portable text blocks, search functionality and more.
+
+### Prerequisites
+
+* Install [Bun](https://bun.sh/)
 
 ## Getting Started
 
@@ -51,14 +56,14 @@ Next, run these commands in your terminal at the root of your project:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
-| `npm install --legacy-peer-deps`| Installs dependencies.|
-| `npx sanity dataset import demo-content.tar.gz production`| Imports demo content (optional).|
+| `bun install`| Installs dependencies.|
+| `bunx sanity dataset import demo-content.tar.gz production`| Imports demo content (optional).|
 
 ### 3. Start a local server
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
-| `npm run dev`| Starts local dev server at http://localhost:3000
+| `bun run dev`| Starts local dev server at http://localhost:3000
  
 
 ## Author
