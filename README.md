@@ -1,4 +1,4 @@
-# SiteEngine - Next.js & Sanity Template.
+# masterthepixel - Next.js & Sanity Template
 
 A fully-featured starter template made with Next.js, Sanity, TypeScript, Tailwind & more.
 
@@ -29,14 +29,20 @@ A fully-featured starter template made with Next.js, Sanity, TypeScript, Tailwin
 
 * Install [Bun](https://bun.sh/)
 
+### Demo Content
+
+This project includes demo content that can be imported into your Sanity dataset. The demo content file is available in the original [SiteEngine repository](https://github.com/jamesreaco/site-engine) as `demo-content.tar.gz`.
+
 ## Getting Started
 
 ### 1. Create a Sanity Project
+
 * Create a new Sanity Project.
 * Add CORS origin for `http://localhost:3000`.
 * Create an API token with `viewer` permissions.
 
 ### 2. Install the template
+
 * Clone this repository and open it your code editor.
 * Create a `.env.local` file and add the following environment variables:
   
@@ -57,19 +63,19 @@ Next, run these commands in your terminal at the root of your project:
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
 | `bun install`| Installs dependencies.|
-| `bunx sanity dataset import demo-content.tar.gz production`| Imports demo content (optional).|
+| `bunx sanity dataset import <path-to-demo-content> production`| Imports demo content (optional). Demo content can be found in the original SiteEngine repository.|
 
 ### 3. Start a local server
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
-| `bun run dev`| Starts local dev server at http://localhost:3000
+| `bun run dev`             | Starts local dev server at `http://localhost:3000` |
  
 
 ## Author
 
-#### James Rea
+### James Rea
 
-- LinkedIn ([@jamesreaco](https://linkedin.com/in/jamesreaco))
-- Website ([jamesrea.co](https://jamesrea.co))
-- X (Twitter) ([@jamesreaco](https://x.com/jamesreaco))
+* LinkedIn ([@jamesreaco](https://linkedin.com/in/jamesreaco))
+* Website ([jamesrea.co](https://jamesrea.co))
+* X (Twitter) ([@jamesreaco](https://x.com/jamesreaco))
