@@ -1,0 +1,21 @@
+{
+  "node": {
+    "7f1dd1caa8af9a57749e89642b48034606cf760963": {
+      "workers": {
+        "app/(frontend)/page": {
+          "moduleId": "[project]/projects/masterthepixel/.next-internal/server/app/(frontend)/page/actions.js { ACTIONS_MODULE0 => \"[project]/projects/masterthepixel/node_modules/.pnpm/next-sanity@11.6.12_@emotion+is-prop-valid@1.2.2_@sanity+client@7.13.2_@sanity+icons@3._3899177b1cf90f0c876ea99efee95abd/node_modules/next-sanity/dist/visual-editing/server-actions/index.js [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "revalidateRootLayout",
+          "filename": "projects/masterthepixel/node_modules/.pnpm/next-sanity@11.6.12_@emotion+is-prop-valid@1.2.2_@sanity+client@7.13.2_@sanity+icons@3._3899177b1cf90f0c876ea99efee95abd/node_modules/next-sanity/dist/visual-editing/server-actions/index.js"
+        }
+      },
+      "layer": {
+        "app/(frontend)/page": "action-browser"
+      },
+      "filename": "projects/masterthepixel/node_modules/.pnpm/next-sanity@11.6.12_@emotion+is-prop-valid@1.2.2_@sanity+client@7.13.2_@sanity+icons@3._3899177b1cf90f0c876ea99efee95abd/node_modules/next-sanity/dist/visual-editing/server-actions/index.js",
+      "exportedName": "revalidateRootLayout"
+    }
+  },
+  "edge": {},
+  "encryptionKey": "Vf12JQrsdKT93W1k38niV523kR+RboT/3/iLGxiavYA="
+}
