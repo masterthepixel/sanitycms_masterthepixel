@@ -1,5 +1,4 @@
 import type { NextConfig } from 'next';
-import { fetchRedirects } from '@/sanity/lib/fetch-redirects';
 
 const nextConfig: NextConfig = {
   images: {
@@ -11,9 +10,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  async redirects() {
-    return await fetchRedirects();
-  },
+  // async redirects() {
+  //   return await fetchRedirects();
+  // },
 };
 
 export default nextConfig;

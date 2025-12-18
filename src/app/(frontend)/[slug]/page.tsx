@@ -10,12 +10,17 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  const { data: pages } = await sanityFetch({
-    query: pageSlugsQuery,
-    perspective: "published",
-    stega: false,
-  });
-  return pages;
+  try {
+    const { data: pages } = await sanityFetch({
+      query: pageSlugsQuery,
+      perspective: "published",
+      stega: false,
+    });
+    return pages || [];
+  } catch (error) {
+    console.error('Error fetching page slugs:', error);
+    return [];
+  }
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

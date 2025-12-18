@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { draftMode } from "next/headers";
-import { VisualEditing } from "next-sanity";
+import { VisualEditing } from "next-sanity/visual-editing";
 import Container from "@/components/global/container";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import ClientLayout from "@/components/global/client-layout";

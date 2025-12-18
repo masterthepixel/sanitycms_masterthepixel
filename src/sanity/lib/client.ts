@@ -1,21 +1,10 @@
-import { createClient } from "next-sanity";
-import { apiVersion, dataset, projectId } from "./api";
+import { createClient } from 'next-sanity'
 
-// Validate required environment variables at runtime
-if (typeof window !== 'undefined' || process.env.NODE_ENV !== 'development') {
-  if (!projectId) {
-    console.warn('Missing NEXT_PUBLIC_SANITY_PROJECT_ID environment variable');
-  }
-}
+import { apiVersion, dataset, projectId } from '../env'
 
 export const client = createClient({
-  projectId: projectId,
-  dataset: dataset,
-  apiVersion: apiVersion,
-  useCdn: process.env.NODE_ENV === "production",
-  perspective: 'published',
-  stega: { 
-    studioUrl: "/studio",
-    enabled: true
-  },
-});
+  projectId,
+  dataset,
+  apiVersion,
+  useCdn: true, // Set to false if statically generating pages, using ISR or tag-based revalidation
+})
