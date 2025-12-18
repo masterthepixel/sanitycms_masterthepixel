@@ -4,7 +4,7 @@ import { processMetadata } from "@/lib/utils";
 import { sanityFetch } from "@/sanity/lib/live";
 import Container from "@/components/global/container";
 import { PageBuilder } from "@/components/page-builder";
-import { PageBySlugQueryResult } from "../../../sanity.types";
+import { PageBySlugQueryResult } from "sanity.types";
 import { pageBySlugQuery } from "@/sanity/lib/queries/documents/page";
 import { generalSettingsQuery } from "@/sanity/lib/queries/singletons/settings";
 

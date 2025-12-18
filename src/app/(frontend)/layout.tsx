@@ -48,7 +48,6 @@ export default async function RootLayout({
         >
           {children}
         </ClientLayout>
-        <SanityLive />
         {isDraftMode && (
           <>
             <DisableDraftMode />
