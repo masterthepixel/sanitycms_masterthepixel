@@ -98,6 +98,27 @@ Monorepo-style Next.js (App Router v15) site with an embedded Sanity Studio (pro
 - **Layout spacing fix:** Blog post detail wrapper increased to `max-w-7xl` so the main content and sidebar match the reference spacing.
 - **TypeScript note:** Some prop types were relaxed to unblock integration; we should tighten these types once the Sanity schema is finalized.
 
+## Deployment & Sanity status (2025-12-18) 🔧✅
+
+- **Sanity project:** `5ywyt4ng` (Studio at `studio/masterthepixel`).
+- **Imported canonical pages:** Acknowledgements, Terms of Use, Privacy Policy were imported from `content-only.ndjson` into Sanity as **drafts**. Draft document IDs created during import (examples):
+  - `drafts.0c401221-8a0f-4a22-b057-91d394ff0ef8` — Acknowledgements
+  - `drafts.a01cc947-f808-405f-adac-61044ffb0173` — Terms of Use
+  - `drafts.983e04e3-c7aa-466c-a13c-baee6d03e9dd` — Privacy Policy
+  (You can view/edit/publish these in Sanity Studio or via the Sanity API/CLI.)
+- **Sanity viewer token created** for read previews: label `viewer-for-legal-import-20251218` (stored in Vercel as `SANITY_API_READ_TOKEN`).
+
+- **Vercel project:** `sanitycmsmasterthepixel` (linked to repo `masterthepixel/sanitycms_masterthepixel`).
+- **Production site / domain:** www.masterthepixel.io (recent deploy successful)
+- **Environment variables added to Production (via Vercel CLI):**
+  - `NEXT_PUBLIC_SANITY_PROJECT_ID=5ywyt4ng`
+  - `NEXT_PUBLIC_SANITY_DATASET=production`
+  - `SANITY_API_READ_TOKEN` (encrypted)
+
+- **Build fixes:** Added safe default fallbacks for `dataset` and `projectId` in `src/sanity/lib/api.ts` to prevent build-time failures if env vars are temporarily missing; prefer setting env vars in Vercel as above.
+
+If you want these legal pages public immediately, publish the drafts in Studio (or I can publish them programmatically). I can also add a small smoke test to assert these pages and footer links are present after publish.
+
 ## Recommended follow-ups
 
 - Import canonical legal page content into Sanity (I can prepare a create/patch script using our production export if you want single source-of-truth content in Sanity).
