@@ -89,6 +89,21 @@ Monorepo-style Next.js (App Router v15) site with an embedded Sanity Studio (pro
 - For data-related tasks: prefer editing/adding queries in `src/sanity/lib/queries/` and use `defineQuery()` to keep types aligned.
 - For deployments: modify `studio/masterthepixel/sanity.cli.ts` only if you know what `appId` or deploy channels require; use the Vercel project linked to `studio/masterthepixel` for Studio deployments.
 
+## Recent updates (Dec 2025) 🚀
+
+- **Blog improvements:** Author hover tooltips use a Radix HoverCard; dates use `formatDate` with ordinal suffixes; the post content is rendered with a client-only `PortableTextViewer` to prevent server-to-client event handler issues; the blog post layout now includes a responsive right sidebar (Table of Contents + Posts by Category) and uses `prose` typography classes for article text.
+- **Post card accessibility/fix:** Post cards previously wrapped with an outer `<Link>` caused nested `<a>` issues. Cards are now clickable `<article>` elements using `router.push` with keyboard handlers (role="link", tabIndex) to avoid nested anchors while preserving accessibility.
+- **Projects page parity:** The Projects listing, toolbar, categories, and grid were copied to match the reference repository and now use `ProjectGrid` / `ProjectCard` components.
+- **Legal pages added & canonical via Sanity:** Added `/acknowledgements`, `/terms-of-use`, and `/privacy-policy`. These now fetch canonical content from Sanity using `pageBySlugQuery` and render via `PageBuilder`, with local fallbacks if Sanity data is missing.
+- **Layout spacing fix:** Blog post detail wrapper increased to `max-w-7xl` so the main content and sidebar match the reference spacing.
+- **TypeScript note:** Some prop types were relaxed to unblock integration; we should tighten these types once the Sanity schema is finalized.
+
+## Recommended follow-ups
+
+- Import canonical legal page content into Sanity (I can prepare a create/patch script using our production export if you want single source-of-truth content in Sanity).
+- Add Playwright smoke tests: assert blog listing loads without console errors, legal pages load, and footer legal links present. I can add a small test suite and a GitHub Action workflow for CI.
+- If you want pixel-perfect parity, I can run a visual diff for Blog/Projects pages and apply targeted CSS tweaks for spacing/typography.
+
 ---
 If anything here looks incomplete or you want more examples (e.g., a sample new block, or a walkthrough for adding an env var + preview deploy on Vercel), tell me which part to expand and I’ll iterate.
 ```
