@@ -125,6 +125,14 @@ function LegalMenuItems({ legalMenuItems }: {
     } | null;
   }> | null;
 }) {
+  const existingSlugs = (legalMenuItems ?? []).map(i => i?.pageReference?.slug).filter(Boolean);
+
+  const fallbacks = [
+    { slug: 'terms-of-use', title: 'Terms of Use' },
+    { slug: 'acknowledgements', title: 'Acknowledgements' },
+    { slug: 'privacy-policy', title: 'Privacy Policy' },
+  ].filter(f => !existingSlugs.includes(f.slug));
+
   return (
     <ul className='z-20 relative flex items-center gap-1'>
       {legalMenuItems?.map((item, index) => (
@@ -136,7 +144,19 @@ function LegalMenuItems({ legalMenuItems }: {
             <span>{item.title}</span>
             <AnimatedUnderline />
           </Link>
-          {index !== legalMenuItems.length - 1 && (
+          {index !== (legalMenuItems?.length ?? 0) - 1 && (
+            <span className='ml-1'>/</span>
+          )}
+        </li>
+      ))}
+
+      {fallbacks.map((f, idx) => (
+        <li key={`fallback-${f.slug}`} className='text-xs font-medium'>
+          <Link href={`/${f.slug}`} className='relative group'>
+            <span>{f.title}</span>
+            <AnimatedUnderline />
+          </Link>
+          {idx !== fallbacks.length - 1 && (
             <span className='ml-1'>/</span>
           )}
         </li>

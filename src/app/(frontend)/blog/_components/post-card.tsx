@@ -1,10 +1,11 @@
+"use client"
 import React from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
 import AnimatedUnderline from '@/components/shared/animated-underline';
 import Author from '@/components/ui/author';
-import DateComponent from '@/components/ui/date';
+import Date from '@/components/ui/date';
 import Heading from '@/components/shared/heading';
 
 interface Post {
@@ -45,30 +46,49 @@ interface PostCardProps {
 export default function PostCard({ post }: PostCardProps) {
   const { _createdAt, title, category, author, slug, excerpt, image } = post;
 
+  const router = useRouter();
+  function handleClick() {
+    router.push(`/blog/${slug}`);
+  }
+
+  function handleKeyDown(e: React.KeyboardEvent) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleClick();
+    }
+  }
+
   return (
-    <article aria-label={title ?? ''} className='relative group pb-8 border-b border-dashed'>
-      <Link href={`/blog/${slug}`} className='relative'>
+    <article
+      aria-label={title ?? ''}
+      className='relative group pb-8 border-b border-dashed cursor-pointer'
+      role='link'
+      tabIndex={0}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+    >
+      <div className='relative'>
         <Category>
           {category?.title}
         </Category>
         <Thumbnail image={image} />
         <Heading tag="h2" size="md" className='mt-5 md:mt-6 text-balance'>
-          {title}
+          {title}   
         </Heading>
         <Excerpt>
           {excerpt}
         </Excerpt>
         <div className='mt-5 md:mt-6 flex items-center justify-between'>
           <div className='flex items-center gap-3.5'>
-            <Author author={author} classNames='-translate-y-0'/>
-            <DateComponent date={_createdAt} />
+            <Author author={author} classNames='-translate-y-0'/> 
+            <Date date={_createdAt} />
           </div>
-          <ChevronRight
-            size={18}
+          <ChevronRight 
+            size={18} 
             className='-translate-x-6 opacity-0 group-hover:-translate-x-0 group-hover:opacity-100 transition-all duration-300 text-gray-600'
           />
         </div>
-      </Link>
+      </div>
       <AnimatedUnderline className='-translate-y-0.5' />
     </article>
   )

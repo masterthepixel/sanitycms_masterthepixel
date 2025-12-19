@@ -1,1 +1,7 @@
 node_modules
+.next
+dist
+.env*.local
+site-engine-main/
+site-engine-main.zip
+production-export-*/

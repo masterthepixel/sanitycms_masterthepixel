@@ -1,21 +1,9 @@
-import React from 'react';
+import { formatDate } from "@/lib/utils";
 
-interface DateComponentProps {
-  date?: string | null;
-}
-
-export default function DateComponent({ date }: DateComponentProps) {
-  if (!date) return null;
-
-  const formattedDate = new Date(date).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-
-  return (
-    <span className="text-sm text-gray-600">
-      {formattedDate}
+export default function Date({ date }: { date: string; }) {
+  return(
+    <span className='text-sm font-medium text-gray-500'>
+      {`${formatDate(date)}`}
     </span>
-  );
+  )
 }

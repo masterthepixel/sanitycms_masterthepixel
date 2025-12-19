@@ -1,5 +1,1 @@
-var R=require("../chunks/ssr/[turbopack]_runtime.js")("server/pages/_document.js")
-R.c("server/chunks/ssr/8efa0__pnpm_7feeb4b6._.js")
-R.c("server/chunks/ssr/[root-of-the-server]__e6a4d965._.js")
-R.m("[project]/projects/masterthepixel/node_modules/.pnpm/next@15.5.9_@babel+core@7.28.5_@playwright+test@1.57.0_react-dom@19.0.0_react@19.0.0__react@19.0.0/node_modules/next/document.js [ssr] (ecmascript)")
-module.exports=R.m("[project]/projects/masterthepixel/node_modules/.pnpm/next@15.5.9_@babel+core@7.28.5_@playwright+test@1.57.0_react-dom@19.0.0_react@19.0.0__react@19.0.0/node_modules/next/document.js [ssr] (ecmascript)").exports
+"use strict";(()=>{var a={};a.id=3220,a.ids=[3220],a.modules={8732:a=>{a.exports=require("react/jsx-runtime")},33873:a=>{a.exports=require("path")},40361:a=>{a.exports=require("next/dist/compiled/next-server/pages.runtime.prod.js")},82015:a=>{a.exports=require("react")}};var b=require("../webpack-runtime.js");b.C(a);var c=b.X(0,[8991],()=>b(b.s=28991));module.exports=c})();

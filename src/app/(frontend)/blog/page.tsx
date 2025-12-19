@@ -17,11 +17,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function BlogArchivePage() {
-  const { data: posts } = await sanityFetch({
-    query: allPostsQuery,
-  });
+  const { data: posts } = await sanityFetch({ query: allPostsQuery });
 
   return (
-    <PostGrid posts={posts} />
+    <PostGrid posts={posts ?? []} />
   )
 }
