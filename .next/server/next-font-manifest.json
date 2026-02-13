@@ -1,15 +1,6 @@
 {
-  "app": {
-    "[project]/src/app/(frontend)/[slug]/page": [
-      "static/media/GeistVF-s.p.4c3c0b96.woff",
-      "static/media/GeistMonoVF-s.p.2cee7d16.woff"
-    ],
-    "[project]/src/app/(frontend)/page": [
-      "static/media/GeistVF-s.p.4c3c0b96.woff",
-      "static/media/GeistMonoVF-s.p.2cee7d16.woff"
-    ]
-  },
-  "appUsingSizeAdjust": true,
+  "app": {},
+  "appUsingSizeAdjust": false,
   "pages": {},
   "pagesUsingSizeAdjust": false
 }

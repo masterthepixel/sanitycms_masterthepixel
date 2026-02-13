@@ -1,28 +1,5 @@
 {
-  "node": {
-    "7f56f0fd725236e469ae03d8dfe7eeacf3c69b362b": {
-      "workers": {
-        "app/(frontend)/[slug]/page": {
-          "moduleId": "[project]/.next-internal/server/app/(frontend)/[slug]/page/actions.js { ACTIONS_MODULE0 => \"[project]/node_modules/.pnpm/next-sanity@11.6.12_@emotion+is-prop-valid@1.2.2_@sanity+client@7.13.2_@sanity+icons@3._737d14fcd6aade89b504b548e50ffd56/node_modules/next-sanity/dist/visual-editing/server-actions/index.js [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "revalidateRootLayout",
-          "filename": "node_modules/.pnpm/next-sanity@11.6.12_@emotion+is-prop-valid@1.2.2_@sanity+client@7.13.2_@sanity+icons@3._737d14fcd6aade89b504b548e50ffd56/node_modules/next-sanity/dist/visual-editing/server-actions/index.js"
-        },
-        "app/(frontend)/page": {
-          "moduleId": "[project]/.next-internal/server/app/(frontend)/page/actions.js { ACTIONS_MODULE0 => \"[project]/node_modules/.pnpm/next-sanity@11.6.12_@emotion+is-prop-valid@1.2.2_@sanity+client@7.13.2_@sanity+icons@3._737d14fcd6aade89b504b548e50ffd56/node_modules/next-sanity/dist/visual-editing/server-actions/index.js [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "revalidateRootLayout",
-          "filename": "node_modules/.pnpm/next-sanity@11.6.12_@emotion+is-prop-valid@1.2.2_@sanity+client@7.13.2_@sanity+icons@3._737d14fcd6aade89b504b548e50ffd56/node_modules/next-sanity/dist/visual-editing/server-actions/index.js"
-        }
-      },
-      "layer": {
-        "app/(frontend)/[slug]/page": "action-browser",
-        "app/(frontend)/page": "action-browser"
-      },
-      "filename": "node_modules/.pnpm/next-sanity@11.6.12_@emotion+is-prop-valid@1.2.2_@sanity+client@7.13.2_@sanity+icons@3._737d14fcd6aade89b504b548e50ffd56/node_modules/next-sanity/dist/visual-editing/server-actions/index.js",
-      "exportedName": "revalidateRootLayout"
-    }
-  },
+  "node": {},
   "edge": {},
-  "encryptionKey": "Pyhh4KwIHh0+20HHvlW6VTrdV0AnAkVaeAK6l9D7bIE="
+  "encryptionKey": "+HfuPJ/Y37G1diUaahIX6uAiydwvB8/VCRswMNANDbg="
 }
