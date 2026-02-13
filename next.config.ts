@@ -11,9 +11,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // async redirects() {
-  //   return await fetchRedirects();
-  // },
+  async redirects() {
+    return [
+      {
+        source: '/test-redirect',
+        destination: '/new-redirect-path',
+        permanent: false
+      }
+    ];
+  },
 };
 
 export default nextConfig;

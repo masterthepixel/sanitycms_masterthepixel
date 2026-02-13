@@ -19,7 +19,7 @@ contentDirs.forEach((dir) => {
     if (!isDraft) {
       if (!fm.seo || !fm.seo.title) missing.push('seo.title')
       if (!fm.seo || !fm.seo.description) missing.push('seo.description')
-      if (!fm.coverImage) missing.push('coverImage')
+      if (fm.coverImage === undefined) missing.push('coverImage') // Allow null as fallback
     }
     if (missing.length) {
       failed = true

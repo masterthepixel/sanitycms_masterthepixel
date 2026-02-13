@@ -1,0 +1,65 @@
+{
+  "_createdAt": "2024-12-19T19:35:25Z",
+  "_id": "projectsPage",
+  "_rev": "0a6y21Ru4RgLO1R371g5r9",
+  "_type": "projectsPage",
+  "_updatedAt": "2025-03-09T13:10:39Z",
+  "pageBuilder": [
+    {
+      "_key": "da2874f4796b",
+      "_type": "callToActionBlock",
+      "buttons": [
+        {
+          "_key": "e042aa4de5da",
+          "_type": "buttonObject",
+          "buttonPageReference": {
+            "_ref": "97854198-13ae-465a-a7f0-3fbc869d9324",
+            "_type": "reference"
+          },
+          "buttonText": "Learn More",
+          "buttonType": "internal",
+          "buttonVariant": "primary",
+          "buttonWidth": "auto",
+          "showButton": true
+        },
+        {
+          "_key": "b65a25ba1a76",
+          "_type": "buttonObject",
+          "buttonExternalUrl": "https://github.com/jamesreaco",
+          "buttonText": "Star on GitHub",
+          "buttonType": "external",
+          "buttonVariant": "outline",
+          "showButton": true
+        }
+      ],
+      "content": [
+        {
+          "_key": "bb3f478b4df7",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "413403c8fd5f",
+              "_type": "span",
+              "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lectus non metus gravida malesuada. Phasellus vulputate nec nisi sed elementum dolor sit."
+            }
+          ],
+          "style": "normal"
+        }
+      ],
+      "heading": "Ready to take masterthepixel for a spin?"
+    }
+  ],
+  "seo": {
+    "_type": "seoObject",
+    "description": "Lorem ipsum dolor sit amet",
+    "image": {
+      "_type": "image"
+    },
+    "noIndex": false
+  },
+  "slug": {
+    "_type": "slug",
+    "current": "projects"
+  },
+  "title": "Projects"
+}

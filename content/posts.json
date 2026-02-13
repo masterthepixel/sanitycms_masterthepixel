@@ -1,0 +1,35 @@
+[
+  {
+    "_id": "ba30c4c2-c7de-4795-99d2-631f59758b00",
+    "slug": "how-we-increased-revenue-by-300-with-one-simple-hack",
+    "title": "How We Increased Revenue by 300% with One Simple Hack.",
+    "excerpt": "Curae dapibus interdum convallis cursus quam nulla, tincidunt pulvinar. In urna eget iaculis posuere sodales at malesuada mi.",
+    "date": "2024-12-03T18:11:39Z",
+    "coverImage": null,
+    "draft": false,
+    "_createdAt": "2024-12-03T18:11:39Z",
+    "_updatedAt": "2025-03-09T13:11:40Z"
+  },
+  {
+    "_id": "f6523355-cb5b-4746-9c9c-192165ac85f5",
+    "slug": "the-ultimate-guide-to-scaling-your-startup-in-90-days",
+    "title": "The Ultimate Guide to Scaling Your Startup in 90 Days.",
+    "excerpt": "Nulla facilisi. Mauris consectetur, tellus at sodales tincidunt, nulla lorem efficitur nunc, in tincidunt nisi neque at metus. Phasellus tristique auctor.",
+    "date": "2024-12-03T18:11:16Z",
+    "coverImage": null,
+    "draft": false,
+    "_createdAt": "2024-12-03T18:11:16Z",
+    "_updatedAt": "2025-03-09T13:11:30Z"
+  },
+  {
+    "_id": "bbf8fe7a-8786-4858-bdf4-dc0fd631ca67",
+    "slug": "5-proven-strategies-to-skyrocket-your-conversion-rates",
+    "title": "5  Proven Strategies to Skyrocket Your Conversion Rates.",
+    "excerpt": "Libero placerat hac nisi libero tempus metus in ullamcorper. Semper porta vulputate facilisis cursus mi molestie dignissim taciti nisis.",
+    "date": "2024-12-03T18:10:32Z",
+    "coverImage": null,
+    "draft": false,
+    "_createdAt": "2024-12-03T18:10:32Z",
+    "_updatedAt": "2025-03-09T13:11:35Z"
+  }
+]

@@ -4,7 +4,7 @@
 type AppRoutes = "/" | "/[slug]" | "/acknowledgements" | "/blog" | "/blog/[slug]" | "/blog/category/[slug]" | "/dev" | "/privacy-policy" | "/projects" | "/projects/[slug]" | "/services" | "/services/[slug]" | "/studio/[[...index]]" | "/terms-of-use"
 type PageRoutes = never
 type LayoutRoutes = "/" | "/blog" | "/projects"
-type RedirectRoutes = never
+type RedirectRoutes = "/test-redirect"
 type RewriteRoutes = never
 type Routes = AppRoutes | PageRoutes | LayoutRoutes | RedirectRoutes | RewriteRoutes
 
@@ -24,6 +24,7 @@ interface ParamMap {
   "/services/[slug]": { "slug": string; }
   "/studio/[[...index]]": { "index"?: string[]; }
   "/terms-of-use": {}
+  "/test-redirect": {}
 }
 
 

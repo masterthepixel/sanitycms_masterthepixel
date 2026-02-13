@@ -1,0 +1,401 @@
+{
+  "blogSettings": {
+    "_createdAt": "2024-12-13T19:02:09Z",
+    "_id": "blogSettings",
+    "_rev": "9xoMPFJrRaMMKWNfGA7CL5",
+    "_type": "blogSettings",
+    "_updatedAt": "2024-12-13T19:55:41Z",
+    "showPostsByCategory": true,
+    "showRelatedPosts": true,
+    "showTableOfContents": true
+  },
+  "generalSettings": {
+    "_createdAt": "2024-11-18T19:47:12Z",
+    "_id": "generalSettings",
+    "_rev": "gh4cDeGQ3zfbytNIErVukm",
+    "_type": "generalSettings",
+    "_updatedAt": "2025-03-09T12:16:08Z",
+    "companyEmailAddress": "hello@masterthepixel.org",
+    "companyPhoneNumber": "0123456789",
+    "companySocialMediaLinks": [
+      {
+        "_key": "7fd760540ad5",
+        "icon": {
+          "_type": "image"
+        },
+        "profileUrl": "https://linkedin/com",
+        "title": "LinkedIn"
+      },
+      {
+        "_key": "be7dcf37b603",
+        "icon": {
+          "_type": "image"
+        },
+        "profileUrl": "https://twitter.com",
+        "title": "Twitter"
+      }
+    ],
+    "copyright": "masterthepixel",
+    "homePage": {
+      "_ref": "77931144-b855-47a4-981f-e914f1c787c2",
+      "_type": "reference"
+    },
+    "siteTitle": "masterthepixel"
+  },
+  "marketingSettings": {
+    "_createdAt": "2025-01-25T11:34:03Z",
+    "_id": "marketingSettings",
+    "_rev": "SQv7NqztBPhrq2QVdwPLfx",
+    "_type": "marketingSettings",
+    "_updatedAt": "2025-01-25T11:41:16Z"
+  },
+  "navigationSettings": {
+    "_createdAt": "2024-11-21T10:49:13Z",
+    "_id": "navigationSettings",
+    "_rev": "0a6y21Ru4RgLO1R371xkZj",
+    "_type": "navigationSettings",
+    "_updatedAt": "2025-03-09T16:31:30Z",
+    "footerColumns": [
+      {
+        "_key": "d49d5a16c7a0",
+        "menuItems": [
+          {
+            "_key": "09c3a0a6d81e",
+            "linkType": "internal",
+            "pageReference": {
+              "_ref": "97854198-13ae-465a-a7f0-3fbc869d9324",
+              "_type": "reference"
+            },
+            "title": "Visual Editing"
+          },
+          {
+            "_key": "a20cf2a04bc8",
+            "linkType": "internal",
+            "pageReference": {
+              "_ref": "97854198-13ae-465a-a7f0-3fbc869d9324",
+              "_type": "reference"
+            },
+            "title": "Global Settings"
+          },
+          {
+            "_key": "f9db379b76d9",
+            "linkType": "internal",
+            "pageReference": {
+              "_ref": "97854198-13ae-465a-a7f0-3fbc869d9324",
+              "_type": "reference"
+            },
+            "title": "Form Builder"
+          },
+          {
+            "_key": "5d3dae876939",
+            "linkType": "internal",
+            "pageReference": {
+              "_ref": "97854198-13ae-465a-a7f0-3fbc869d9324",
+              "_type": "reference"
+            },
+            "title": "SEO Ready"
+          },
+          {
+            "_key": "e45cb062b931",
+            "linkType": "internal",
+            "pageReference": {
+              "_ref": "97854198-13ae-465a-a7f0-3fbc869d9324",
+              "_type": "reference"
+            },
+            "title": "+ More"
+          }
+        ],
+        "title": "Features"
+      },
+      {
+        "_key": "85d8f697bf50",
+        "menuItems": [
+          {
+            "_key": "0a1e4ef0d5e9",
+            "linkType": "internal",
+            "pageReference": {
+              "_ref": "servicesPage",
+              "_type": "reference"
+            },
+            "title": "Services"
+          },
+          {
+            "_key": "597ab97f0e5a",
+            "linkType": "internal",
+            "pageReference": {
+              "_ref": "97854198-13ae-465a-a7f0-3fbc869d9324",
+              "_type": "reference"
+            },
+            "title": "Projects"
+          },
+          {
+            "_key": "027d3525bde2",
+            "linkType": "internal",
+            "pageReference": {
+              "_ref": "5c2bc44d-281b-4218-9478-790807dcef35",
+              "_type": "reference"
+            },
+            "title": "Acknowledgements"
+          }
+        ],
+        "title": "Explore"
+      },
+      {
+        "_key": "124e73e27760",
+        "menuItems": [
+          {
+            "_key": "d7f14a83462c",
+            "linkType": "internal",
+            "pageReference": {
+              "_ref": "97854198-13ae-465a-a7f0-3fbc869d9324",
+              "_type": "reference"
+            },
+            "title": "About"
+          },
+          {
+            "_key": "c6548cfc6330",
+            "linkType": "internal",
+            "pageReference": {
+              "_ref": "6736d4a8-963d-4de6-9a26-7cc7ed78e4cb",
+              "_type": "reference"
+            },
+            "title": "Contact"
+          },
+          {
+            "_key": "1e8afda33fb6",
+            "linkType": "internal",
+            "pageReference": {
+              "_ref": "blogPage",
+              "_type": "reference"
+            },
+            "title": "Blog"
+          }
+        ],
+        "title": "Company"
+      },
+      {
+        "_key": "6afd3b5f26ca",
+        "menuItems": [
+          {
+            "_key": "300f376dfc29",
+            "externalUrl": "https://linkedin.com",
+            "linkType": "external",
+            "title": "LinkedIn"
+          },
+          {
+            "_key": "93f3ca51b4c5",
+            "externalUrl": "https://x.com",
+            "linkType": "external",
+            "title": "X (Twitter)"
+          }
+        ],
+        "title": "Socials"
+      }
+    ],
+    "footerLegalMenuItems": [
+      {
+        "_key": "ff630c2ea8be",
+        "pageReference": {
+          "_ref": "e28871c0-3534-4d60-93ac-868f15c43d91",
+          "_type": "reference"
+        },
+        "title": "Terms of Use"
+      }
+    ],
+    "navbarMenuItems": [
+      {
+        "_key": "b8a89c695870",
+        "isButton": false,
+        "menuItemType": "group",
+        "pageReference": {
+          "_ref": "97854198-13ae-465a-a7f0-3fbc869d9324",
+          "_type": "reference"
+        },
+        "pageReferences": [
+          {
+            "_key": "76c3b2909501",
+            "_ref": "97854198-13ae-465a-a7f0-3fbc869d9324",
+            "_type": "reference"
+          },
+          {
+            "_key": "05ae8518d5d8",
+            "_ref": "6736d4a8-963d-4de6-9a26-7cc7ed78e4cb",
+            "_type": "reference"
+          }
+        ],
+        "title": "About"
+      },
+      {
+        "_key": "41a119795606",
+        "isButton": false,
+        "menuItemType": "group",
+        "pageReference": {
+          "_ref": "servicesPage",
+          "_type": "reference"
+        },
+        "pageReferences": [
+          {
+            "_key": "38808b3d153a",
+            "_ref": "5190dbb6-804b-4d95-ac1c-941847175e8b",
+            "_type": "reference"
+          },
+          {
+            "_key": "c121a1bd6692",
+            "_ref": "bfaff54e-2f32-4200-90b5-ffe5ed21700a",
+            "_type": "reference"
+          },
+          {
+            "_key": "06022196f993",
+            "_ref": "ad4c8601-9c9e-46e5-afaa-d9c861e9ffe5",
+            "_type": "reference"
+          },
+          {
+            "_key": "56780715d586",
+            "_ref": "872469d7-a0d6-457a-b571-73e1d3c3197e",
+            "_type": "reference"
+          },
+          {
+            "_key": "d762ebf3c5a5",
+            "_ref": "14cf2647-0d6b-4fca-a687-97ed4ec9b5c3",
+            "_type": "reference"
+          }
+        ],
+        "title": "Services"
+      },
+      {
+        "_key": "01d5e3152873",
+        "isButton": false,
+        "menuItemType": "single",
+        "pageReference": {
+          "_ref": "projectsPage",
+          "_type": "reference"
+        },
+        "title": "Projects"
+      },
+      {
+        "_key": "cf683dfeaf2b",
+        "isButton": false,
+        "menuItemType": "single",
+        "pageReference": {
+          "_ref": "blogPage",
+          "_type": "reference"
+        },
+        "title": "Blog"
+      },
+      {
+        "_key": "cd24489587e7",
+        "isButton": true,
+        "menuItemType": "single",
+        "pageReference": {
+          "_ref": "6736d4a8-963d-4de6-9a26-7cc7ed78e4cb",
+          "_type": "reference"
+        },
+        "title": "Get Started"
+      }
+    ],
+    "showCompanyDetailsSlideOutMenu": true,
+    "showSlideOutMenu": true,
+    "slideOutMenuButtons": [
+      {
+        "_key": "30301bb83c78",
+        "_type": "buttonObject",
+        "buttonExternalUrl": "https://github.com/jamesreaco",
+        "buttonPageReference": {
+          "_ref": "servicesPage",
+          "_type": "reference"
+        },
+        "buttonText": "Get Started",
+        "buttonType": "external",
+        "buttonVariant": "secondary",
+        "buttonWidth": "fullWidth",
+        "showButton": true
+      },
+      {
+        "_key": "ead52d3124cef65735ed81a3b9526058",
+        "_type": "buttonObject",
+        "buttonFileUrl": {
+          "_type": "file"
+        },
+        "buttonPageReference": {
+          "_ref": "servicesPage",
+          "_type": "reference"
+        },
+        "buttonText": "Download License",
+        "buttonType": "fileDownload",
+        "buttonVariant": "outline",
+        "buttonWidth": "fullWidth",
+        "showButton": true
+      }
+    ],
+    "slideOutMenuItems": [
+      {
+        "_key": "35629acc94f1",
+        "isButton": false,
+        "menuItemType": "single",
+        "pageReference": {
+          "_ref": "97854198-13ae-465a-a7f0-3fbc869d9324",
+          "_type": "reference"
+        },
+        "title": "About Us"
+      },
+      {
+        "_key": "51b603b87462",
+        "isButton": false,
+        "menuItemType": "group",
+        "pageReferences": [
+          {
+            "_key": "71ff4af2f465",
+            "_ref": "5190dbb6-804b-4d95-ac1c-941847175e8b",
+            "_type": "reference"
+          },
+          {
+            "_key": "ae5c67367e38",
+            "_ref": "14cf2647-0d6b-4fca-a687-97ed4ec9b5c3",
+            "_type": "reference"
+          },
+          {
+            "_key": "78326715c859",
+            "_ref": "872469d7-a0d6-457a-b571-73e1d3c3197e",
+            "_type": "reference"
+          },
+          {
+            "_key": "51a096766d7a",
+            "_ref": "ad4c8601-9c9e-46e5-afaa-d9c861e9ffe5",
+            "_type": "reference"
+          }
+        ],
+        "title": "Our Services"
+      },
+      {
+        "_key": "2419afccf318",
+        "isButton": false,
+        "menuItemType": "single",
+        "pageReference": {
+          "_ref": "6736d4a8-963d-4de6-9a26-7cc7ed78e4cb",
+          "_type": "reference"
+        },
+        "title": "Contact Us"
+      },
+      {
+        "_key": "6fd921258edc",
+        "isButton": false,
+        "menuItemType": "single",
+        "pageReference": {
+          "_ref": "projectsPage",
+          "_type": "reference"
+        },
+        "title": "Projects"
+      },
+      {
+        "_key": "b3ab555a7201",
+        "isButton": false,
+        "menuItemType": "single",
+        "pageReference": {
+          "_ref": "blogPage",
+          "_type": "reference"
+        },
+        "title": "Blog"
+      }
+    ]
+  }
+}

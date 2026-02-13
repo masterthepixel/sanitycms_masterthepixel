@@ -6,26 +6,20 @@ import { Search, X } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { useClickOutside } from '@/hooks/use-click-outside';
 import { highlightMatch, useSearch } from '@/hooks/use-search';
-import { BlogPageQueryResult } from '../../../../../sanity.types';
-
-type Blog = NonNullable<
-  NonNullable<BlogPageQueryResult>
->;
+import postsData from '../../../../../content/posts.json';
 
 interface BlogSearchProps {
-  posts: any[];
   classNames?: string;
 }
 
-export function BlogSearch({ posts, classNames }: BlogSearchProps) {
-
+export function BlogSearch({ classNames }: BlogSearchProps) {
   const {
     searchTerm,
     setSearchTerm,
     searchResults,
     isDropdownOpen,
     clearSearch
-  } = useSearch(posts);
+  } = useSearch(postsData);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
   useClickOutside(dropdownRef, clearSearch);

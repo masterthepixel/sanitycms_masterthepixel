@@ -44,7 +44,29 @@ const PB_BLOCKS = {
 
 type BlockType = keyof typeof PB_BLOCKS;
 
+export function normalizePageBuilder(data: any): PageBlock[] {
+  // If data is already an array of blocks, return as-is
+  if (Array.isArray(data)) {
+    return data;
+  }
+
+  // If data has a pageBuilder property, return that
+  if (data && data.pageBuilder && Array.isArray(data.pageBuilder)) {
+    return data.pageBuilder;
+  }
+
+  // If data is a single block, wrap in array
+  if (data && data._type) {
+    return [data];
+  }
+
+  // Fallback to empty array
+  return [];
+}
+
 export function PageBuilder({ pageBuilder, id, type }: PageBuilderProps) {
+  const normalizedBlocks = normalizePageBuilder(pageBuilder);
+
   return (
     <div
       data-sanity={createDataAttribute({
@@ -56,7 +78,7 @@ export function PageBuilder({ pageBuilder, id, type }: PageBuilderProps) {
         projectId: projectId,
       }).toString()}
     >
-      {pageBuilder.map((block) => {
+      {normalizedBlocks.map((block) => {
         const Component = PB_BLOCKS[block._type] as ComponentType<any>;
         return (
           <div

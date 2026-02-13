@@ -42,5 +42,22 @@ describe('content', () => {
     it('throws error for non-existent page', async () => {
       await expect(getPageBySlug('non-existent')).rejects.toThrow('Page not found')
     })
+
+    describe('pilot pages', () => {
+      const pilotPages = ['home', 'about', 'services']
+
+      pilotPages.forEach((slug) => {
+        it(`loads pilot page: ${slug}`, async () => {
+          const page = await getPageBySlug(slug)
+          expect(page).toHaveProperty('title')
+          expect(page).toHaveProperty('slug', slug)
+          expect(page).toHaveProperty('content')
+          expect(typeof page.content).toBe('string')
+          // Check that it contains MDX component imports
+          expect(page.content).toContain('import')
+          expect(page.content).toContain('@/components/mdx')
+        })
+      })
+    })
   })
 })

@@ -1,0 +1,29 @@
+{
+  "stats": {
+    "processed": 10,
+    "posts": 3,
+    "pages": 7,
+    "skipped": 0,
+    "errors": 0,
+    "unmappedBlocks": [
+      "heroBlock",
+      "formBlock",
+      "callToActionBlock",
+      "freeformBlock",
+      "mediaBlock",
+      "headerBlock",
+      "portableTextBlock",
+      "logoBlock",
+      "featureCardsBlock",
+      "featuresMinimalBlock",
+      "testimonialBlock",
+      "singleImageObject",
+      "videoObject",
+      "callToActionObject",
+      "servicesBlock"
+    ],
+    "missingAssets": [],
+    "downloadedAssets": 0
+  },
+  "timestamp": "2026-02-13T18:25:28.550Z"
+}

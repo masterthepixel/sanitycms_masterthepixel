@@ -5,17 +5,16 @@ import { usePathname } from 'next/navigation';
 import Heading from '@/components/shared/heading';
 import Container from '@/components/global/container';
 import { PageBuilder } from '@/components/page-builder';
-import { BlogPageQueryResult } from '../../../../../sanity.types';
 
 export default function BlogLayout({ children, page }: Readonly<{
   children: React.ReactNode;
-  page: BlogPageQueryResult;
+  page?: any;
 }>) {
 
   const pathname = usePathname();
 
   const pageData = (page ?? {}) as any;
-  const { categories, posts, title } = pageData;
+  const { categories, title } = pageData;
 
   if (pathname === '/blog' || pathname.includes('/blog/category/')) return (
     <main className='overflow-hidden md:overflow-auto'>
@@ -25,7 +24,7 @@ export default function BlogLayout({ children, page }: Readonly<{
             {title}
           </Heading>
           {(pathname === '/blog' || pathname.includes('/blog/category/')) && (
-            <BlogToolbar categories={categories as any} posts={posts as any} />
+            <BlogToolbar categories={categories as any} />
           )}
           {children}
         </Container>

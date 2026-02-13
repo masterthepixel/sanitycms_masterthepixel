@@ -1,0 +1,7 @@
+[
+  {
+    "source": "/test-redirect",
+    "destination": "/new-redirect-path",
+    "permanent": false
+  }
+]

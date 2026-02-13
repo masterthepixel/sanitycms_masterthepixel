@@ -8,8 +8,7 @@ import ClientLayout from "@/components/global/client-layout";
 import InstallDemoButton from "@/components/shared/install-demo-button";
 import { DisableDraftMode } from "@/components/shared/disable-draft-mode";
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
-import { navigationSettingsQuery } from "@/sanity/lib/queries/singletons/navigation";
-import { generalSettingsQuery, marketingSettingsQuery } from "@/sanity/lib/queries/singletons/settings";
+import { getSiteSettings } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: {
@@ -27,11 +26,10 @@ export default async function RootLayout({
 
   const { isEnabled: isDraftMode } = await draftMode();
 
-  const [{ data: settings }, { data: marketingSettings }, { data: navigationSettings }] = await Promise.all([
-    sanityFetch({ query: generalSettingsQuery }),
-    sanityFetch({ query: marketingSettingsQuery }),
-    sanityFetch({ query: navigationSettingsQuery })
-  ]);
+  const siteSettings = await getSiteSettings();
+  const settings = siteSettings.generalSettings;
+  const marketingSettings = siteSettings.marketingSettings;
+  const navigationSettings = siteSettings.navigationSettings;
 
   if (!settings) return (
     <Container className="py-16 flex items-center justify-center gap-2.5 h-screen pattern-bg--2">

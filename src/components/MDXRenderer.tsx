@@ -1,18 +1,17 @@
+"use client"
+
 import { MDXProvider } from '@mdx-js/react'
 import Image from 'next/image'
-import { Callout } from '@/components/ui/callout' // assuming this exists, or create a simple one
-import { YouTube } from '@/components/shared/play-video' // assuming this exists
+import { Hero, FeatureGrid, Testimonial, Services } from '@/components/mdx'
 
 const components = {
   Image: ({ src, alt, ...props }: any) => (
     <Image src={src} alt={alt} {...props} />
   ),
-  Callout: ({ children, type = 'info', ...props }: any) => (
-    <Callout type={type} {...props}>{children}</Callout>
-  ),
-  YouTube: ({ videoId, ...props }: any) => (
-    <YouTube videoId={videoId} {...props} />
-  ),
+  Hero,
+  FeatureGrid,
+  Testimonial,
+  Services,
 }
 
 export default function MDXRenderer({ children }: { children: React.ReactNode }) {
