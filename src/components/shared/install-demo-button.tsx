@@ -14,7 +14,7 @@ export default function InstallDemoButton() {
     <div className="flex flex-col items-center gap-6">
       <Heading tag="h2" size="xxl" className='max-w-[420px] relative pr-2.5 py-3 text-balance leading-normal border-y border-dashed border-t-gray-200 border-b-gray-200 bg-gray-50 pattern-bg--2'>
         <span className='relative z-20'>
-          SiteEngine
+          masterthepixel
         </span>
         <EdgeBlur />
       </Heading>
