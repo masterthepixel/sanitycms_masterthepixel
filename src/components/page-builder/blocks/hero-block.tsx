@@ -28,7 +28,7 @@ export default function HeroBlock(props: HeroBlockProps) {
   return (
     <section 
       {...(anchorId ? { id: anchorId } : {})} 
-      className={cn('px-4 md:px-10 pattern-bg border-b border-b-gray-200/60', {
+      className={cn('px-4 md:px-10 pattern-bg border-b border-b-gray-200/60 dark:border-b-gray-700/60', {
         'rounded-3xl md:rounded-4xl': bottomCornerRadius === 'rounded'
       })}
     >
@@ -50,7 +50,7 @@ export default function HeroBlock(props: HeroBlockProps) {
           <div className='col-span-12 xl:col-span-5'>
             <PortableTextEditor 
               data={content ?? []}
-              classNames='mt-3 md:text-lg text-gray-600 text-balance'
+              classNames='mt-3 md:text-lg text-gray-600 dark:text-gray-300 text-balance'
             />
             {buttons && buttons.length > 0 && (
               <div className='mt-8 md:mt-10'>

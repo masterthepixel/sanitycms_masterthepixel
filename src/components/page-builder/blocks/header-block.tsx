@@ -13,18 +13,18 @@ export default function HeaderBlock(props: HeaderBlockProps) {
   return (
     <section 
       {...(anchorId ? { id: anchorId } : {})} 
-      className={cn('px-4 md:px-10 pattern-bg border-b', {
+      className={cn('px-4 md:px-10 pattern-bg dark:pattern-bg border-b border-b-gray-200/60 dark:border-b-gray-700/60', {
         'rounded-4xl': bottomCornerRadius === 'rounded'
       })}
     >
-      <Container className='border-x border-dashed'>
+      <Container className='border-x border-dashed border-x-gray-200/60 dark:border-x-gray-700/60'>
         <div className='pt-36 md:pt-52 pb-20 md:pb-36'>
           <Heading tag="h1" size="xxl" className='text-balance leading-normal'>
             {heading}
           </Heading>
           <PortableTextEditor 
             data={content ?? []}
-            classNames='mt-6 md:mt-8 md:text-xl text-balance text-gray-600'
+            classNames='mt-6 md:mt-8 md:text-xl text-balance text-gray-600 dark:text-gray-300'
           />
         </div>
       </Container>

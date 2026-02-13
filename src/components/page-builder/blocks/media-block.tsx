@@ -23,13 +23,13 @@ export default function MediaBlock(props: MediaBlockProps) {
   return (
     <section 
       {...(anchorId ? { id: anchorId } : {})} 
-      className={cn('border-t border-dashed pattern-bg--2', {
+      className={cn('border-t border-dashed border-t-gray-200/60 dark:border-t-gray-700/60 pattern-bg--2 dark:pattern-bg--2', {
         'px-4 md:px-10': stegaClean(backgroundWidth) === 'contained'
       })}
     >
       <Container 
         className={cn('relative h-[18rem] md:h-[48rem] overflow-hidden', {
-          'border-x border-dashed': stegaClean(backgroundWidth) === 'contained'
+          'border-x border-dashed border-x-gray-200/60 dark:border-x-gray-700/60': stegaClean(backgroundWidth) === 'contained'
         })}
       >
         {backgroundType === 'image' && image && (

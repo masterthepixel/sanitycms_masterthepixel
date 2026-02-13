@@ -64,7 +64,7 @@ function TestimonialCard({ testimonial, classNames }: {
   classNames?: string;
 }) {
   return (
-    <div className={cn('h-full mx-auto max-w-[38rem] md:max-w-[44rem] p-8 md:p-12 space-y-10 md:space-y-20 flex flex-col justify-between bg-white', classNames)}>
+    <div className={cn('h-full mx-auto max-w-[38rem] md:max-w-[44rem] p-8 md:p-12 space-y-10 md:space-y-20 flex flex-col justify-between bg-white dark:bg-gray-900', classNames)}>
       <h2 className='text-base md:text-xl text-pretty'>
         {testimonial?.quote}
       </h2>
@@ -81,7 +81,7 @@ function TestimonialCard({ testimonial, classNames }: {
             <h3 className='text-sm md:text-base font-medium'>
               {testimonial?.name}
             </h3>
-            <p className='text-sm text-gray-500'>
+            <p className='text-sm text-gray-500 dark:text-gray-400'>
               {testimonial?.jobTitle}
             </p>
           </div>

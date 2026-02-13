@@ -28,16 +28,16 @@ export default function ServicesBlock(props: ServicesBlockProps) {
     <section 
       {...(anchorId ? { id: anchorId } : {})}
       className={cn('px-4 xl:px-10', {
-        'pattern-bg': stegaClean(background) === 'pattern',
-        'rounded-t-4xl border-t border-t-gray-200/60': stegaClean(topCornerRadius) === 'rounded'
+        'pattern-bg dark:pattern-bg': stegaClean(background) === 'pattern',
+        'rounded-t-4xl border-t border-t-gray-200/60 dark:border-t-gray-700/60': stegaClean(topCornerRadius) === 'rounded'
       })}
     >
       <Container 
         paddingTop={stegaClean(paddingTop) ?? undefined}
         paddingBottom={stegaClean(paddingBottom) ?? undefined}
-        className='space-y-10 border-x border-dashed'
+        className='space-y-10 border-x border-dashed border-x-gray-200/60 dark:border-x-gray-700/60'
       >
-        <div className='py-4 flex items-center justify-between gap-6 border-y border-dashed'>
+        <div className='py-4 flex items-center justify-between gap-6 border-y border-dashed border-y-gray-200/60 dark:border-y-gray-700/60'>
           <Heading tag="h2" size="xl" className='max-w-[40rem] text-balance leading-tight'>
             {heading}
           </Heading>
@@ -69,9 +69,9 @@ function ServiceCard({ service }: {
   const { title, slug, shortDescription, image } = service;
 
   return (
-    <div aria-label={title ?? ''} className='relative pb-8 group border-b border-dashed'>
+    <div aria-label={title ?? ''} className='relative pb-8 group border-b border-dashed border-b-gray-200/60 dark:border-b-gray-700/60'>
       <Link href={`/services/${slug}`} className='relative space-y-4 md:space-y-6'>
-        <div className='p-4 rounded-3xl border border-dashed backdrop-blur-md backdrop-opacity-50'>
+        <div className='p-4 rounded-3xl border border-dashed border-gray-200/60 dark:border-gray-700/60 backdrop-blur-md backdrop-opacity-50 bg-white dark:bg-gray-900'>
           <Image
             src={image?.asset?.url ?? ''}
             width={800}
@@ -83,7 +83,7 @@ function ServiceCard({ service }: {
         <Heading tag="h2" size="md" className='pt-1 md:pt-0 text-balance'>
           {title}
         </Heading>
-        <p className='text-sm md:text-base md:text-balance text-neutral-500'>
+        <p className='text-sm md:text-base md:text-balance text-neutral-500 dark:text-neutral-300'>
           {shortDescription}
         </p>
       </Link>

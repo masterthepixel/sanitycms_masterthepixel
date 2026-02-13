@@ -9,10 +9,10 @@ export default function AnimatedText({ children }: {
       transition={{ ease: [0.6, 0.05, -0.01, 0.9], duration: 0.4 }}
       className="h-5"
     >
-      <span className="flex items-center h-5">
+      <span className="flex items-center h-5 text-black dark:text-gray-100">
         {children}
       </span>
-      <span className="flex items-center h-5">
+      <span className="flex items-center h-5 text-black dark:text-gray-100">
         {children}
       </span>
     </motion.div>

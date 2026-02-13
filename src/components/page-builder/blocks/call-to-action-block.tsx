@@ -13,9 +13,9 @@ export default function CallToActionBlock(props: CallToActionBlockProps) {
   return (
     <section 
       {...(anchorId ? { id: anchorId } : {})}
-      className='xl:px-10 pattern-bg--2 border-t border-t-gray-200/60'
+      className='xl:px-10 pattern-bg--2 dark:pattern-bg--2 border-t border-t-gray-200/60 dark:border-t-gray-700/60'
     >
-      <Container className='py-16 md:py-28 border-x border-dashed'>
+      <Container className='py-16 md:py-28 border-x border-dashed border-x-gray-200/60 dark:border-x-gray-700/60'>
         <div className='flex flex-col lg:flex-row lg:items-center justify-between gap-x-16'>
           <div>
             <Heading tag="h2" size="xl" className='max-w-[40rem] text-balance leading-tight'>
@@ -23,7 +23,7 @@ export default function CallToActionBlock(props: CallToActionBlockProps) {
             </Heading>
             <PortableTextEditor 
               data={content ?? []}
-              classNames='mt-6 md:mt-8 text-balance text-gray-600'
+              classNames='mt-6 md:mt-8 text-balance text-gray-600 dark:text-gray-300'
             />
           </div>
           {buttons && buttons.length > 0 && (

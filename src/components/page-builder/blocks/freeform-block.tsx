@@ -20,7 +20,7 @@ export default function FreeformBlock(props: FreeformBlockProps) {
       className='px-4 md:px-10'
     >
       <Container
-        className={cn('py-16 md:py-28 border-x border-dashed', {
+        className={cn('py-16 md:py-28 border-x border-dashed border-x-gray-200/60 dark:border-x-gray-700/60', {
           'border-y': stegaClean(border) === 'topBottom',
           'border-t': stegaClean(border) === 'top',
           'border-b': stegaClean(border) === 'bottom',
@@ -67,7 +67,7 @@ export default function FreeformBlock(props: FreeformBlockProps) {
                     />
                   )}
                   {(item?._type === 'singleImageObject' && item?.image?.asset?.url) && (
-                    <div className='p-3 border border-dashed rounded-3xl pattern-bg--2'>
+                    <div className='p-3 border border-dashed border-gray-200/60 dark:border-gray-700/60 rounded-3xl pattern-bg--2 dark:pattern-bg--2 bg-white dark:bg-gray-900'>
                       <Image
                         src={item?.image?.asset?.url ?? ''}
                         width={800}

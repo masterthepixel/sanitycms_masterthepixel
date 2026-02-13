@@ -10,6 +10,7 @@ import { DisableDraftMode } from "@/components/shared/disable-draft-mode";
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import { navigationSettingsQuery } from "@/sanity/lib/queries/singletons/navigation";
 import { generalSettingsQuery, marketingSettingsQuery } from "@/sanity/lib/queries/singletons/settings";
+import { ThemeProvider } from "@/components/shared/theme-provider";
 
 export const metadata: Metadata = {
   title: {
@@ -42,12 +43,14 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ClientLayout 
-          settings={settings}
-          navigationSettings={navigationSettings}
-        >
-          {children}
-        </ClientLayout>
+        <ThemeProvider defaultTheme="system" storageKey="siteengine-theme">
+          <ClientLayout 
+            settings={settings}
+            navigationSettings={navigationSettings}
+          >
+            {children}
+          </ClientLayout>
+        </ThemeProvider>
         {isDraftMode && (
           <>
             <DisableDraftMode />

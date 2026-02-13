@@ -9,6 +9,7 @@ import { usePathname } from 'next/navigation';
 import { cn, resolveHref } from '@/lib/utils';
 import { ChevronRight, Menu } from 'lucide-react';
 import AnimatedText from '../shared/animated-text';
+import ThemeSwitcher from '../shared/theme-switcher';
 import { GeneralSettingsQueryResult, NavigationSettingsQueryResult } from '../../../sanity.types';
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 
@@ -27,7 +28,7 @@ export default function Navbar({ settings, navigationSettings }: NavbarProps) {
   
   return (
     <header 
-      className={cn('z-40 fixed top-0 left-0 w-full py-6 rounded-b-xl border-b border-b-gray-100 bg-white/80 backdrop-blur-lg transition-all duration-300 ease-in-out', {
+      className={cn('z-40 fixed top-0 left-0 w-full py-6 rounded-b-xl border-b border-b-gray-100 bg-white/80 backdrop-blur-lg transition-all duration-300 ease-in-out dark:bg-gray-900/80 dark:border-b-gray-800', {
         'py-4 ': hasScrolled
       })}
     >
@@ -45,12 +46,12 @@ export default function Navbar({ settings, navigationSettings }: NavbarProps) {
                           <NavigationMenuTrigger className='group-hover/nav:opacity-40 hover:!opacity-100'>
                             {item.title}
                           </NavigationMenuTrigger>
-                          <NavigationMenuContent className='min-w-[180px] text-nowrap py-3 px-3 flex flex-col gap-2 bg-white'>
+                          <NavigationMenuContent className='min-w-[180px] text-nowrap py-3 px-3 flex flex-col gap-2 bg-white dark:bg-gray-900'>
                             {item.pageReferences?.map((page) => (
                               <Link 
                                 key={page.slug} 
                                 href={resolveHref(page._type, page.slug ?? '') ?? '/'}
-                                className='group py-1 pl-3 pr-2 flex items-center justify-between gap-6 rounded-md border border-dashed hover:bg-gray-50'
+                                className='group py-1 pl-3 pr-2 flex items-center justify-between gap-6 rounded-md border border-dashed hover:bg-gray-50 dark:hover:bg-gray-800'
                               >
                                 {page.title}
                                 <ChevronRight 
@@ -94,12 +95,14 @@ export default function Navbar({ settings, navigationSettings }: NavbarProps) {
               ))}
             </NavigationMenuList>
           </NavigationMenu>
+          {/* Replace ThemeToggle with new ThemeSwitcher */}
+          <ThemeSwitcher />
           {showSlideOutMenu && (
             <SlideOutMenu 
               settings={settings} 
               navigationSettings={navigationSettings}
             >
-              <button aria-label='Open menu' className='p-2.5 border border-gray-200/60 rounded-full cursor-pointer hover:bg-gray-50 transition-colors duration-300 ease-in-out'>
+              <button aria-label='Open menu' className='p-2.5 border border-gray-200/60 rounded-full cursor-pointer hover:bg-gray-50 transition-colors duration-300 ease-in-out dark:border-gray-700 dark:hover:bg-gray-800'>
                 <Menu size={18} />
               </button>
             </SlideOutMenu>

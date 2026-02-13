@@ -20,8 +20,8 @@ export default function SiteLogo({ settings, location, theme }: {
     <button 
       aria-label="Go to home page"
       onClick={() => pathname === '/' ? scrollToElement('home') : router.push(`/#home`)}
-      className={cn('hover:scale-[0.95] transition-transform duration-300 ease-in-out', {
-        'text-white': theme === 'light'
+      className={cn('hover:scale-[0.95] transition-transform duration-300 ease-in-out text-black dark:text-gray-100', {
+        'text-white': theme === 'dark'
       })}
     >
       {!siteLogo ? ( 

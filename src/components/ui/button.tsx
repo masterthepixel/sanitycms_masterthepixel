@@ -10,11 +10,11 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: "text-white bg-blue-700 hover:bg-blue-600",
-        secondary: "text-white bg-black hover:bg-blue-700",
-        tertiary: "text-black hover:text-white border border-gray-300/80 hover:border-blue-500 bg-gray-200 hover:bg-blue-600",
-        outline: "text-black border border-gray-300/80 hover:border-black hover:bg-black backdrop-blur hover:text-white",
-        underline: "xl:px-0 mb-2 underline underline-offset-[10px] decoration-[1.5px] decoration-gray-800",
+        primary: "text-white bg-blue-700 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-500",
+        secondary: "text-white bg-black hover:bg-blue-700 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-100",
+        tertiary: "text-black hover:text-white border border-gray-300/80 hover:border-blue-500 bg-gray-200 hover:bg-blue-600 dark:text-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:hover:bg-gray-700",
+        outline: "text-black border border-gray-300/80 hover:border-black hover:bg-black backdrop-blur hover:text-white dark:text-gray-100 dark:border-gray-600 dark:hover:border-gray-400 dark:hover:bg-gray-800",
+        underline: "xl:px-0 mb-2 underline underline-offset-[10px] decoration-[1.5px] decoration-gray-800 dark:decoration-gray-200",
       },
       size: {
         default: "h-9 md:h-10",

@@ -14,7 +14,7 @@ export default function PortableTextEditor({ data, classNames }: PortableTextEdi
 
   return (
     <div className={cn(
-      'prose prose-headings:font-semibold prose-headings:tracking-tight prose-p:text-sm md:prose-p:text-base',
+      'prose prose-headings:font-semibold prose-headings:tracking-tight prose-p:text-sm md:prose-p:text-base dark:prose-invert dark:text-gray-100',
       classNames
     )}>
       <PortableText 

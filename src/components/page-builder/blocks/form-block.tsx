@@ -14,9 +14,9 @@ export default function FormBlock(props: FormBlockProps) {
   return (
     <section 
       {...(anchorId ? { id: anchorId } : {})} 
-      className='px-4 xl:px-10 pattern-bg'
+      className='px-4 xl:px-10 pattern-bg dark:pattern-bg'
     >
-      <Container className='py-16 md:py-28 border-x border-dashed'>
+      <Container className='py-16 md:py-28 border-x border-dashed border-x-gray-200/60 dark:border-x-gray-700/60'>
         <div className='flex flex-col justify-center items-center gap-4 md:gap-6'>
           {heading && (
             <Heading tag="h2" size="xl" className='text-balance text-center leading-normal'>
@@ -26,7 +26,7 @@ export default function FormBlock(props: FormBlockProps) {
           {content && (
             <PortableTextEditor 
               data={content}
-              classNames='max-w-[320px] mb-4 md:text-xl text-balance text-center text-gray-600'
+              classNames='max-w-[320px] mb-4 md:text-xl text-balance text-center text-gray-600 dark:text-gray-300'
             />
           )}
           {form && (

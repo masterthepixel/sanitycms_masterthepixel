@@ -17,7 +17,7 @@ export default function PortableTextBlock(props: PortableTextBlockProps) {
       className='px-4 md:px-10'
     >
       <Container 
-        className={cn('py-16 md:py-28 flex border-x border-dashed', {
+        className={cn('py-16 md:py-28 flex border-x border-dashed border-x-gray-200/60 dark:border-x-gray-700/60', {
           'justify-start': stegaClean(alignment) === 'left',
           'justify-center': stegaClean(alignment) === 'center',
           'justify-end': stegaClean(alignment) === 'right',
@@ -25,13 +25,13 @@ export default function PortableTextBlock(props: PortableTextBlockProps) {
       >
         <div 
           className={cn('max-w-[48rem]', {
-            'pl-10 border-l border-dashed': stegaClean(alignment) === 'left',
-            'border-r border-dashed': stegaClean(alignment) === 'right',
+            'pl-10 border-l border-dashed border-l-gray-200/60 dark:border-l-gray-700/60': stegaClean(alignment) === 'left',
+            'border-r border-dashed border-r-gray-200/60 dark:border-r-gray-700/60': stegaClean(alignment) === 'right',
           })}
         >
           <PortableTextEditor 
             data={content ?? []}
-            classNames='text-balance text-gray-600'
+            classNames='text-balance text-gray-600 dark:text-gray-300'
           />
         </div>
       </Container>

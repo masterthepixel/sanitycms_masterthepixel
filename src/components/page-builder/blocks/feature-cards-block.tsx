@@ -20,7 +20,7 @@ export default function FeatureCardsBlock(props: FeatureCardsBlockProps) {
       className='px-4 xl:px-10'
     >
       <Container className='py-16 md:py-28 px-4 space-y-8 md:space-y-6 border-x border-dashed'>
-        <div className='relative max-w-[60rem] mx-auto py-2 md:py-4 flex flex-col md:flex-row gap-30 md:gap-6 items-center justify-between border-y border-dashed pattern-bg--2'>
+        <div className='relative max-w-[60rem] mx-auto py-2 md:py-4 flex flex-col md:flex-row gap-30 md:gap-6 items-center justify-between border-y border-dashed pattern-bg--2 dark:bg-gray-900'>
           <Heading tag="h2" size="xl" className='relative col-span-7 py-1.5 text-balance leading-normal'>
             <span className='relative z-10'>
               {heading}
@@ -52,7 +52,7 @@ function FeatureCard({ feature }: {
   feature:  NonNullable<FeatureCardsBlockProps['features']>[number];
 }) {
   return (
-    <div className='border border-dashed rounded-3xl'>
+    <div className='border border-gray-200/70 dark:border-gray-700/70 rounded-3xl bg-white dark:bg-gray-900'>
       <div className='p-3'>
         <Image
           src={feature.image?.asset?.url ?? ''}
@@ -64,10 +64,10 @@ function FeatureCard({ feature }: {
       </div>
       <div className='mt-5 px-6 md:px-8 pb-2'>
         <div className='space-y-6'>
-          <Heading tag="h3" size="sm" className='relative py-2 font-semibold border-y border-y-gray-200/40 pattern-bg'>
+          <Heading tag="h3" size="sm" className='relative py-2 font-semibold border-y border-y-gray-200/40 pattern-bg dark:text-gray-100'>
             {feature.title}
           </Heading>
-          <p className='text-balance text-sm text-gray-500'>
+          <p className='text-balance text-sm text-gray-500 dark:text-gray-400'>
             {feature.description}
           </p>
         </div>
@@ -80,7 +80,7 @@ function FeatureCard({ feature }: {
               'border-none pb-6': index === (feature?.items?.length ?? 0) - 1
             })}
           >
-            <CircleCheck className='h-4 w-4 text-green-600' />
+            <CircleCheck className='h-4 w-4 text-green-600 dark:text-green-400' />
             <span className='text-balance text-sm'>
               {item}
             </span>
@@ -113,14 +113,14 @@ function CallToAction(props: FeatureCardsBlockProps) {
   } = props;
 
   return (
-    <div className='col-span-2 w-full p-8 flex flex-col md:flex-row items-center gap-8 border rounded-3xl pattern-bg--2'>
+    <div className='col-span-2 w-full p-8 flex flex-col md:flex-row items-center gap-8 border rounded-3xl pattern-bg--2 dark:bg-gray-900'>
       <div className="space-y-5 md:space-y-3">
         <div className="font-medium text-xl text-balance">
           {callToActionHeading}
         </div>
         <PortableTextEditor 
           data={callToActionContent}
-          classNames='text-balance text-sm md:text-base text-gray-500'
+          classNames='text-balance text-sm md:text-base text-gray-500 dark:text-gray-400'
         />
       </div>
       {callToActionButtons && callToActionButtons.length > 0 && (
@@ -135,8 +135,8 @@ function CallToAction(props: FeatureCardsBlockProps) {
 function EdgeBlur() {
   return (
     <div className='absolute inset-0 flex items-center justify-between'>
-      <div className='relative bg-gradient-to-r from-white to-transparent h-full w-[100px]'></div>
-      <div className='bg-gradient-to-l from-white to-transparent h-full w-[100px]'></div>
+      <div className='relative bg-gradient-to-r from-white dark:from-gray-900 to-transparent h-full w-[100px]'></div>
+      <div className='bg-gradient-to-l from-white dark:from-gray-900 to-transparent h-full w-[100px]'></div>
     </div>
   )
 }

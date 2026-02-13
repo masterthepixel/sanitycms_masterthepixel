@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 import { cva, VariantProps } from 'class-variance-authority';
 
 const headingVariants = cva(
-  'font-semibold antialiased text-gray-900 tracking-tighter leading-normal',
+  'font-semibold antialiased text-gray-900 dark:text-gray-100 tracking-tighter leading-normal',
   {
     variants: {
       tag: {

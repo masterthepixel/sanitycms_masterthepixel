@@ -11,7 +11,7 @@ interface PortableTextViewerProps {
 export default function PortableTextViewer({ value, className }: PortableTextViewerProps) {
   if (!value) return null;
 
-  const defaultClass = 'prose prose-headings:font-semibold prose-headings:tracking-tight prose-p:text-sm md:prose-p:text-base max-w-none';
+  const defaultClass = 'prose prose-headings:font-semibold prose-headings:tracking-tight prose-p:text-sm md:prose-p:text-base max-w-none dark:prose-invert dark:text-gray-100';
 
   return (
     <div className={className ?? defaultClass}>

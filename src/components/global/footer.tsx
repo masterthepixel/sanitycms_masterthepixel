@@ -22,7 +22,7 @@ export default function Footer({ settings, navigationSettings }: FooterProps) {
   } = (navigationSettings as any)?.footer ?? {};
 
   return (
-    <footer className='px-4 xl:px-10 border-t border-t-gray-200/60'>
+    <footer className='px-4 xl:px-10 border-t border-t-gray-200/60 dark:border-t-gray-700/60'>
       <Container className='pt-14 md:pt-16 border-x border-dashed'>
         <div className='w-full space-y-14 md:space-y-16'>
           <div className='flex-none py-4 md:py-0 border-y border-dashed md:border-none'>
@@ -30,7 +30,7 @@ export default function Footer({ settings, navigationSettings }: FooterProps) {
           </div>
           <FooterColumns columns={columns ?? []} />
         </div>
-        <div className='relative mt-10 md:mt-20 mb-8 py-6 flex flex-col md:flex-row md:items-center justify-between gap-1 md:gap-0 border-y border-dashed text-xs pattern-bg--2'>
+        <div className='relative mt-10 md:mt-20 mb-8 py-6 flex flex-col md:flex-row md:items-center justify-between gap-1 md:gap-0 border-y border-dashed text-xs pattern-bg--2 dark:text-gray-300'>
           <div className='z-20 relative'>
           {copyright} © {new Date().getFullYear()}  - Design + Code by
             <a 
@@ -68,11 +68,11 @@ function FooterColumns({ columns }: {
   }> | null;
 }) {
   return (
-    <ul className='flex-1 grid md:grid-cols-2 lg:grid-cols-4 gap-0 md:gap-2 border-y border-dashed pattern-bg--2'>
+    <ul className='flex-1 grid md:grid-cols-2 lg:grid-cols-4 gap-0 md:gap-2 border-y border-dashed pattern-bg--2 dark:bg-gray-900'>
       {columns?.map((column, index) => (
         <li 
           key={column._key} 
-          className={cn('md:py-10 px-10 w-full space-y-7 border-x border-dashed bg-white', { 
+          className={cn('md:py-10 px-10 w-full space-y-7 border-x border-dashed bg-white dark:bg-gray-900', { 
             'pb-8': index === columns.length - 1 
           })}>
           <Heading tag="h2" size="xs" className='relative mt-8 md:mt-0 py-2.5 font-semibold border-y border-dashed pattern-bg--2'>
@@ -168,8 +168,8 @@ function LegalMenuItems({ legalMenuItems }: {
 function EdgeBlur() {
   return (
     <div className='absolute inset-0 flex items-center justify-between'>
-      <div className='relative bg-gradient-to-r from-white to-transparent h-full w-[100px]'></div>
-      <div className='bg-gradient-to-l from-white to-transparent h-full w-[100px]'></div>
+      <div className='relative bg-gradient-to-r from-white dark:from-gray-900 to-transparent h-full w-[100px]'></div>
+      <div className='bg-gradient-to-l from-white dark:from-gray-900 to-transparent h-full w-[100px]'></div>
     </div>
   )
 }
