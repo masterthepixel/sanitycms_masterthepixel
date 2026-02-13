@@ -1,1 +1,1 @@
-self.__NEXT_FONT_MANIFEST="{\n  \"app\": {},\n  \"appUsingSizeAdjust\": false,\n  \"pages\": {},\n  \"pagesUsingSizeAdjust\": false\n}"
+self.__NEXT_FONT_MANIFEST='{"pages":{},"app":{"/home/mastethepixel/GitHub/sanitycms_masterthepixel/src/app/(frontend)/layout":["static/media/4473ecc91f70f139-s.p.woff","static/media/463dafcda517f24f-s.p.woff"]},"appUsingSizeAdjust":true,"pagesUsingSizeAdjust":false}';

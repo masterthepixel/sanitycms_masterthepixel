@@ -13,7 +13,8 @@
     "lint": "next lint",
     "test:e2e": "playwright test",
     "test:e2e:headed": "playwright test --headed",
-    "test:e2e:install": "npx playwright install --with-deps"
+    "test:e2e:install": "npx playwright install --with-deps",
+    "validate:frontmatter": "node scripts/validate-frontmatter.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -70,7 +71,10 @@
     "eslint-config-next": "15.1.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "typescript": "^5",
+    "@mdx-js/react": "^3.0.1",
+    "gray-matter": "^4.0.3",
+    "next-mdx-remote": "^5.0.0"
   },
   "overrides": {
     "@types/react": "^19.2",

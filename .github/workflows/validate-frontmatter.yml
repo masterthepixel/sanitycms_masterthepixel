@@ -1,0 +1,21 @@
+name: "Frontmatter parity (PR)"
+
+on:
+  pull_request:
+    branches: [ main, 'feature/migration/sanity-to-md', 'feature/migration/sanity-to-md/**' ]
+
+jobs:
+  validate-frontmatter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Run frontmatter parity check
+        run: pnpm run validate:frontmatter
