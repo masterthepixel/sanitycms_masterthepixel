@@ -9,12 +9,11 @@ import { usePathname } from 'next/navigation';
 import { cn, resolveHref } from '@/lib/utils';
 import { ChevronRight, Menu } from 'lucide-react';
 import AnimatedText from '../shared/animated-text';
-import { GeneralSettingsQueryResult, NavigationSettingsQueryResult } from '../../../sanity.types';
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 
 interface NavbarProps {
-  settings: GeneralSettingsQueryResult;
-  navigationSettings: NavigationSettingsQueryResult;
+  settings: any;
+  navigationSettings: any;
 }
 
 export default function Navbar({ settings, navigationSettings }: NavbarProps) {

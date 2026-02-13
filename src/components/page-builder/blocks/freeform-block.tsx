@@ -1,46 +1,55 @@
 import React from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { stegaClean } from 'next-sanity';
 import { Button } from '@/components/ui/button';
 import Heading from '@/components/shared/heading';
 import Container from '@/components/global/container';
 import { ButtonType, PageBuilderType } from '@/types';
-import PortableTextEditor from '@/components/portable-text/portable-text-editor';
 
 export type FreeformBlockProps = PageBuilderType<"freeformBlock">;
+
+function renderContent(content: any) {
+  if (Array.isArray(content)) {
+    // Handle legacy Portable Text arrays - just extract text
+    return content.map((block: any) => block.children?.map((child: any) => child.text).join('') || '').join(' ');
+  }
+  if (typeof content === 'string') {
+    return content;
+  }
+  return '';
+}
 
 export default function FreeformBlock(props: FreeformBlockProps) {
 
   const { columnsPerRow, columns, border, anchorId } = props;
 
   return (
-    <section 
-      {...(anchorId ? { id: anchorId } : {})} 
+    <section
+      {...(anchorId ? { id: anchorId } : {})}
       className='px-4 md:px-10'
     >
       <Container
         className={cn('py-16 md:py-28 border-x border-dashed', {
-          'border-y': stegaClean(border) === 'topBottom',
-          'border-t': stegaClean(border) === 'top',
-          'border-b': stegaClean(border) === 'bottom',
+          'border-y': (border) === 'topBottom',
+          'border-t': (border) === 'top',
+          'border-b': (border) === 'bottom',
         })}
       >
-        <div 
+        <div
           className={cn('grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8', {
-            'md:grid-cols-3': stegaClean(columnsPerRow) === '3',
-            'md:grid-cols-4': stegaClean(columnsPerRow) === '4',
+            'md:grid-cols-3': (columnsPerRow) === '3',
+            'md:grid-cols-4': (columnsPerRow) === '4',
           })}
         >
           {columns?.map((column) => (
-            <div 
-              key={column?._key} 
+            <div
+              key={column?._key}
               className={cn('flex flex-col items-start justify-center gap-0', {
-                'gap-2': stegaClean(column?.spacing) === 'small',
-                'gap-3': stegaClean(column?.spacing) === 'medium',
-                'gap-4': stegaClean(column?.spacing) === 'large',
-                'items-center': stegaClean(column?.alignment) === 'center',
-                'items-end': stegaClean(column?.alignment) === 'right',
+                'gap-2': (column?.spacing) === 'small',
+                'gap-3': (column?.spacing) === 'medium',
+                'gap-4': (column?.spacing) === 'large',
+                'items-center': (column?.alignment) === 'center',
+                'items-end': (column?.alignment) === 'right',
               })}
             >
               {column?.items?.map((item) => (
@@ -51,20 +60,19 @@ export default function FreeformBlock(props: FreeformBlockProps) {
                     </Heading>
                   )}
                   {(item?._type === 'spacerObject' && item?.spacing) && (
-                    <div 
+                    <div
                       key={item?._key}
                       className={cn('h-0', {
-                        'h-4': stegaClean(item?.spacing) === 'small',
-                        'h-6': stegaClean(item?.spacing) === 'medium',
-                        'h-8': stegaClean(item?.spacing) === 'large',
+                        'h-4': (item?.spacing) === 'small',
+                        'h-6': (item?.spacing) === 'medium',
+                        'h-8': (item?.spacing) === 'large',
                       })}
                     />
                   )}
                   {(item?._type === 'richTextObject' && item?.richTextContent) && (
-                    <PortableTextEditor 
-                      data={item?.richTextContent} 
-                      classNames='text-balance'
-                    />
+                    <div className='text-balance'>
+                      {renderContent(item?.richTextContent)}
+                    </div>
                   )}
                   {(item?._type === 'singleImageObject' && item?.image?.asset?.url) && (
                     <div className='p-3 border border-dashed rounded-3xl pattern-bg--2'>
@@ -74,16 +82,16 @@ export default function FreeformBlock(props: FreeformBlockProps) {
                         height={800}
                         alt={item?.image?.asset?.altText ?? ''}
                         className={cn('object-cover aspect-square rounded-2xl', {
-                          'aspect-[3/2]': stegaClean(item?.image?.aspectRatio) === 'rectangle',
-                          'aspect-[3/4]': stegaClean(item?.image?.aspectRatio) === 'portrait',
+                          'aspect-[3/2]': (item?.image?.aspectRatio) === 'rectangle',
+                          'aspect-[3/4]': (item?.image?.aspectRatio) === 'portrait',
                         })}
                       />
                     </div>
                   )}
                   {(item?._type === 'buttonObject' && item?.buttonText) && (
-                    <Button 
+                    <Button
                       size="sm"
-                      variant={stegaClean(item?.buttonVariant)}
+                      variant={(item?.buttonVariant)}
                       buttonType={item?.buttonType}
                       pageReference={item?.buttonPageReference as ButtonType['buttonPageReference']}
                       externalUrl={item?.buttonExternalUrl ?? ''}

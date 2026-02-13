@@ -11,7 +11,6 @@ import { Tag, ImageIcon, ChevronDown } from 'lucide-react';
 import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import AnimatedUnderline from '@/components/shared/animated-underline';
-import TableOfContents from '@/components/portable-text/table-of-contents';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Post } from '@/types/content';
 

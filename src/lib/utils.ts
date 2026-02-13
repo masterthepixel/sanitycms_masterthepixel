@@ -3,17 +3,6 @@ import toast from "react-hot-toast";
 import { ButtonType } from '@/types';
 import { ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { urlForImage } from '@/sanity/lib/utils';
-
-import { 
-  BlogPageQueryResult, 
-  PageBySlugQueryResult, 
-  PostBySlugQueryResult, 
-  ProjectBySlugQueryResult, 
-  ProjectsPageQueryResult, 
-  ServiceBySlugQueryResult, 
-  ServicesPageQueryResult 
-} from '../../sanity.types';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -125,14 +114,7 @@ export function resolveHref(documentType?: string, slug?: string): string | unde
   }
 }
 
-export type PageQueryResult = 
-  | PageBySlugQueryResult 
-  | ServicesPageQueryResult 
-  | ServiceBySlugQueryResult 
-  | BlogPageQueryResult 
-  | PostBySlugQueryResult
-  | ProjectsPageQueryResult
-  | ProjectBySlugQueryResult;
+export type PageQueryResult = any;
   
 export function processMetadata({ data }: {
   data: PageQueryResult;
@@ -152,9 +134,7 @@ export function processMetadata({ data }: {
 
   metadata.openGraph = {
     images: {
-      url: image
-        ? urlForImage(image)?.width(1200).height(630).url() as string
-        : `/api/og?id=${id}`,
+      url: image || `/api/og?id=${id}`,
       width: 1200,
       height: 630,
     },
@@ -165,4 +145,24 @@ export function processMetadata({ data }: {
   };
 
   return metadata;
+}
+
+export function normalizePageBuilder(data: any): any[] {
+  // If data is already an array of blocks, return as-is
+  if (Array.isArray(data)) {
+    return data;
+  }
+
+  // If data has a pageBuilder property, return that
+  if (data && data.pageBuilder && Array.isArray(data.pageBuilder)) {
+    return data.pageBuilder;
+  }
+
+  // If data is a single block, wrap in array
+  if (data && data._type) {
+    return [data];
+  }
+
+  // Fallback to empty array
+  return [];
 }

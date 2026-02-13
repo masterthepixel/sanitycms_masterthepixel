@@ -12,6 +12,15 @@ const components = {
   FeatureGrid,
   Testimonial,
   Services,
+  Callout: ({ type, children }: { type?: string; children: React.ReactNode }) => (
+    <div className={`p-4 rounded-lg border ${
+      type === 'warning' ? 'border-yellow-200 bg-yellow-50 text-yellow-800' :
+      type === 'error' ? 'border-red-200 bg-red-50 text-red-800' :
+      'border-blue-200 bg-blue-50 text-blue-800'
+    }`}>
+      {children}
+    </div>
+  ),
 }
 
 export default function MDXRenderer({ children }: { children: React.ReactNode }) {

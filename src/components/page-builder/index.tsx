@@ -2,9 +2,7 @@
 import dynamic from "next/dynamic";
 import { ComponentType } from "react";
 import { PageBuilderType } from "@/types";
-import { createDataAttribute } from "next-sanity";
-import { PageBySlugQueryResult } from "../../../sanity.types";
-import { dataset, projectId, studioUrl } from "@/sanity/lib/api";
+import { normalizePageBuilder } from "@/lib/utils";
 
 const HeroBlock = dynamic(() => import("./blocks/hero-block"));
 const HeaderBlock = dynamic(() => import("./blocks/header-block"));
@@ -44,54 +42,15 @@ const PB_BLOCKS = {
 
 type BlockType = keyof typeof PB_BLOCKS;
 
-export function normalizePageBuilder(data: any): PageBlock[] {
-  // If data is already an array of blocks, return as-is
-  if (Array.isArray(data)) {
-    return data;
-  }
-
-  // If data has a pageBuilder property, return that
-  if (data && data.pageBuilder && Array.isArray(data.pageBuilder)) {
-    return data.pageBuilder;
-  }
-
-  // If data is a single block, wrap in array
-  if (data && data._type) {
-    return [data];
-  }
-
-  // Fallback to empty array
-  return [];
-}
-
 export function PageBuilder({ pageBuilder, id, type }: PageBuilderProps) {
   const normalizedBlocks = normalizePageBuilder(pageBuilder);
 
   return (
-    <div
-      data-sanity={createDataAttribute({
-        id: id,
-        type: type,
-        dataset: dataset,
-        baseUrl: studioUrl,
-        path: "pageBuilder",
-        projectId: projectId,
-      }).toString()}
-    >
+    <div>
       {normalizedBlocks.map((block) => {
         const Component = PB_BLOCKS[block._type] as ComponentType<any>;
         return (
-          <div
-            key={`${block._type}-${block._key}`}
-            data-sanity={createDataAttribute({
-              id: id,
-              type: type,
-              dataset: dataset,
-              baseUrl: studioUrl,
-              projectId: projectId,
-              path: `pageBuilder[_key=="${block._key}"]`,
-            }).toString()}
-          >
+          <div key={`${block._type}-${block._key}`}>
             <Component {...block} />
           </div>
         );

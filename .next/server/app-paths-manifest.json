@@ -3,6 +3,5 @@
   "/(frontend)/blog/[slug]/page": "app/(frontend)/blog/[slug]/page.js",
   "/(frontend)/blog/page": "app/(frontend)/blog/page.js",
   "/(frontend)/page": "app/(frontend)/page.js",
-  "/(frontend)/services/page": "app/(frontend)/services/page.js",
   "/_not-found/page": "app/_not-found/page.js"
 }

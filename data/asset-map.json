@@ -1,0 +1,9 @@
+{
+  "/assets/placeholder-cover.jpg": "/assets/placeholder-cover.jpg",
+  "/uploads/sample.jpg": "/uploads/sample.jpg",
+  "https://cdn.sanity.io/images/5ywyt4ng/production/4d3aab04b351bf872980bb210c4a5e44a29d1a0d-1920x1459.jpg": "/uploads/production/services/4d3aab04b351bf872980bb210c4a5e44a29d1a0d-1920x1459.jpg",
+  "https://cdn.sanity.io/images/5ywyt4ng/production/dab35595dfa8b8ca7dcb216115b654a3f5e71e6f-2400x1600.jpg": "/uploads/production/services/dab35595dfa8b8ca7dcb216115b654a3f5e71e6f-2400x1600.jpg",
+  "https://cdn.sanity.io/images/5ywyt4ng/production/e5a8045d9b8c95747beba9d7953e86d4ad880194-1920x1280.jpg": "/uploads/production/services/e5a8045d9b8c95747beba9d7953e86d4ad880194-1920x1280.jpg",
+  "https://cdn.sanity.io/images/5ywyt4ng/production/4bf52b194f78f71f5f844d1b6cc541b602714b0f-1920x1280.jpg": "/uploads/production/services/4bf52b194f78f71f5f844d1b6cc541b602714b0f-1920x1280.jpg",
+  "https://cdn.sanity.io/images/5ywyt4ng/production/5f21d7525e86a3b12d4dcb34d4046440919b3b79-1920x1280.jpg": "/uploads/production/services/5f21d7525e86a3b12d4dcb34d4046440919b3b79-1920x1280.jpg"
+}

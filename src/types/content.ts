@@ -6,8 +6,10 @@ export interface PostFrontmatter {
   seo: {
     title: string
     description: string
+    keywords?: string[]
   }
   coverImage: string
+  categories?: string[]
   draft?: boolean
 }
 

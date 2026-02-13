@@ -3,10 +3,10 @@ import React from 'react';
 import Image from 'next/image';
 import { cn, scrollToElement } from '@/lib/utils';
 import { usePathname, useRouter } from 'next/navigation';
-import { GeneralSettingsQueryResult } from '../../../sanity.types';
+import { GeneralSettings } from '@/types/content';
 
 export default function SiteLogo({ settings, location, theme }: {
-  settings: GeneralSettingsQueryResult;
+  settings: GeneralSettings;
   location?: 'footer' | 'navbar';
   theme?: 'light' | 'dark';
 }) {

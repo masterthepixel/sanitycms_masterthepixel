@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll, afterAll } from '@jest/globals'
+// Jest globals (describe, it, expect, beforeAll, afterAll) are provided by test runner
 import fs from 'fs'
 import path from 'path'
 import SanityToMdxConverter from '../../scripts/sanity-to-mdx'
@@ -9,6 +9,13 @@ describe('sanity-to-mdx converter', () => {
 
   beforeAll(() => {
     // Clean up any previous test output
+    if (fs.existsSync(testOutputDir)) {
+      fs.rmSync(testOutputDir, { recursive: true, force: true })
+    }
+  })
+
+  beforeEach(() => {
+    // Ensure a clean slate for each test case
     if (fs.existsSync(testOutputDir)) {
       fs.rmSync(testOutputDir, { recursive: true, force: true })
     }

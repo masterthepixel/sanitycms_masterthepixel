@@ -1,13 +1,9 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { processMetadata } from '@/lib/utils';
 import Container from '@/components/global/container';
 import PostContent from '../_components/post-content';
 import RelatedPosts from '../_components/related-posts';
 import { getPostBySlug, getAllPosts } from '@/lib/content';
-// TODO: Remove sanityFetch imports after migration
-// import { sanityFetch } from '@/sanity/lib/live';
-// import { postBySlugQuery, postSlugsQuery } from '@/sanity/lib/queries/documents/post';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
@@ -30,8 +26,8 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
   try {
     const post = await getPostBySlug(slug);
     return {
-      title: post.seo.title,
-      description: post.seo.description,
+      title: post.seo?.title || post.title,
+      description: post.seo?.description || post.excerpt,
       // TODO: Add openGraphImage from frontmatter
     };
   } catch (error) {

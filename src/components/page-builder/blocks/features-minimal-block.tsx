@@ -4,9 +4,19 @@ import { PageBuilderType } from '@/types';
 import Heading from '@/components/shared/heading';
 import Container from '@/components/global/container';
 import ButtonRenderer from '@/components/shared/button-renderer';
-import PortableTextEditor from '@/components/portable-text/portable-text-editor';
 
 export type FeaturesMinimalBlockProps = PageBuilderType<"featuresMinimalBlock">;
+
+function renderContent(content: any) {
+  if (Array.isArray(content)) {
+    // Handle legacy Portable Text arrays - just extract text
+    return content.map((block: any) => block.children?.map((child: any) => child.text).join('') || '').join(' ');
+  }
+  if (typeof content === 'string') {
+    return content;
+  }
+  return '';
+}
 
 export default function FeaturesMinimalBlock(props: FeaturesMinimalBlockProps) {
 
@@ -43,10 +53,9 @@ export default function FeaturesMinimalBlock(props: FeaturesMinimalBlockProps) {
                 <EdgeBlur />
               </Heading>
               {content && (
-                <PortableTextEditor 
-                  data={content}
-                  classNames='max-w-[400px] mt-8 text-balance text-gray-500'
-                />
+                <div className='max-w-[400px] mt-8 text-balance text-gray-500'>
+                  {renderContent(content)}
+                </div>
               )}
             </div>
             {buttons && buttons.length > 0 && (

@@ -7,13 +7,12 @@ import { cn, resolveHref } from "@/lib/utils";
 import ButtonRenderer from "../shared/button-renderer";
 import AnimatedUnderline from "../shared/animated-underline";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../ui/collapsible";
-import { GeneralSettingsQueryResult, NavigationSettingsQueryResult } from "../../../sanity.types";
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '../ui/sheet';
 
 export default function SlideOutMenu({ children, settings, navigationSettings }: {
   children: React.ReactNode;
-  settings: GeneralSettingsQueryResult;
-  navigationSettings: NavigationSettingsQueryResult;
+  settings: any;
+  navigationSettings: any;
 }) {
 
   const router = useRouter();

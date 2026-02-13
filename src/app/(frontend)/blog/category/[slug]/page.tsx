@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
-import { sanityFetch } from '@/sanity/lib/live';
 import PostGrid from '../../_components/post-grid';
-import { postCategoryBySlugQuery, postSlugsQuery, postsByCategoryQuery } from '@/sanity/lib/queries/documents/post';
+import { getAllPosts } from '@/lib/content';
 import { CircleSlash } from 'lucide-react';
 
 interface PageProps {
@@ -9,40 +8,30 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  const { data } = await sanityFetch({
-    query: postSlugsQuery,
-    perspective: "published",
-    stega: false,
-  });
-  return data;
+  // For now, return empty since we're migrating
+  return [];
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-
-  const { data: category } = await sanityFetch({
-    query: postCategoryBySlugQuery,
-    params: await params,
-    stega: false,
-  });
-
-  if (!category) { return {} };
-
+  const { slug } = await params;
   return {
-    title: `${category?.title} Posts`,
-    description: `Browse our collection of ${category?.title?.toLowerCase()} posts.`
-  }
+    title: `Category: ${slug}`,
+    description: `Posts in category ${slug}`
+  };
 }
 
 export default async function PostsByCategoryPage(props: {
   params: Promise<{ slug: string }>
 }) {
-
   const params = await props.params;
+  const { slug } = params;
 
-  const { data: posts } = await sanityFetch({ 
-    query: postsByCategoryQuery, 
-    params: params
-  });
+  const allPosts = await getAllPosts();
+  
+  // Filter posts by category
+  const posts = allPosts.filter(post => 
+    post.categories?.some((cat: string) => cat.toLowerCase() === slug.toLowerCase())
+  );
 
   if (posts.length === 0) {
     return (
@@ -54,5 +43,5 @@ export default async function PostsByCategoryPage(props: {
 
   return (
     <PostGrid posts={posts} />
-  )
+  );
 }

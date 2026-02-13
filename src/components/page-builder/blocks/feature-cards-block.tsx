@@ -6,9 +6,19 @@ import { Button } from '@/components/ui/button';
 import Heading from '@/components/shared/heading';
 import Container from '@/components/global/container';
 import ButtonRenderer from '@/components/shared/button-renderer';
-import PortableTextEditor from '@/components/portable-text/portable-text-editor';
 
 export type FeatureCardsBlockProps = PageBuilderType<"featureCardsBlock">;
+
+function renderContent(content: any) {
+  if (Array.isArray(content)) {
+    // Handle legacy Portable Text arrays - just extract text
+    return content.map((block: any) => block.children?.map((child: any) => child.text).join('') || '').join(' ');
+  }
+  if (typeof content === 'string') {
+    return content;
+  }
+  return '';
+}
 
 export default function FeatureCardsBlock(props: FeatureCardsBlockProps) {
 
@@ -118,10 +128,9 @@ function CallToAction(props: FeatureCardsBlockProps) {
         <div className="font-medium text-xl text-balance">
           {callToActionHeading}
         </div>
-        <PortableTextEditor 
-          data={callToActionContent}
-          classNames='text-balance text-sm md:text-base text-gray-500'
-        />
+        <div className='text-balance text-sm md:text-base text-gray-500'>
+          {renderContent(callToActionContent)}
+        </div>
       </div>
       {callToActionButtons && callToActionButtons.length > 0 && (
         <div className='items-center md:justify-center gap-2.5'>

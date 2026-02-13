@@ -1,7 +1,6 @@
 "use client"
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { stegaClean } from 'next-sanity';
 import { PageBuilderType } from '@/types';
 import Container from '@/components/global/container';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
@@ -23,8 +22,8 @@ export default function TestimonialBlock(props: TestimonialBlockProps) {
     <section 
       {...(anchorId ? { id: anchorId } : {})}
       className={cn('pb-10 md:pb-0 xl:px-10 pattern-bg border-y border-dashed', {
-        'rounded-t-4xl': stegaClean(cornerRadiusTop) === 'rounded',
-        'rounded-b-4xl': stegaClean(cornerRadiusBottom) === 'rounded'
+        'rounded-t-4xl': (cornerRadiusTop) === 'rounded',
+        'rounded-b-4xl': (cornerRadiusBottom) === 'rounded'
       })}
     >
       <Container className='py-16 md:py-28 space-y-10 border-x border-dashed'>

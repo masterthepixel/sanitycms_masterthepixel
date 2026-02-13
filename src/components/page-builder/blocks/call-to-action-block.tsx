@@ -2,9 +2,19 @@ import { PageBuilderType } from '@/types';
 import Heading from '@/components/shared/heading';
 import Container from '@/components/global/container';
 import ButtonRenderer from '@/components/shared/button-renderer';
-import PortableTextEditor from '@/components/portable-text/portable-text-editor';
 
 export type CallToActionBlockProps = PageBuilderType<"callToActionBlock">;
+
+function renderContent(content: any) {
+  if (Array.isArray(content)) {
+    // Handle legacy Portable Text arrays - just extract text
+    return content.map((block: any) => block.children?.map((child: any) => child.text).join('') || '').join(' ');
+  }
+  if (typeof content === 'string') {
+    return content;
+  }
+  return '';
+}
 
 export default function CallToActionBlock(props: CallToActionBlockProps) {
 
@@ -21,10 +31,9 @@ export default function CallToActionBlock(props: CallToActionBlockProps) {
             <Heading tag="h2" size="xl" className='max-w-[40rem] text-balance leading-tight'>
               {heading}
             </Heading>
-            <PortableTextEditor 
-              data={content ?? []}
-              classNames='mt-6 md:mt-8 text-balance text-gray-600'
-            />
+            <div className='mt-6 md:mt-8 text-balance text-gray-600'>
+              {renderContent(content)}
+            </div>
           </div>
           {buttons && buttons.length > 0 && (
             <div className='mt-10'>

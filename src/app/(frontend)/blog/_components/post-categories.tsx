@@ -2,11 +2,6 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import { BlogPageQueryResult } from '../../../../../sanity.types';
-
-type Blog = NonNullable<
-  NonNullable<BlogPageQueryResult>
->;
 
 interface PostCategoriesProps {
   categories: any[];

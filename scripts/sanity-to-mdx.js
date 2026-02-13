@@ -3,7 +3,12 @@
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
-const { portableTextToMarkdown } = require('@portabletext/markdown');
+
+// NOTE: `@portabletext/markdown` is an ESM-only dependency and can cause
+// Jest (CommonJS) to fail when required at module load time. We import it
+// dynamically inside `convertPortableTextToMarkdown` and fall back to a
+// lightweight converter when dynamic import is not available (e.g. test
+// environments). This keeps the top-level module require-safe for Jest.
 
 /**
  * Sanity to MDX Converter
@@ -207,40 +212,77 @@ class SanityToMdxConverter {
     return false;
   }
 
-  convertPortableTextToMarkdown(portableText) {
+  async convertPortableTextToMarkdown(portableText) {
     if (!portableText || !Array.isArray(portableText)) return '';
 
-    try {
-      // Track unmapped blocks
-      const blocks = portableText.map(block => {
-        if (block._type && !['block', 'image', 'video', 'callToAction'].includes(block._type)) {
-          this.stats.unmappedBlocks.add(block._type);
-        }
-        return block;
-      });
+    // Track unmapped blocks
+    const blocks = portableText.map(block => {
+      if (block._type && !['block', 'image', 'video', 'callToAction'].includes(block._type)) {
+        this.stats.unmappedBlocks.add(block._type);
+      }
+      return block;
+    });
 
-      return portableTextToMarkdown(blocks, {
-        image: (node) => {
-          const url = this.mapImageUrl(node);
-          const alt = node.alt || '';
-          return `![${alt}](${url})`;
-        },
-        custom: {
-          video: (node) => {
-            const url = node.videoUrl || node.url;
-            const title = node.title || '';
-            return `<video src="${url}" title="${title}" controls></video>`;
-          },
-          callToAction: (node) => {
-            // Convert to markdown link or custom component
-            const text = node.callToActionTitle || node.title || 'Learn More';
-            const url = '#'; // Would need to resolve actual URLs
-            return `[${text}](${url})`;
-          }
+    // Try dynamic import of the ESM portabletext package. If that fails
+    // (e.g. in Jest/CommonJS environment), fall back to a minimal converter
+    // that extracts plain text from block children.
+    try {
+      let portableModule = null;
+      try {
+        portableModule = await import('@portabletext/markdown');
+      } catch (e) {
+        // dynamic import might fail in some environments; try require as a last resort
+        try {
+          // eslint-disable-next-line global-require
+          portableModule = require('@portabletext/markdown');
+        } catch (err) {
+          portableModule = null;
         }
-      });
+      }
+
+      if (portableModule && (portableModule.portableTextToMarkdown || portableModule.default)) {
+        const fn = portableModule.portableTextToMarkdown || portableModule.default?.portableTextToMarkdown;
+        if (typeof fn === 'function') {
+          return fn(blocks, {
+            image: (node) => {
+              const url = this.mapImageUrl(node);
+              const alt = node.alt || '';
+              return `![${alt}](${url})`;
+            },
+            custom: {
+              video: (node) => {
+                const url = node.videoUrl || node.url;
+                const title = node.title || '';
+                return `<video src="${url}" title="${title}" controls></video>`;
+              },
+              callToAction: (node) => {
+                const text = node.callToActionTitle || node.title || 'Learn More';
+                const url = '#';
+                return `[${text}](${url})`;
+              }
+            }
+          });
+        }
+      }
     } catch (error) {
-      console.warn('Error converting Portable Text to Markdown:', error.message);
+      console.warn('PortableText converter import failed, falling back to plain-text conversion.');
+    }
+
+    // Fallback: simple plain-text extraction from block children
+    try {
+      const parts = [];
+      for (const block of blocks) {
+        if (block._type === 'block' && Array.isArray(block.children)) {
+          for (const child of block.children) {
+            if (child.text) parts.push(child.text);
+          }
+        } else if (typeof block === 'string') {
+          parts.push(block);
+        }
+      }
+      return parts.join('\n\n');
+    } catch (err) {
+      console.warn('Fallback PortableText conversion failed:', err.message);
       return '';
     }
   }
@@ -278,7 +320,7 @@ class SanityToMdxConverter {
 
   async convertDocument(doc) {
     const frontmatter = this.mapToFrontmatter(doc);
-    const body = this.convertPortableTextToMarkdown(doc.content || doc.body || doc.pageBuilder || []);
+    const body = await this.convertPortableTextToMarkdown(doc.content || doc.body || doc.pageBuilder || []);
 
     const type = doc._type;
     const slug = frontmatter.slug || 'untitled';

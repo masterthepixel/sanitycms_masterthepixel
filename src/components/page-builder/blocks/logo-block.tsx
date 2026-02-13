@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { stegaClean } from 'next-sanity';
 import { PageBuilderType } from '@/types';
 import Container from '@/components/global/container';
 
@@ -40,7 +39,7 @@ export default function LogoBlock(props: LogoBlockProps) {
                         src={item.image?.asset?.url ?? ''}
                         alt={`${item.title} Logo`}
                         className={cn('w-20 md:w-28 object-contain', {
-                          'w-36 md:w-40': stegaClean(item?.size) === 'large'
+                          'w-36 md:w-40': (item?.size) === 'large'
                         })}
                       />
                     </a>
@@ -51,7 +50,7 @@ export default function LogoBlock(props: LogoBlockProps) {
                       src={item.image?.asset?.url ?? ''}
                       alt={`${item.title} Logo`}
                       className={cn('w-20 md:w-28 object-contain', {
-                        'w-36 md:w-40': stegaClean(item?.size) === 'large'
+                        'w-36 md:w-40': (item?.size) === 'large'
                       })}
                     />  
                   )}

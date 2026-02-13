@@ -1,30 +1,35 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { draftMode } from "next/headers";
-import { VisualEditing } from "next-sanity/visual-editing";
 import Container from "@/components/global/container";
-import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import ClientLayout from "@/components/global/client-layout";
 import InstallDemoButton from "@/components/shared/install-demo-button";
-import { DisableDraftMode } from "@/components/shared/disable-draft-mode";
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import { getSiteSettings } from "@/lib/content";
 
-export const metadata: Metadata = {
-  title: {
-    template: `%s | ${process.env.NEXT_PUBLIC_SITE_NAME}`,
-    default: `${process.env.NEXT_PUBLIC_SITE_NAME}`,
-  },
-  description: "Open-Source Next.js & Sanity Marketing Website Template.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  // Prefer explicit env var, fall back to content/site.json -> generalSettings.siteTitle
+  let siteName = process.env.NEXT_PUBLIC_SITE_NAME;
+  try {
+    const siteSettings = await getSiteSettings();
+    siteName = siteName || siteSettings.generalSettings?.siteTitle || 'masterthepixel';
+  } catch (err) {
+    siteName = siteName || 'masterthepixel';
+  }
+
+  return {
+    title: {
+      template: `%s | ${siteName}`,
+      default: siteName,
+    },
+    description: "Open-Source Next.js Marketing Website Template.",
+  };
+}
 
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-  const { isEnabled: isDraftMode } = await draftMode();
 
   const siteSettings = await getSiteSettings();
   const settings = siteSettings.generalSettings;
@@ -46,12 +51,6 @@ export default async function RootLayout({
         >
           {children}
         </ClientLayout>
-        {isDraftMode && (
-          <>
-            <DisableDraftMode />
-            <VisualEditing />
-          </>
-        )}
         {marketingSettings?.googleAnalyticsId && (
           <GoogleAnalytics 
             gaId={marketingSettings.googleAnalyticsId} 

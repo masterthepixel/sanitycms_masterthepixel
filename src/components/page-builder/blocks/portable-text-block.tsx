@@ -2,37 +2,46 @@
 import { cn } from '@/lib/utils';
 import { PageBuilderType } from '@/types';
 import Container from '@/components/global/container';
-import PortableTextEditor from '@/components/portable-text/portable-text-editor';
-import { stegaClean } from 'next-sanity';
+
 
 export type PortableTextBlockProps = PageBuilderType<"portableTextBlock">;
+
+function renderContent(content: any) {
+  if (Array.isArray(content)) {
+    // Handle legacy Portable Text arrays - just extract text
+    return content.map((block: any) => block.children?.map((child: any) => child.text).join('') || '').join(' ');
+  }
+  if (typeof content === 'string') {
+    return content;
+  }
+  return '';
+}
 
 export default function PortableTextBlock(props: PortableTextBlockProps) {
 
   const { content, alignment, anchorId } = props;
 
   return (
-    <section 
+    <section
       {...(anchorId ? { id: anchorId } : {})}
       className='px-4 md:px-10'
     >
-      <Container 
+      <Container
         className={cn('py-16 md:py-28 flex border-x border-dashed', {
-          'justify-start': stegaClean(alignment) === 'left',
-          'justify-center': stegaClean(alignment) === 'center',
-          'justify-end': stegaClean(alignment) === 'right',
+          'justify-start': alignment === 'left',
+          'justify-center': alignment === 'center',
+          'justify-end': alignment === 'right',
         })}
       >
-        <div 
+        <div
           className={cn('max-w-[48rem]', {
-            'pl-10 border-l border-dashed': stegaClean(alignment) === 'left',
-            'border-r border-dashed': stegaClean(alignment) === 'right',
+            'pl-10 border-l border-dashed': alignment === 'left',
+            'border-r border-dashed': alignment === 'right',
           })}
         >
-          <PortableTextEditor 
-            data={content ?? []}
-            classNames='text-balance text-gray-600'
-          />
+          <div className='text-balance text-gray-600'>
+            {renderContent(content)}
+          </div>
         </div>
       </Container>
     </section>
