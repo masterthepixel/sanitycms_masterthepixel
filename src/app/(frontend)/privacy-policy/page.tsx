@@ -20,7 +20,7 @@ export default async function PrivacyPolicyPage() {
         <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl font-semibold mb-6">Privacy Policy</h1>
           <div className="prose prose-lg">
-            <p>This Privacy Policy describes how we collect, use, and disclose your personal information when you use the SiteEngine sample site.</p>
+            <p>This Privacy Policy describes how we collect, use, and disclose your personal information when you use the masterthepixel sample site.</p>
             <h2>Information We Collect</h2>
             <p>We may collect information you provide directly, such as contact form submissions, and automatically via cookies and analytics.</p>
             <h2>Use of Information</h2>
@@ -28,7 +28,7 @@ export default async function PrivacyPolicyPage() {
             <h2>Third-Party Services</h2>
             <p>We may use third-party services (e.g., analytics, hosting) that process data on our behalf.</p>
             <h2>Contact</h2>
-            <p>If you have questions about this policy, contact: privacy@siteengine.org</p>
+            <p>If you have questions about this policy, contact: privacy@masterthepixel.org</p>
           </div>
         </div>
       </Container>

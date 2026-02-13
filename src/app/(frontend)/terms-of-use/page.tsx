@@ -21,9 +21,9 @@ export default async function TermsOfUsePage() {
           <h1 className="text-3xl font-semibold mb-6">Terms of Use</h1>
           <p>Effective 4th July 2024</p>
           <div className="prose prose-lg mt-4">
-            <p>SiteEngine Copyright ©️ 2025 - James Rea.</p>
+            <p>masterthepixel Copyright ©️ 2025 - James Rea.</p>
             <p>
-              Permission is hereby granted, free of charge, to any person obtaining a copy of the SiteEngine
+              Permission is hereby granted, free of charge, to any person obtaining a copy of the masterthepixel
               Next.js template and associated documentation files (the "Software"), to deal in the Software
               without restriction, including without limitation the rights to use, copy, modify, merge, publish,
               distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
