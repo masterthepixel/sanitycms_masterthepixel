@@ -6,8 +6,16 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1'
   },
   transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest'
+    '^.+\\.(ts|tsx)$': ['ts-jest', {
+      tsconfig: 'tsconfig.test.json'
+    }]
   },
   testPathIgnorePatterns: ['/node_modules/', '/tests/e2e/'],
-  modulePathIgnorePatterns: ['<rootDir>/archive/']
+  modulePathIgnorePatterns: ['<rootDir>/archive/'],
+  setupFilesAfterEnv: [],
+  collectCoverageFrom: [
+    'src/**/*.{ts,tsx}',
+    '!src/**/*.d.ts',
+    '!src/**/*.stories.{ts,tsx}'
+  ]
 }

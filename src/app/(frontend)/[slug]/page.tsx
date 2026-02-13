@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getPageBySlug } from '@/lib/content';
-import MDXRenderer from '@/components/MDXRenderer';
+import { mdxComponents } from '@/components/MDXRenderer';
+import MDXClientRenderer from '@/components/mdx/MDXClientRenderer';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -39,9 +40,11 @@ export default async function Page({ params }: PageProps) {
     const page = await getPageBySlug(slug);
     return (
       <div>
-        <MDXRenderer>
-          {page.content}
-        </MDXRenderer>
+        <MDXClientRenderer 
+          content={page.content} 
+          components={mdxComponents} 
+          frontmatter={page}
+        />
       </div>
     );
   } catch (error) {

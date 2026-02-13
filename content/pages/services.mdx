@@ -1,16 +1,17 @@
 ---
 title: "Services"
 slug: "services"
+date: "2024-11-21T11:34:37Z"
 seo:
   title: "Services | masterthepixel"
   description: "Lorem ipsum dolor sit amet"
 draft: false
-coverImage: "/assets/placeholder-cover.jpg"
+coverImage: "/uploads/production/services/4bf52b194f78f71f5f844d1b6cc541b602714b0f-1920x1280.jpg"
 ---
 
 import { Hero, Services } from '@/components/mdx';
 
-<Hero block={{
+export const heroBlock = {
   "_key": "f96673d2a570",
   "_type": "heroBlock",
   "bottomCornerRadius": "rounded",
@@ -39,9 +40,11 @@ import { Hero, Services } from '@/components/mdx';
   },
   "mediaType": "image",
   "overlayType": "none"
-}} />
+};
 
-<Services block={{
+<Hero block={heroBlock} />
+
+export const servicesBlock1 = {
   "_key": "6fcd1e5928a5",
   "_type": "servicesBlock",
   "background": "white",
@@ -66,9 +69,11 @@ import { Hero, Services } from '@/components/mdx';
     }
   ],
   "topCornerRadius": "straight"
-}} />
+};
 
-<Services block={{
+<Services block={servicesBlock1} />
+
+export const servicesBlock2 = {
   "_key": "077df9b953a1680f4eb64eae2ce0002b",
   "_type": "servicesBlock",
   "heading": "IT Consulting and Support",
@@ -86,4 +91,6 @@ import { Hero, Services } from '@/components/mdx';
       "_type": "reference"
     }
   ]
-}} />
+};
+
+<Services block={servicesBlock2} />

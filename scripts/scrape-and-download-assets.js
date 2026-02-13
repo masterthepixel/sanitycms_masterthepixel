@@ -22,10 +22,25 @@ function fetchHtml(url) {
 
 function extractImageUrls(html) {
   const urls = new Set();
-  // <img src="...">
+  // <img src="..."> — decode Next.js _next/image wrappers to the real CDN URL
   const imgRegex = /<img[^>]+src=["']([^"']+)["']/gi;
   let m;
-  while ((m = imgRegex.exec(html)) !== null) urls.add(m[1]);
+  while ((m = imgRegex.exec(html)) !== null) {
+    const src = m[1];
+    if (src.includes('/_next/image')) {
+      try {
+        const parsed = new URL(src, SITE);
+        const encoded = parsed.searchParams.get('url');
+        if (encoded) urls.add(decodeURIComponent(encoded));
+        else urls.add(src);
+      } catch (err) {
+        urls.add(src);
+      }
+    } else {
+      urls.add(src);
+    }
+  }
+
   // CSS background-image: url("...")
   const bgRegex = /background-image:\s*url\(["']?([^\)"']+)["']?\)/gi;
   while ((m = bgRegex.exec(html)) !== null) urls.add(m[1]);

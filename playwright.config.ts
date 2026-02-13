@@ -7,7 +7,7 @@ export default defineConfig({
   fullyParallel: false,
   reporter: [['list'], ['html', { open: 'never' }]],
   use: {
-    baseURL: process.env.PW_BASE_URL || 'http://localhost:3003',
+    baseURL: process.env.PW_BASE_URL || 'http://localhost:3000',
     actionTimeout: 0,
     trace: 'on-first-retry',
   },
@@ -16,8 +16,10 @@ export default defineConfig({
   ],
   webServer: {
     command: 'pnpm run dev',
-    url: 'http://localhost:3003',
+    url: 'http://localhost:3000',
     reuseExistingServer: true,
     timeout: 120_000,
+    stdout: 'pipe',
+    stderr: 'pipe',
   },
 })

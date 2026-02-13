@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { getPageBySlug } from "@/lib/content";
-import MDXRenderer from "@/components/MDXRenderer";
+import { mdxComponents } from "@/components/MDXRenderer";
+import MDXClientRenderer from '@/components/mdx/MDXClientRenderer';
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageBySlug('home');
@@ -15,9 +16,11 @@ export default async function Home() {
 
   return (
     <div id="home">
-      <MDXRenderer>
-        {page.content}
-      </MDXRenderer>
+      <MDXClientRenderer 
+        content={page.content} 
+        components={mdxComponents} 
+        frontmatter={page}
+      />
     </div>
   );
 }

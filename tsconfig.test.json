@@ -1,11 +1,16 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "types": ["jest"]
+    "types": ["jest", "@types/node"],
+    "esModuleInterop": true,
+    "allowJs": true,
+    "noEmit": true
   },
   "include": [
     "tests",
     "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "tests/**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx"
   ]
 }

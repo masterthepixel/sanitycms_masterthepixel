@@ -34,8 +34,14 @@ export async function getPageBySlug(slug: string): Promise<Page> {
 
   // Try MDX first
   if (fs.existsSync(mdxPath)) {
+    console.log('[getPageBySlug] mdxPath:', mdxPath);
     const fileContents = fs.readFileSync(mdxPath, 'utf8');
+    console.log('[getPageBySlug] raw file contents length:', fileContents.length);
+    console.log('[getPageBySlug] raw file contents preview:', fileContents.slice(0, 500));
     const { data, content } = matter(fileContents);
+    console.log('[getPageBySlug] parsed frontmatter:', JSON.stringify(data, null, 2));
+    console.log('[getPageBySlug] parsed content length:', content.length);
+    console.log('[getPageBySlug] serving MDX for', slug, 'content preview:', (content || '').slice(0,200));
     return {
       ...data as PageFrontmatter,
       content,

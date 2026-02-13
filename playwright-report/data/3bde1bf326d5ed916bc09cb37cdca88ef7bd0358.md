@@ -1,0 +1,46 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - button "Go to home page" [ref=e5] [cursor=pointer]: masterthepixel
+        - generic:
+          - navigation "Main":
+            - generic:
+              - list
+    - main [ref=e6]:
+      - generic [ref=e8]:
+        - heading "Services" [level=1] [ref=e9]
+        - paragraph [ref=e10]: Our services are being migrated.
+    - contentinfo [ref=e11]:
+      - generic [ref=e12]:
+        - generic [ref=e13]:
+          - button "Go to home page" [ref=e15] [cursor=pointer]: masterthepixel
+          - list [ref=e16]
+        - generic [ref=e17]:
+          - generic [ref=e18]:
+            - text: masterthepixel © 2026 - Design + Code by
+            - link "James Rea." [ref=e19] [cursor=pointer]:
+              - /url: https://jamesrea.co
+              - text: James Rea.
+          - list [ref=e20]:
+            - listitem [ref=e21]:
+              - link "Terms of Use" [ref=e22] [cursor=pointer]:
+                - /url: /terms-of-use
+                - text: Terms of Use
+              - text: /
+            - listitem [ref=e23]:
+              - link "Acknowledgements" [ref=e24] [cursor=pointer]:
+                - /url: /acknowledgements
+                - text: Acknowledgements
+              - text: /
+            - listitem [ref=e25]:
+              - link "Privacy Policy" [ref=e26] [cursor=pointer]:
+                - /url: /privacy-policy
+                - text: Privacy Policy
+  - button "Open Next.js Dev Tools" [ref=e35] [cursor=pointer]:
+    - img [ref=e36]
+  - alert [ref=e39]
+```

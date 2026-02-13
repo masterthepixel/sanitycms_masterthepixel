@@ -4,7 +4,7 @@ import { MDXProvider } from '@mdx-js/react'
 import Image from 'next/image'
 import { Hero, FeatureGrid, Testimonial, Services } from '@/components/mdx'
 
-const components = {
+export const mdxComponents = {
   Image: ({ src, alt, ...props }: any) => (
     <Image src={src} alt={alt} {...props} />
   ),
@@ -21,9 +21,20 @@ const components = {
       {children}
     </div>
   ),
+  // Common HTML elements styling
+  h1: ({ children }: any) => <h1 className="text-4xl font-bold mb-6">{children}</h1>,
+  h2: ({ children }: any) => <h2 className="text-3xl font-semibold mb-4">{children}</h2>,
+  h3: ({ children }: any) => <h3 className="text-2xl font-medium mb-3">{children}</h3>,
+  p: ({ children }: any) => <p className="mb-4">{children}</p>,
 }
 
-export default function MDXRenderer({ children }: { children: React.ReactNode }) {
+export default function MDXRenderer({ 
+  children, 
+  components = mdxComponents 
+}: { 
+  children: React.ReactNode;
+  components?: Record<string, React.ComponentType<any>>;
+}) {
   return (
     <MDXProvider components={components}>
       {children}

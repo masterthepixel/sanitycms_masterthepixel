@@ -1,29 +1,13 @@
 {
   "stats": {
-    "processed": 10,
-    "posts": 3,
-    "pages": 7,
+    "processed": 1,
+    "posts": 1,
+    "pages": 0,
     "skipped": 0,
     "errors": 0,
-    "unmappedBlocks": [
-      "heroBlock",
-      "formBlock",
-      "callToActionBlock",
-      "freeformBlock",
-      "mediaBlock",
-      "headerBlock",
-      "portableTextBlock",
-      "logoBlock",
-      "featureCardsBlock",
-      "featuresMinimalBlock",
-      "testimonialBlock",
-      "singleImageObject",
-      "videoObject",
-      "callToActionObject",
-      "servicesBlock"
-    ],
+    "unmappedBlocks": [],
     "missingAssets": [],
     "downloadedAssets": 0
   },
-  "timestamp": "2026-02-13T21:23:23.441Z"
+  "timestamp": "2026-02-13T22:26:00.793Z"
 }
