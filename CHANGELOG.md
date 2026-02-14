@@ -12,10 +12,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Design system documentation with component patterns and guidelines
 - SEO audit report with findings and prioritized action plan
 - Refactoring analysis with code quality recommendations
+- `LatestPosts` MDX component and homepage integration to render the 3 most recent blog posts from file-based content
+- MDX page-builder wrappers (`LogoBlock`, `FeaturesMinimal`, `MediaBlock`, `FreeformBlock`, `CallToActionBlock`) to restore homepage block parity
+- MDX client-side renderer enhancement to forward `frontmatter.latestPosts` into MDX components
+- Playwright E2E assertion to validate latest posts render on the homepage
 
 ### Changed
-- Updated dark mode UI audit with verification corrections
-- Enhanced documentation structure in `docs/` folder
+- Replaced the homepage Freeform area with `LatestPosts` (homepage now shows dynamic/latest blog entries)
+- Homepage server now injects latest posts (top 3, non-draft) into MDX frontmatter at render-time
+- Restored original page-builder block ordering and improved MDX ↔ page-builder parity
+
+### Fixed
+- Resolved MDX runtime ReferenceError by moving page-builder block objects into YAML frontmatter (client MDX no longer references inline JS objects)
+- Fixed MDX serialization/component injection edge-cases so page-builder blocks receive their frontmatter reliably
+- Updated E2E test to avoid flaky selectors when asserting LatestPosts
+
 
 ## [0.1.0] - 2026-02-12
 
