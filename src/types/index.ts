@@ -14,6 +14,7 @@ export type PageBuilderType<T extends string> = Extract<
       videoUrl?: string;
       overlayType?: string;
       anchorId?: string;
+      fullWidth?: boolean;
     }
   | {
       _type: "headerBlock";
