@@ -7,49 +7,37 @@ seo:
   description: "Lorem ipsum dolor sit amett"
 draft: false
 coverImage: "/uploads/production/about/5f21d7525e86a3b12d4dcb34d4046440919b3b79-1920x1280.jpg"
+heroBlock:
+  _key: fbcfb1cc7f49
+  buttons:
+    - _key: 53cd77de7c14
+      _type: buttonObject
+      buttonAnchorId: learn-more
+      buttonAnchorLocation: currentPage
+      buttonText: "Learn More"
+      buttonType: anchor
+      buttonVariant: tertiary
+      buttonWidth: auto
+      showButton: true
+  content:
+    - _key: 2511ce307f7a
+      _type: block
+      children:
+        - _key: b1abf70190980
+          _type: span
+          marks: []
+          text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lectus non metus gravida malesuada. Phasellus vulputate nec nisi sed elementum dolor sit."
+      markDefs: []
+      style: normal
+  dialogType: none
+  heading: "About masterthepixel."
+  image:
+    _type: image
+    cornerRadius: rounded
+  mediaType: none
+  overlayType: none
 ---
 
 import { Hero } from '@/components/mdx';
 
-export const heroBlock = {
-  "_key": "fbcfb1cc7f49",
-  "buttons": [
-    {
-      "_key": "53cd77de7c14",
-      "_type": "buttonObject",
-      "buttonAnchorId": "learn-more",
-      "buttonAnchorLocation": "currentPage",
-      "buttonText": "Learn More",
-      "buttonType": "anchor",
-      "buttonVariant": "tertiary",
-      "buttonWidth": "auto",
-      "showButton": true
-    }
-  ],
-  "content": [
-    {
-      "_key": "2511ce307f7a",
-      "_type": "block",
-      "children": [
-        {
-          "_key": "b1abf70190980",
-          "_type": "span",
-          "marks": [],
-          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lectus non metus gravida malesuada. Phasellus vulputate nec nisi sed elementum dolor sit."
-        }
-      ],
-      "markDefs": [],
-      "style": "normal"
-    }
-  ],
-  "dialogType": "none",
-  "heading": "About masterthepixel.",
-  "image": {
-    "_type": "image",
-    "cornerRadius": "rounded"
-  },
-  "mediaType": "none",
-  "overlayType": "none"
-};
-
-<Hero block={heroBlock} />
+<Hero />
