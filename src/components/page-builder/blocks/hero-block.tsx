@@ -32,7 +32,8 @@ export default function HeroBlock(props: HeroBlockProps) {
     dialogType,
     videoUrl,
     overlayType,
-    anchorId
+    anchorId,
+    fullWidth
   } = props;
 
   return (
@@ -43,15 +44,17 @@ export default function HeroBlock(props: HeroBlockProps) {
       })}
     >
       <Container
-        className={cn('space-y-10 xl:-space-y-6 border-x border-dashed max-w-7xl', {
+        className={cn('space-y-10 xl:-space-y-6 max-w-7xl', {
           'pb-7 md:pb-12': mediaType === 'image'
         })}
       >
-        <div
-          className={cn('pt-36 md:pt-52 pb-16 md:pb-24 xl:pb-36 grid grid-cols-12 gap-3 md:gap-6 xl:gap-14 md:px-14 md:border-x md:border-dashed', {
-            'pb-6': mediaType === 'image'
-          })}
-        >
+        {/* center the hero grid so it matches the site's max width */}
+        <div className="mx-auto w-full max-w-7xl">
+          <div
+            className={cn('pt-36 md:pt-52 pb-16 md:pb-24 xl:pb-36 grid grid-cols-12 gap-3 md:gap-6 xl:gap-14 md:px-14 md:border-x md:border-dashed', {
+              'pb-6': mediaType === 'image'
+            })}
+          >
           <div className='col-span-12 xl:col-span-7'>
             <Heading size="xxl" tag="h1" className='md:max-w-[40rem] text-balance leading-tight'>
               {heading}
@@ -69,27 +72,52 @@ export default function HeroBlock(props: HeroBlockProps) {
           </div>
         </div>
         {mediaType === 'image' && image && (image?.asset?.url || image?.url) && (
-          <div className='p-4 md:p-6 border border-dashed rounded-3xl md:rounded-4xl pattern-bg--2'>
-            <div className='overflow-hidden relative h-full w-full rounded-3xl md:rounded-4xl'>
-              <Image
-                priority
-                width={1400}
-                height={800}
-                src={image?.asset?.url || image?.url || '/assets/placeholder-cover.jpg'}
-                alt={image?.asset?.altText || image?.altText || 'Hero image'}
-                className={cn('w-full h-auto object-cover rounded-2xl md:rounded-3xl', {
-                  'max-h-[30rem]': image?.height === 'short'
-                })}
-              />
-              {overlayType === 'dark' && (
-                <DarkOverlay />
-              )}
-              {dialogType === 'video' && videoUrl && (
-                <PlayVideo videoUrl={videoUrl} />
-              )}
+          fullWidth ? (
+            // full-bleed / edge-to-edge image (breaks out of the centered container)
+            <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen px-4 md:px-10">
+              <div className='overflow-hidden relative h-full w-full'>
+                <Image
+                  priority
+                  width={1400}
+                  height={800}
+                  src={image?.asset?.url || image?.url || '/assets/placeholder-cover.jpg'}
+                  alt={image?.asset?.altText || image?.altText || 'Hero image'}
+                  className={cn('w-full h-auto object-cover', {
+                    'max-h-[30rem]': image?.height === 'short'
+                  })}
+                />
+                {overlayType === 'dark' && (
+                  <DarkOverlay />
+                )}
+                {dialogType === 'video' && videoUrl && (
+                  <PlayVideo videoUrl={videoUrl} />
+                )}
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className='p-4 md:p-6 border border-dashed rounded-3xl md:rounded-4xl pattern-bg--2'>
+              <div className='overflow-hidden relative h-full w-full rounded-3xl md:rounded-4xl'>
+                <Image
+                  priority
+                  width={1400}
+                  height={800}
+                  src={image?.asset?.url || image?.url || '/assets/placeholder-cover.jpg'}
+                  alt={image?.asset?.altText || image?.altText || 'Hero image'}
+                  className={cn('w-full h-auto object-cover rounded-2xl md:rounded-3xl', {
+                    'max-h-[30rem]': image?.height === 'short'
+                  })}
+                />
+                {overlayType === 'dark' && (
+                  <DarkOverlay />
+                )}
+                {dialogType === 'video' && videoUrl && (
+                  <PlayVideo videoUrl={videoUrl} />
+                )}
+              </div>
+            </div>
+          )
         )}
+        </div>
       </Container>
     </section>
   )
