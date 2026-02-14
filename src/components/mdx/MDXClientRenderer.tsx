@@ -26,15 +26,20 @@ export default function MDXClientRenderer({
       const OriginalComponent = components[componentName];
       
       // Special handling for our MDX components that need block data
-      if (['Hero', 'FeatureGrid', 'Testimonial'].includes(componentName) && frontmatter) {
+      if (['Hero', 'FeatureGrid', 'Testimonial', 'FeaturesMinimal', 'MediaBlock', 'FreeformBlock', 'CallToActionBlock', 'LatestPosts'].includes(componentName) && frontmatter) {
         enhanced[componentName] = (props: any) => {
           const blockKey = componentName === 'Hero' ? 'heroBlock' :
                           componentName === 'FeatureGrid' ? 'featureGridBlock' :
-                          componentName === 'Testimonial' ? 'testimonialBlock' : null;
+                          componentName === 'Testimonial' ? 'testimonialBlock' :
+                          componentName === 'FeaturesMinimal' ? 'featuresMinimalBlock' :
+                          componentName === 'MediaBlock' ? 'mediaBlock' :
+                          componentName === 'FreeformBlock' ? 'freeformBlock' :
+                          componentName === 'CallToActionBlock' ? 'callToActionBlock' :
+                          componentName === 'LatestPosts' ? 'latestPosts' : null;
           
           const blockData = blockKey ? frontmatter[blockKey] : null;
           
-          return <OriginalComponent {...props} block={blockData} />;
+          return <OriginalComponent {...props} {...(componentName === 'LatestPosts' ? { posts: blockData } : { block: blockData })} />;
         };
       } else {
         enhanced[componentName] = OriginalComponent;

@@ -132,12 +132,27 @@ export function processMetadata({ data }: {
     description,
   };
 
+  // Normalize `seo.image` which can be a string, an object from Sanity, or null.
+  const resolveImageUrl = (img: any): string | undefined => {
+    if (!img) return undefined;
+    if (typeof img === 'string') return img;
+    if (typeof img === 'object') {
+      // common shapes: { url: '/path' } or { asset: { url: '/path' } }
+      return img.url || img?.asset?.url || undefined;
+    }
+    return undefined;
+  };
+
+  const imageUrl = resolveImageUrl(image) || `/api/og?id=${id}`;
+
   metadata.openGraph = {
-    images: {
-      url: image || `/api/og?id=${id}`,
-      width: 1200,
-      height: 630,
-    },
+    images: [
+      {
+        url: imageUrl,
+        width: 1200,
+        height: 630,
+      },
+    ],
   };
 
   if (noIndex) {

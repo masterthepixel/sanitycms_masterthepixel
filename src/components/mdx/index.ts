@@ -1,4 +1,10 @@
 export { default as Hero } from './Hero';
 export { default as FeatureGrid } from './FeatureGrid';
+export { default as LogoBlock } from './LogoBlock';
+export { default as FeaturesMinimal } from './FeaturesMinimal';
+export { default as MediaBlock } from './MediaBlock';
+export { default as LatestPosts } from './LatestPosts';
+export { default as FreeformBlock } from './FreeformBlock';
+export { default as CallToActionBlock } from './CallToActionBlock';
 export { default as Testimonial } from './Testimonial';
 export { default as Services } from './Services';

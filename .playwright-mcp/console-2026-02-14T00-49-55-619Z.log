@@ -1,0 +1,10 @@
+[    5292ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.masterthepixel.io/favicon.ico:0
+[ 2978202ms] Error: Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at rD (https://www.masterthepixel.io/_next/static/chunks/f23380db-792760687956c895.js?dpl=dpl_6YjUGF87dSVutSjKimgtNvzJYa1s:1:35057)
+    at https://www.masterthepixel.io/_next/static/chunks/f23380db-792760687956c895.js?dpl=dpl_6YjUGF87dSVutSjKimgtNvzJYa1s:1:119646
+    at ix (https://www.masterthepixel.io/_next/static/chunks/f23380db-792760687956c895.js?dpl=dpl_6YjUGF87dSVutSjKimgtNvzJYa1s:1:122950)
+    at ik (https://www.masterthepixel.io/_next/static/chunks/f23380db-792760687956c895.js?dpl=dpl_6YjUGF87dSVutSjKimgtNvzJYa1s:1:114738)
+    at https://www.masterthepixel.io/_next/static/chunks/f23380db-792760687956c895.js?dpl=dpl_6YjUGF87dSVutSjKimgtNvzJYa1s:1:110725
+    at iu (https://www.masterthepixel.io/_next/static/chunks/f23380db-792760687956c895.js?dpl=dpl_6YjUGF87dSVutSjKimgtNvzJYa1s:1:110826)
+    at iX (https://www.masterthepixel.io/_next/static/chunks/f23380db-792760687956c895.js?dpl=dpl_6YjUGF87dSVutSjKimgtNvzJYa1s:1:132929)
+    at MessagePort.w (https://www.masterthepixel.io/_next/static/chunks/5839-4d5f498f5947268c.js?dpl=dpl_6YjUGF87dSVutSjKimgtNvzJYa1s:1:169700)

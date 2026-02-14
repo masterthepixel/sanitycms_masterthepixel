@@ -5,6 +5,7 @@ import { processMetadata, normalizePageBuilder } from '@/lib/utils';
 import Container from '@/components/global/container';
 import { PageBuilder } from '@/components/page-builder';
 import { getPageBySlug } from '@/lib/content';
+import MDXRenderer from '@/components/MDXRenderer';
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
@@ -19,15 +20,21 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ServicesPage() {
-  // TODO: Re-enable pageBuilder rendering after migration is complete
-  return (
-    <Container className="py-16">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Services</h1>
-        <p className="text-lg text-muted-foreground mb-8">
-          Our services are being migrated.
-        </p>
+  const page = await getPageBySlug('services');
+
+  // If the page has MDX content, render it (contains Hero + Services MDX components)
+  if (page.content && page.content.length > 0) {
+    return (
+      <div>
+        <MDXRenderer>{page.content}</MDXRenderer>
       </div>
-    </Container>
+    );
+  }
+
+  // Fallback to rendering pageBuilder JSON
+  return (
+    <div>
+      <PageBuilder pageBuilder={normalizePageBuilder(page.pageBuilder || [])} id={page._id || 'services'} type={page._type || 'page'} />
+    </div>
   );
 }

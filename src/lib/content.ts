@@ -31,8 +31,64 @@ export async function getPostBySlug(slug: string): Promise<Post> {
 export async function getPageBySlug(slug: string): Promise<Page> {
   const mdxPath = path.join(pagesDirectory, `${slug}.mdx`);
   const nestedMdxPath = path.join(pagesDirectory, 'projects', `${slug}.mdx`);
+  const nestedServicesMdxPath = path.join(pagesDirectory, 'services', `${slug}.mdx`);
   const jsonPath = path.join(pagesDirectory, `${slug}.json`);
   const nestedJsonPath = path.join(pagesDirectory, 'projects', `${slug}.json`);
+
+  // Special-case: if a JSON version exists for the Services page prefer it (JSON contains pageBuilder with references resolved)
+  if (slug === 'services' && fs.existsSync(jsonPath)) {
+    const fileContents = fs.readFileSync(jsonPath, 'utf8');
+    const data = JSON.parse(fileContents);
+
+    // reuse the JSON-resolution logic below to return a fully resolved pageBuilder
+    if (Array.isArray(data.pageBuilder)) {
+      const servicesDir = path.join(pagesDirectory, 'services');
+      let serviceFrontmatterMap: Record<string, any> = {};
+
+      if (fs.existsSync(servicesDir)) {
+        const serviceFiles = fs.readdirSync(servicesDir).filter((f) => f.endsWith('.mdx'));
+        serviceFiles.forEach((file) => {
+          try {
+            const fm = matter(fs.readFileSync(path.join(servicesDir, file), 'utf8')).data as any;
+            if (fm?._id) serviceFrontmatterMap[fm._id] = fm;
+            if (fm?.slug) serviceFrontmatterMap[fm.slug] = fm;
+          } catch (e) {
+            // ignore malformed files
+          }
+        });
+      }
+
+      data.pageBuilder = data.pageBuilder.map((block: any) => {
+        if (block._type === 'servicesBlock' && Array.isArray(block.services)) {
+          const resolved = block.services.map((svc: any) => {
+            if (svc._ref && serviceFrontmatterMap[svc._ref]) {
+              const fm = serviceFrontmatterMap[svc._ref];
+              return {
+                _id: fm._id,
+                title: fm.title,
+                slug: fm.slug,
+                shortDescription: fm.shortDescription || fm.excerpt || '',
+                image: { url: fm.coverImage || (fm.image && fm.image.url) || '/assets/placeholder-cover.jpg' }
+              };
+            }
+            return svc;
+          });
+          return { ...block, services: resolved };
+        }
+        return block;
+      });
+    }
+
+    return {
+      title: data.title,
+      slug: data.slug?.current || slug,
+      seo: data.seo || {},
+      content: '',
+      pageBuilder: data.pageBuilder || [],
+      _type: data._type,
+      _id: data._id,
+    };
+  }
 
   // Try MDX in top-level pages
   if (fs.existsSync(mdxPath)) {
@@ -61,10 +117,62 @@ export async function getPageBySlug(slug: string): Promise<Page> {
     };
   }
 
+  // Try MDX in nested `pages/services/` (new per-service MDX files)
+  if (fs.existsSync(nestedServicesMdxPath)) {
+    const fileContents = fs.readFileSync(nestedServicesMdxPath, 'utf8');
+    const { data, content } = matter(fileContents);
+    return {
+      ...data as PageFrontmatter,
+      content,
+    };
+  }
+
   // Try JSON fallback in top-level pages
   if (fs.existsSync(jsonPath)) {
     const fileContents = fs.readFileSync(jsonPath, 'utf8');
     const data = JSON.parse(fileContents);
+
+    // Resolve any service references inside servicesBlock(s) by loading local MDX frontmatter
+    if (Array.isArray(data.pageBuilder)) {
+      const servicesDir = path.join(pagesDirectory, 'services');
+      let serviceFrontmatterMap: Record<string, any> = {};
+
+      if (fs.existsSync(servicesDir)) {
+        const serviceFiles = fs.readdirSync(servicesDir).filter((f) => f.endsWith('.mdx'));
+        serviceFiles.forEach((file) => {
+          try {
+            const fm = matter(fs.readFileSync(path.join(servicesDir, file), 'utf8')).data as any;
+            if (fm?._id) serviceFrontmatterMap[fm._id] = fm;
+            if (fm?.slug) serviceFrontmatterMap[fm.slug] = fm;
+          } catch (e) {
+            // ignore malformed files
+          }
+        });
+      }
+
+      // Replace references in servicesBlock entries
+      data.pageBuilder = data.pageBuilder.map((block: any) => {
+        if (block._type === 'servicesBlock' && Array.isArray(block.services)) {
+          const resolved = block.services.map((svc: any) => {
+            if (svc._ref && serviceFrontmatterMap[svc._ref]) {
+              const fm = serviceFrontmatterMap[svc._ref];
+              return {
+                _id: fm._id,
+                title: fm.title,
+                slug: fm.slug,
+                shortDescription: fm.shortDescription || fm.excerpt || '',
+                image: { url: fm.coverImage || (fm.image && fm.image.url) || '/assets/placeholder-cover.jpg' }
+              };
+            }
+            // already resolved or missing -> return as-is
+            return svc;
+          });
+          return { ...block, services: resolved };
+        }
+        return block;
+      });
+    }
+
     return {
       title: data.title,
       slug: data.slug?.current || slug,

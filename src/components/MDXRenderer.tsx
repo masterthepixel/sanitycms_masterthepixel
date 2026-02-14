@@ -2,7 +2,7 @@
 
 import { MDXProvider } from '@mdx-js/react'
 import Image from 'next/image'
-import { Hero, FeatureGrid, Testimonial, Services } from '@/components/mdx'
+import { Hero, LogoBlock, FeatureGrid, FeaturesMinimal, MediaBlock, LatestPosts, Testimonial, FreeformBlock, CallToActionBlock, Services } from '@/components/mdx'
 import { PageBuilder } from '@/components/page-builder'
 
 export const mdxComponents = {
@@ -10,8 +10,14 @@ export const mdxComponents = {
     <Image src={src} alt={alt} {...props} />
   ),
   Hero,
+  LogoBlock,
   FeatureGrid,
+  FeaturesMinimal,
+  MediaBlock,
+  LatestPosts,
   Testimonial,
+  FreeformBlock,
+  CallToActionBlock,
   Services,
   PageBuilder,
   Callout: ({ type, children }: { type?: string; children: React.ReactNode }) => (
