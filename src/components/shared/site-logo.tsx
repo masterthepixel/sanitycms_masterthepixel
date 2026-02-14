@@ -37,7 +37,7 @@ export default function SiteLogo({ settings, location, theme }: {
           priority
           width={140}
           height={140}
-          src={siteLogo?.asset?.url ?? ''}
+          src={siteLogo?.asset?.url || siteLogo?.url || '/assets/placeholder-cover.jpg'}
           alt={`${siteTitle} Logo`}
           className='w-[140px] h-auto object-contain'
         />

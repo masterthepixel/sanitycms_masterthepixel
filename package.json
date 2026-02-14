@@ -15,7 +15,8 @@
     "test:e2e": "playwright test",
     "test:e2e:headed": "playwright test --headed",
     "test:e2e:install": "npx playwright install --with-deps",
-    "validate:frontmatter": "node scripts/validate-frontmatter.js"
+    "validate:frontmatter": "node scripts/validate-frontmatter.js",
+    "validate:images": "node scripts/validate-content-images.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

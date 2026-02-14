@@ -43,7 +43,7 @@ export default function HeroBlock(props: HeroBlockProps) {
       })}
     >
       <Container
-        className={cn('space-y-10 xl:-space-y-6 border-x border-dashed', {
+        className={cn('space-y-10 xl:-space-y-6 border-x border-dashed max-w-7xl', {
           'pb-7 md:pb-12': mediaType === 'image'
         })}
       >
@@ -53,7 +53,7 @@ export default function HeroBlock(props: HeroBlockProps) {
           })}
         >
           <div className='col-span-12 xl:col-span-7'>
-            <Heading size="xxxl" tag="h1" className='md:max-w-[40rem] text-balance leading-tight'>
+            <Heading size="xxl" tag="h1" className='md:max-w-[40rem] text-balance leading-tight'>
               {heading}
             </Heading>
           </div>
@@ -68,16 +68,16 @@ export default function HeroBlock(props: HeroBlockProps) {
             )}
           </div>
         </div>
-        {mediaType === 'image' && image && (
+        {mediaType === 'image' && image && (image?.asset?.url || image?.url) && (
           <div className='p-4 md:p-6 border border-dashed rounded-3xl md:rounded-4xl pattern-bg--2'>
             <div className='overflow-hidden relative h-full w-full rounded-3xl md:rounded-4xl'>
               <Image
                 priority
                 width={1400}
                 height={800}
-                src={image?.asset?.url ?? ''}
-                alt={image?.asset?.altText ?? ''}
-                className={cn('object-cover rounded-2xl md:rounded-3xl', {
+                src={image?.asset?.url || image?.url || '/assets/placeholder-cover.jpg'}
+                alt={image?.asset?.altText || image?.altText || 'Hero image'}
+                className={cn('w-full h-auto object-cover rounded-2xl md:rounded-3xl', {
                   'max-h-[30rem]': image?.height === 'short'
                 })}
               />

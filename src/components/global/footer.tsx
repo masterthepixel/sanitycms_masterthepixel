@@ -18,7 +18,7 @@ export default function Footer({ settings, navigationSettings }: FooterProps) {
   const { 
     footerColumns: columns, 
     footerLegalMenuItems: legalMenuItems 
-  } = (navigationSettings as any)?.footer ?? {};
+  } = (navigationSettings as any) ?? {};
 
   return (
     <footer className='px-4 xl:px-10 border-t border-t-gray-200/60'>

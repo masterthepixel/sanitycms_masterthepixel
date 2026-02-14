@@ -1,0 +1,22 @@
+[
+  {
+    "_id": "41a7c593-a997-4c6d-a43b-759b0bc06a1b",
+    "title": "Engineering",
+    "slug": "engineering"
+  },
+  {
+    "_id": "54c6d511-8dd8-49b2-9c3c-42d5d7741c38",
+    "title": "Energy & Utilities",
+    "slug": "energy-and-utilities"
+  },
+  {
+    "_id": "2e11316a-33b2-4bf4-a651-c3bfada1310f",
+    "title": "Telecommunications",
+    "slug": "telecommunications"
+  },
+  {
+    "_id": "cea66b40-9caf-4dc2-8f6b-11d7b3d50d63",
+    "title": "Healthcare",
+    "slug": "healthcare"
+  }
+]

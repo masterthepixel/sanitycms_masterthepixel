@@ -27,14 +27,27 @@ export default function ProjectCard({ project }: { project: any; }) {
   )
 }
 
-function Thumbnail({ image }: { image?: { asset?: { url?: string | null } | null; altText?: string | null; } | null; }) {
+function Thumbnail({ image }: { image?: { asset?: { url?: string | null } | null; url?: string | null; altText?: string | null; } | null; }) {
+  const imageUrl = image?.asset?.url || image?.url || null;
+  
+  // Only render Image if there's a valid URL
+  if (!imageUrl) {
+    return (
+      <div className='p-4 rounded-3xl border border-dashed backdrop-blur-md backdrop-opacity-50 pattern-bg--2'>
+        <div className='aspect-[3/2] rounded-2xl bg-gray-300 flex items-center justify-center'>
+          <span className='text-gray-500'>No image</span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className='p-4 rounded-3xl border border-dashed backdrop-blur-md backdrop-opacity-50 pattern-bg--2'>
       <Image
-        src={image?.asset?.url ?? ''}
+        src={imageUrl}
         width={800}
         height={800}
-        alt={image?.altText ?? ''}
+        alt={image?.altText ?? 'Project image'}
         className='aspect-[3/2] rounded-2xl'
       />
     </div>

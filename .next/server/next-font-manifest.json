@@ -1,22 +1,10 @@
 {
   "app": {
-    "[project]/src/app/(frontend)/[slug]/page": [
+    "[project]/src/app/(frontend)/projects/[slug]/page": [
       "static/media/GeistVF-s.p.4c3c0b96.woff",
       "static/media/GeistMonoVF-s.p.2cee7d16.woff"
     ],
-    "[project]/src/app/(frontend)/blog/[slug]/page": [
-      "static/media/GeistVF-s.p.4c3c0b96.woff",
-      "static/media/GeistMonoVF-s.p.2cee7d16.woff"
-    ],
-    "[project]/src/app/(frontend)/blog/page": [
-      "static/media/GeistVF-s.p.4c3c0b96.woff",
-      "static/media/GeistMonoVF-s.p.2cee7d16.woff"
-    ],
-    "[project]/src/app/(frontend)/page": [
-      "static/media/GeistVF-s.p.4c3c0b96.woff",
-      "static/media/GeistMonoVF-s.p.2cee7d16.woff"
-    ],
-    "[project]/src/app/(frontend)/services/page": [
+    "[project]/src/app/(frontend)/projects/page": [
       "static/media/GeistVF-s.p.4c3c0b96.woff",
       "static/media/GeistMonoVF-s.p.2cee7d16.woff"
     ]

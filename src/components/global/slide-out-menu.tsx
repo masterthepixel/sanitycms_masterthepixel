@@ -118,7 +118,7 @@ export default function SlideOutMenu({ children, settings, navigationSettings }:
                   className="p-3 border rounded-full hover:bg-black group transition-all duration-300"
                 >
                   <Image
-                    src={item.icon?.asset?.url ?? ''}
+                    src={item.icon?.asset?.url || item.icon?.url || '/assets/placeholder-cover.jpg'}
                     width={16}
                     height={16}
                     alt={`Follow us on ${item.title ?? ''}`}

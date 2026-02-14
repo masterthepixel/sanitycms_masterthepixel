@@ -70,7 +70,7 @@ function TestimonialCard({ testimonial, classNames }: {
       <div className='flex flex-col md:flex-row md:items-center justify-between'>
         <div className='flex items-center gap-4'>
           <Image
-            src={testimonial?.avatar?.asset?.url ?? ''}
+            src={testimonial?.avatar?.asset?.url || testimonial?.avatar?.url || '/assets/placeholder-cover.jpg'}
             width={50}
             height={50}
             alt={testimonial?.name ?? ''}
@@ -87,7 +87,7 @@ function TestimonialCard({ testimonial, classNames }: {
         </div>
         <div>
           <Image
-            src={testimonial?.logo?.asset?.url ?? ''}
+            src={testimonial?.logo?.asset?.url || testimonial?.logo?.url || '/assets/placeholder-cover.jpg'}
             width={80}
             height={40}
             alt={`${testimonial?.company} Logo`}

@@ -21,8 +21,8 @@ export default function Navbar({ settings, navigationSettings }: NavbarProps) {
   const pathname = usePathname();
   const hasScrolled = useScroll();
 
-  const { navbarMenuItems } = (navigationSettings as any)?.navbar ?? {};
-  const { showSlideOutMenu } = (navigationSettings as any)?.slideOutMenu ?? {};
+  const { navbarMenuItems } = (navigationSettings as any) ?? {};
+  const { showSlideOutMenu } = (navigationSettings as any) ?? {};
   
   return (
     <header 

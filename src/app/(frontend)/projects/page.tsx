@@ -8,10 +8,12 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function ProjectsPage() {
-  // For now, use empty projects since we're migrating
-  const projects: any[] = [];
+import projectsData from '../../../../content/projects.json';
 
-  // TODO: Re-enable pageBuilder rendering after migration is complete
+export default async function ProjectsPage() {
+  // Use migrated projects data from content/projects.json
+  const projects: any[] = projectsData ?? [];
+
+  // Page rendering uses ProjectGrid which expects an array of project objects
   return <ProjectGrid projects={projects} />
 }

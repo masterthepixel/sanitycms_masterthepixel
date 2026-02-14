@@ -7,7 +7,7 @@ R.c("server/chunks/ssr/16630_next_dist_client_components_builtin_forbidden_1969d
 R.c("server/chunks/ssr/16630_next_dist_client_components_builtin_unauthorized_a2643546.js")
 R.c("server/chunks/ssr/16630_next_dist_client_components_builtin_global-error_e08d0f64.js")
 R.c("server/chunks/ssr/node_modules__pnpm_bcabe08e._.js")
-R.c("server/chunks/ssr/[root-of-the-server]__45000c24._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__811b6365._.js")
 R.c("server/chunks/ssr/16630_next_dist_1493473a._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__59649d92._.js")
 R.m("[project]/.next-internal/server/app/(frontend)/page/actions.js [app-rsc] (server actions loader, ecmascript)")

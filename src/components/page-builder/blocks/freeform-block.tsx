@@ -77,10 +77,10 @@ export default function FreeformBlock(props: FreeformBlockProps) {
                   {(item?._type === 'singleImageObject' && item?.image?.asset?.url) && (
                     <div className='p-3 border border-dashed rounded-3xl pattern-bg--2'>
                       <Image
-                        src={item?.image?.asset?.url ?? ''}
+                        src={item?.image?.asset?.url || item?.image?.url || '/assets/placeholder-cover.jpg'}
                         width={800}
                         height={800}
-                        alt={item?.image?.asset?.altText ?? ''}
+                        alt={item?.image?.asset?.altText || item?.image?.altText || `Image ${item?.title || 'content'}`}
                         className={cn('object-cover aspect-square rounded-2xl', {
                           'aspect-[3/2]': (item?.image?.aspectRatio) === 'rectangle',
                           'aspect-[3/4]': (item?.image?.aspectRatio) === 'portrait',

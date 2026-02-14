@@ -3,6 +3,7 @@
 import { MDXProvider } from '@mdx-js/react'
 import Image from 'next/image'
 import { Hero, FeatureGrid, Testimonial, Services } from '@/components/mdx'
+import { PageBuilder } from '@/components/page-builder'
 
 export const mdxComponents = {
   Image: ({ src, alt, ...props }: any) => (
@@ -12,6 +13,7 @@ export const mdxComponents = {
   FeatureGrid,
   Testimonial,
   Services,
+  PageBuilder,
   Callout: ({ type, children }: { type?: string; children: React.ReactNode }) => (
     <div className={`p-4 rounded-lg border ${
       type === 'warning' ? 'border-yellow-200 bg-yellow-50 text-yellow-800' :

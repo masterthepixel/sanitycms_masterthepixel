@@ -1,0 +1,53 @@
+[
+  {
+    "_id": "6022d563-402f-4392-9e34-0ca36e112d7f",
+    "title": "Horizon Systems",
+    "slug": "horizon-systems",
+    "client": "Horizon Systems",
+    "clientUrl": "https://example.com/horizon-systems",
+    "year": 2024,
+    "services": ["Engineering","Design"],
+    "tags": ["energy","iot","case-study"],
+    "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lectus non metus gravida malesuada.",
+    "category": {
+      "_id": "54c6d511-8dd8-49b2-9c3c-42d5d7741c38",
+      "title": "Energy & Utilities",
+      "slug": "energy-and-utilities"
+    },
+    "image": { "url": "/uploads/production/home/3b6d05638ce7cef7153b329556c0f850292d9ea3-1920x1280.jpg", "altText": "Horizon Systems" }
+  },
+  {
+    "_id": "6d408d2f-25c2-485e-afd9-cd14b6f5607b",
+    "title": "Orbital Wireless",
+    "slug": "orbital-wireless",
+    "client": "Orbital Wireless",
+    "clientUrl": "https://example.com/orbital-wireless",
+    "year": 2024,
+    "services": ["Telecommunications","Systems Integration"],
+    "tags": ["telecom","wireless","case-study"],
+    "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lectus non metus gravida malesuada.",
+    "category": {
+      "_id": "2e11316a-33b2-4bf4-a651-c3bfada1310f",
+      "title": "Telecommunications",
+      "slug": "telecommunications"
+    },
+    "image": { "url": "/uploads/production/home/5f21d7525e86a3b12d4dcb34d4046440919b3b79-1920x1280.jpg", "altText": "Orbital Wireless" }
+  },
+  {
+    "_id": "48855fd1-7d57-491f-a187-bf5475b36f9d",
+    "title": "Apex Dynamics",
+    "slug": "apex-dynamics",
+    "client": "Apex Dynamics",
+    "clientUrl": "https://example.com/apex-dynamics",
+    "year": 2025,
+    "services": ["Engineering","Manufacturing Integration"],
+    "tags": ["engineering","manufacturing","case-study"],
+    "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lectus non metus gravida malesuada.",
+    "category": {
+      "_id": "41a7c593-a997-4c6d-a43b-759b0bc06a1b",
+      "title": "Engineering",
+      "slug": "engineering"
+    },
+    "image": { "url": "/uploads/production/home/6135c3a992b796894b585431f409914ae9bf419c-1920x1282.jpg", "altText": "Apex Dynamics" }
+  }
+]

@@ -20,6 +20,14 @@ export interface PageFrontmatter {
     title: string
     description: string
   }
+  // Optional project metadata
+  client?: string
+  clientUrl?: string
+  year?: number
+  services?: string[]
+  tags?: string[]
+  caseStudy?: boolean
+  featured?: boolean
   draft?: boolean
 }
 

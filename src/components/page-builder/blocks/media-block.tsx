@@ -34,10 +34,10 @@ export default function MediaBlock(props: MediaBlockProps) {
         {backgroundType === 'image' && image && (
           <div className='absolute inset-0'>
             <Image
-              src={image?.asset?.url ?? ''}
+              src={image?.asset?.url || image?.url || '/assets/placeholder-cover.jpg'}
               width={2400}
               height={1200}
-              alt={image?.asset?.altText ?? ''}
+              alt={image?.asset?.altText || image?.altText || 'Media content'}
               className='w-full h-full object-cover'
             />
             {overlayType === 'dark' && (

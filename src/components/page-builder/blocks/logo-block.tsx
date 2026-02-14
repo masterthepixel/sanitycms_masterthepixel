@@ -36,7 +36,7 @@ export default function LogoBlock(props: LogoBlockProps) {
                       <Image
                         width={200}
                         height={100}
-                        src={item.image?.asset?.url ?? ''}
+                        src={item.image?.asset?.url || item.image?.url || '/assets/placeholder-cover.jpg'}
                         alt={`${item.title} Logo`}
                         className={cn('w-20 md:w-28 object-contain', {
                           'w-36 md:w-40': (item?.size) === 'large'
@@ -47,7 +47,7 @@ export default function LogoBlock(props: LogoBlockProps) {
                     <Image
                       width={200}
                       height={100}
-                      src={item.image?.asset?.url ?? ''}
+                      src={item.image?.asset?.url || item.image?.url || '/assets/placeholder-cover.jpg'}
                       alt={`${item.title} Logo`}
                       className={cn('w-20 md:w-28 object-contain', {
                         'w-36 md:w-40': (item?.size) === 'large'

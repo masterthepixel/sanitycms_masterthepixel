@@ -72,10 +72,10 @@ function ServiceCard({ service }: {
       <Link href={`/services/${slug}`} className='relative space-y-4 md:space-y-6'>
         <div className='p-4 rounded-3xl border border-dashed backdrop-blur-md backdrop-opacity-50'>
           <Image
-            src={image?.asset?.url ?? ''}
+            src={image?.asset?.url || image?.url || '/assets/placeholder-cover.jpg'}
             width={800}
             height={800}
-            alt={image?.asset?.altText ?? ''}
+            alt={image?.asset?.altText || image?.altText || 'Service image'}
             className='aspect-[3/2] rounded-2xl'
           />
         </div>

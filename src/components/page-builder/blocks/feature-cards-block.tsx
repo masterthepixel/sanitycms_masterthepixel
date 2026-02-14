@@ -65,7 +65,7 @@ function FeatureCard({ feature }: {
     <div className='border border-dashed rounded-3xl'>
       <div className='p-3'>
         <Image
-          src={feature.image?.asset?.url ?? ''}
+          src={feature.image?.asset?.url || feature.image?.url || '/assets/placeholder-cover.jpg'}
           width={600}
           height={400}
           alt={feature.title ?? ''}

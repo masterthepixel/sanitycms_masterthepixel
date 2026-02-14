@@ -5,6 +5,7 @@ import ClientLayout from "@/components/global/client-layout";
 import InstallDemoButton from "@/components/shared/install-demo-button";
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import { getSiteSettings } from "@/lib/content";
+import { transformNavigationSettings } from "@/lib/navigation-mapping";
 
 export async function generateMetadata(): Promise<Metadata> {
   // Prefer explicit env var, fall back to content/site.json -> generalSettings.siteTitle
@@ -34,7 +35,7 @@ export default async function RootLayout({
   const siteSettings = await getSiteSettings();
   const settings = siteSettings.generalSettings;
   const marketingSettings = siteSettings.marketingSettings;
-  const navigationSettings = siteSettings.navigationSettings;
+  const navigationSettings = transformNavigationSettings(siteSettings.navigationSettings);
 
   if (!settings) return (
     <Container className="py-16 flex items-center justify-center gap-2.5 h-screen pattern-bg--2">

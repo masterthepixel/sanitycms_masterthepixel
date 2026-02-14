@@ -30,9 +30,11 @@ export async function getPostBySlug(slug: string): Promise<Post> {
 
 export async function getPageBySlug(slug: string): Promise<Page> {
   const mdxPath = path.join(pagesDirectory, `${slug}.mdx`);
+  const nestedMdxPath = path.join(pagesDirectory, 'projects', `${slug}.mdx`);
   const jsonPath = path.join(pagesDirectory, `${slug}.json`);
+  const nestedJsonPath = path.join(pagesDirectory, 'projects', `${slug}.json`);
 
-  // Try MDX first
+  // Try MDX in top-level pages
   if (fs.existsSync(mdxPath)) {
     console.log('[getPageBySlug] mdxPath:', mdxPath);
     const fileContents = fs.readFileSync(mdxPath, 'utf8');
@@ -48,7 +50,18 @@ export async function getPageBySlug(slug: string): Promise<Page> {
     };
   }
 
-  // Try JSON fallback
+  // Try MDX in nested `pages/projects/` (projects now live under pages/projects)
+  if (fs.existsSync(nestedMdxPath)) {
+    console.log('[getPageBySlug] nestedMdxPath:', nestedMdxPath);
+    const fileContents = fs.readFileSync(nestedMdxPath, 'utf8');
+    const { data, content } = matter(fileContents);
+    return {
+      ...data as PageFrontmatter,
+      content,
+    };
+  }
+
+  // Try JSON fallback in top-level pages
   if (fs.existsSync(jsonPath)) {
     const fileContents = fs.readFileSync(jsonPath, 'utf8');
     const data = JSON.parse(fileContents);
@@ -57,6 +70,21 @@ export async function getPageBySlug(slug: string): Promise<Page> {
       slug: data.slug?.current || slug,
       seo: data.seo || {},
       content: '', // JSON pages don't have markdown content
+      pageBuilder: data.pageBuilder || [],
+      _type: data._type,
+      _id: data._id,
+    };
+  }
+
+  // Try JSON fallback in nested `pages/projects/`
+  if (fs.existsSync(nestedJsonPath)) {
+    const fileContents = fs.readFileSync(nestedJsonPath, 'utf8');
+    const data = JSON.parse(fileContents);
+    return {
+      title: data.title,
+      slug: data.slug?.current || slug,
+      seo: data.seo || {},
+      content: '',
       pageBuilder: data.pageBuilder || [],
       _type: data._type,
       _id: data._id,

@@ -22,14 +22,25 @@ export default function Author({ author, classNames }: AuthorProps) {
 
   if (!author) return null;
 
+  const avatarUrl = author?.avatar?.asset?.url;
+  
+  // Only render Image if there's a valid URL
+  if (!avatarUrl) {
+    return (
+      <div className='w-6 h-6 rounded-full bg-gray-300 flex items-center justify-center'>
+        <span className='text-xs text-gray-500'>{author.name?.[0] || '?'}</span>
+      </div>
+    );
+  }
+
   return (
     <HoverCard>
       <HoverCardTrigger>
         <Image
-          src={author?.avatar?.asset?.url ?? ''}
+          src={avatarUrl}
           width={26}
           height={26}
-          alt={author.name ?? ''}
+          alt={author.name ?? 'Author avatar'}
           className='rounded-full'
         />
       </HoverCardTrigger>

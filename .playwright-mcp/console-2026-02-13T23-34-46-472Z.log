@@ -1,0 +1,192 @@
+[   17273ms] Error: Expected component `PageBuilder` to be defined: you likely forgot to import, pass, or provide it.
+It’s referenced in your code at `66:1-66:42`
+    at _missingMdxReference (eval at MDXRemote.useMemo[Content] (http://localhost:3004/_next/static/chunks/node_modules__pnpm_418f8089._.js:187:39), <anonymous>:40:9)
+    at _createMdxContent (eval at MDXRemote.useMemo[Content] (http://localhost:3004/_next/static/chunks/node_modules__pnpm_418f8089._.js:187:39), <anonymous>:11:21)
+    at MDXContent (eval at MDXRemote.useMemo[Content] (http://localhost:3004/_next/static/chunks/node_modules__pnpm_418f8089._.js:187:39), <anonymous>:34:14)
+    at Object.react_stack_bottom_frame (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:13072:24)
+    at renderWithHooks (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:4091:24)
+    at updateFunctionComponent (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:5523:21)
+    at beginWork (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:6111:24)
+    at runWithFiberInDEV (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:886:74)
+    at performUnitOfWork (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:8298:97)
+    at workLoopSync (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:8190:40)
+    at renderRootSync (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:8173:13)
+    at performWorkOnRoot (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:7932:56)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:8882:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_1be7264c._.js:2601:64)
+[   20142ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3004/favicon.ico:0
+[   49181ms] Error: Expected component `PageBuilder` to be defined: you likely forgot to import, pass, or provide it.
+It’s referenced in your code at `66:1-66:42`
+    at _missingMdxReference (eval at MDXRemote.useMemo[Content] (http://localhost:3004/_next/static/chunks/node_modules__pnpm_418f8089._.js:187:39), <anonymous>:40:9)
+    at _createMdxContent (eval at MDXRemote.useMemo[Content] (http://localhost:3004/_next/static/chunks/node_modules__pnpm_418f8089._.js:187:39), <anonymous>:11:21)
+    at MDXContent (eval at MDXRemote.useMemo[Content] (http://localhost:3004/_next/static/chunks/node_modules__pnpm_418f8089._.js:187:39), <anonymous>:34:14)
+    at Object.react_stack_bottom_frame (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:13072:24)
+    at renderWithHooks (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:4091:24)
+    at updateFunctionComponent (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:5523:21)
+    at beginWork (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:6111:24)
+    at runWithFiberInDEV (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:886:74)
+    at performUnitOfWork (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:8298:97)
+    at workLoopSync (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:8190:40)
+    at renderRootSync (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:8173:13)
+    at performWorkOnRoot (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:7932:56)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:8882:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_1be7264c._.js:2601:64)
+[   77264ms] [WARNING] [Fast Refresh] performing full reload
+
+Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.
+You might have a file which exports a React component but also exports a value that is imported by a non-React component file.
+Consider migrating the non-React component export to a separate file and importing it into both files.
+
+It is also possible the parent component of the component you edited is a class component, which disables Fast Refresh.
+Fast Refresh requires at least one parent function component in your React tree. @ http://localhost:3004/_next/static/chunks/%5Bturbopack%5D_browser_dev_hmr-client_hmr-client_ts_c8c997ce._.js:34
+[   77299ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ http://localhost:3004/_next/static/chunks/16630_next_dist_client_f0d1064a._.js:6282
+[   79372ms] ReferenceError: pageBuilder is not defined
+    at _createMdxContent (eval at MDXRemote.useMemo[Content] (http://localhost:3004/_next/static/chunks/node_modules__pnpm_418f8089._.js:187:39), <anonymous>:13:18)
+    at MDXContent (eval at MDXRemote.useMemo[Content] (http://localhost:3004/_next/static/chunks/node_modules__pnpm_418f8089._.js:187:39), <anonymous>:34:14)
+    at Object.react_stack_bottom_frame (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:13072:24)
+    at renderWithHooks (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:4091:24)
+    at updateFunctionComponent (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:5523:21)
+    at beginWork (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:6111:24)
+    at runWithFiberInDEV (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:886:74)
+    at performUnitOfWork (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:8298:97)
+    at workLoopSync (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:8190:40)
+    at renderRootSync (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:8173:13)
+    at performWorkOnRoot (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:7932:56)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_react-dom_180a08a4._.js:8882:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3004/_next/static/chunks/16630_next_dist_compiled_1be7264c._.js:2601:64)
+[   87834ms] [ERROR] ./content/projects.json
+Code generation for chunk item errored
+An error occurred while generating the chunk item [project]/content/projects.json (json)
+
+Caused by:
+- Unable to make a module from invalid JSON: expected `,` or `]` at line 14 column 3
+
+Debug info:
+- An error occurred while generating the chunk item [project]/content/projects.json (json)
+- Execution of *EcmascriptChunkItemContent::module_factory failed
+- Execution of <JsonChunkItem as EcmascriptChunkItem>::content failed
+- Unable to make a module from invalid JSON: expected `,` or `]` at line 14 column 3
+    at .
+      10 |       "slug": "energy-and-utilities"
+      11 |     },
+      12 |     "image": { "url": "/uploads/production/home/3b6d05638ce7cef7153b329556c0f850292d9ea3-1920x1280.jpg", "altText": "Horizon Systems" }
+      13 |   }
+         |   v
+      14 +   {
+         |   ^
+      15 |     "_id": "6d408d2f-25c2-485e-afd9-cd14b6f5607b",
+      16 |     "title": "Orbital Wireless",
+      17 |     "slug": "orbital-wireless",
+      18 |     "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lectus non metus gravida malesuada.",
+
+Import traces:
+  #1 [Server Component]:
+    ./content/projects.json
+    ./src/app/(frontend)/projects/[slug]/page.tsx
+
+  #2 [Server Component]:
+    ./content/projects.json
+    ./src/app/(frontend)/projects/layout.tsx @ http://localhost:3004/_next/static/chunks/16630_next_dist_aaf84379._.js:2359
+[   97269ms] [ERROR] ./content/projects.json
+Code generation for chunk item errored
+An error occurred while generating the chunk item [project]/content/projects.json (json)
+
+Caused by:
+- Unable to make a module from invalid JSON: expected `,` or `]` at line 14 column 3
+
+Debug info:
+- An error occurred while generating the chunk item [project]/content/projects.json (json)
+- Execution of *EcmascriptChunkItemContent::module_factory failed
+- Execution of <JsonChunkItem as EcmascriptChunkItem>::content failed
+- Unable to make a module from invalid JSON: expected `,` or `]` at line 14 column 3
+    at .
+      10 |       "slug": "energy-and-utilities"
+      11 |     },
+      12 |     "image": { "url": "/uploads/production/home/3b6d05638ce7cef7153b329556c0f850292d9ea3-1920x1280.jpg", "altText": "Horizon Systems" }
+      13 |   }
+         |   v
+      14 +   {
+         |   ^
+      15 |     "_id": "6d408d2f-25c2-485e-afd9-cd14b6f5607b",
+      16 |     "title": "Orbital Wireless",
+      17 |     "slug": "orbital-wireless",
+      18 |     "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lectus non metus gravida malesuada.",
+
+Import traces:
+  #1 [Server Component]:
+    ./content/projects.json
+    ./src/app/(frontend)/projects/[slug]/page.tsx
+
+  #2 [Server Component]:
+    ./content/projects.json
+    ./src/app/(frontend)/projects/layout.tsx @ http://localhost:3004/_next/static/chunks/16630_next_dist_aaf84379._.js:2359
+[  106683ms] [ERROR] ./content/projects.json
+Code generation for chunk item errored
+An error occurred while generating the chunk item [project]/content/projects.json (json)
+
+Caused by:
+- Unable to make a module from invalid JSON: expected `,` or `]` at line 14 column 3
+
+Debug info:
+- An error occurred while generating the chunk item [project]/content/projects.json (json)
+- Execution of *EcmascriptChunkItemContent::module_factory failed
+- Execution of <JsonChunkItem as EcmascriptChunkItem>::content failed
+- Unable to make a module from invalid JSON: expected `,` or `]` at line 14 column 3
+    at .
+      10 |       "slug": "energy-and-utilities"
+      11 |     },
+      12 |     "image": { "url": "/uploads/production/home/3b6d05638ce7cef7153b329556c0f850292d9ea3-1920x1280.jpg", "altText": "Horizon Systems" }
+      13 |   }
+         |   v
+      14 +   {
+         |   ^
+      15 |     "_id": "6d408d2f-25c2-485e-afd9-cd14b6f5607b",
+      16 |     "title": "Orbital Wireless",
+      17 |     "slug": "orbital-wireless",
+      18 |     "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lectus non metus gravida malesuada.",
+
+Import traces:
+  #1 [Server Component]:
+    ./content/projects.json
+    ./src/app/(frontend)/projects/[slug]/page.tsx
+
+  #2 [Server Component]:
+    ./content/projects.json
+    ./src/app/(frontend)/projects/layout.tsx @ http://localhost:3004/_next/static/chunks/16630_next_dist_aaf84379._.js:2359
+[  118236ms] [ERROR] ./content/projects.json
+Code generation for chunk item errored
+An error occurred while generating the chunk item [project]/content/projects.json (json)
+
+Caused by:
+- Unable to make a module from invalid JSON: expected `,` or `]` at line 14 column 3
+
+Debug info:
+- An error occurred while generating the chunk item [project]/content/projects.json (json)
+- Execution of *EcmascriptChunkItemContent::module_factory failed
+- Execution of <JsonChunkItem as EcmascriptChunkItem>::content failed
+- Unable to make a module from invalid JSON: expected `,` or `]` at line 14 column 3
+    at .
+      10 |       "slug": "energy-and-utilities"
+      11 |     },
+      12 |     "image": { "url": "/uploads/production/home/3b6d05638ce7cef7153b329556c0f850292d9ea3-1920x1280.jpg", "altText": "Horizon Systems" }
+      13 |   }
+         |   v
+      14 +   {
+         |   ^
+      15 |     "_id": "6d408d2f-25c2-485e-afd9-cd14b6f5607b",
+      16 |     "title": "Orbital Wireless",
+      17 |     "slug": "orbital-wireless",
+      18 |     "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lectus non metus gravida malesuada.",
+
+Import traces:
+  #1 [Server Component]:
+    ./content/projects.json
+    ./src/app/(frontend)/projects/[slug]/page.tsx
+
+  #2 [Server Component]:
+    ./content/projects.json
+    ./src/app/(frontend)/projects/layout.tsx @ http://localhost:3004/_next/static/chunks/16630_next_dist_aaf84379._.js:2359
+[  158771ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3004/projects/horizon-systems:0
+[  765476ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3004/projects/horizon-systems:0
+[  957095ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3004/projects/horizon-systems:0
+[  958879ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3004/projects/horizon-systems:0
