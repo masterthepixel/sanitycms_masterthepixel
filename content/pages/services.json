@@ -29,6 +29,8 @@
       "heading": "Our Services",
       "image": {
         "_type": "image",
+        "url": "/uploads/production/services/dab35595dfa8b8ca7dcb216115b654a3f5e71e6f-2400x1600.jpg",
+        "altText": "Services hero",
         "cornerRadius": "rounded",
         "height": "short"
       },
