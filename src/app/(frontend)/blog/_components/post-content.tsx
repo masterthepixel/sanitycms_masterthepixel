@@ -11,6 +11,8 @@ import { Tag, ImageIcon, ChevronDown } from 'lucide-react';
 import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import AnimatedUnderline from '@/components/shared/animated-underline';
+import { mdxComponents } from '@/components/MDXRenderer';
+import postsData from '../../../../../content/posts.json';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Post } from '@/types/content';
 
@@ -41,6 +43,16 @@ export default function PostContent({ post }: PostContentProps) {
     serializeContent();
   }, [content]);
 
+  // derive site categories from posts.json (used in the sidebar)
+  const siteCategoryMap: Record<string, { _id: string; slug: string; title: string }> = {};
+  (postsData || []).forEach((p: any) => {
+    (p.categories || []).forEach((c: string) => {
+      const slug = String(c).toLowerCase().replace(/[^a-z0-9]+/gi, '-');
+      if (!siteCategoryMap[slug]) siteCategoryMap[slug] = { _id: slug, slug, title: c };
+    });
+  });
+  const siteCategories = Object.values(siteCategoryMap);
+
   return (
     <div className='order-0 grid grid-cols-12 gap-y-10 xl:gap-20'>
       <aside className='col-span-12 xl:col-span-2 xl:sticky xl:top-28 h-fit -translate-x-1 md:-translate-x-0'>
@@ -49,37 +61,33 @@ export default function PostContent({ post }: PostContentProps) {
       <div className='order-2 xl:order-1 col-span-12 xl:col-span-7 xl:pl-10 xl:border-l xl:border-dashed'>
         <div className='flex items-center gap-3'>
           <Date date={date} />
+          {/* show first category as a pill next to the date */}
+          {post.categories && post.categories.length > 0 && (
+            <span className='inline-block text-xs font-semibold px-3 py-1 rounded-full bg-gray-50 border border-gray-200'>
+              {post.categories[0]}
+            </span>
+          )}
         </div>
         <Heading tag="h1" size="xxl" className='mt-8'>
           {title}
         </Heading>
         <aside className='xl:hidden mt-8 order-1 xl:order-2 col-span-12 xl:col-span-3 xl:sticky xl:top-28 h-fit space-y-5'>
-          {/* TODO: Implement table of contents for MDX */}
-          {/* {settings?.showTableOfContents && (
-            <TableOfContents content={tableOfContents} />
-          )} */}
-          {/* TODO: Implement categories for MDX */}
-          {/* {settings?.showPostsByCategory && (
-            <PostCategories categories={categories}/>
-          )} */}
+          {siteCategories.length > 0 && (
+            <PostCategories categories={siteCategories} />
+          )}
         </aside>
         <Thumbnail image={coverImage} />
         <p className='text-lg xl:text-xl my-10 xl:my-14 py-8 border-y border-dashed'>
           {excerpt}
         </p>
         <div>
-          {mdxSource ? <MDXRemote {...mdxSource} /> : <div>Loading...</div>}
+          {mdxSource ? <MDXRemote {...mdxSource} components={mdxComponents} /> : <div>Loading...</div>}
         </div>
       </div>
       <aside className='hidden xl:block order-1 xl:order-2 col-span-12 xl:col-span-3 xl:sticky xl:top-28 h-fit space-y-5'>
-        {/* TODO: Implement table of contents for MDX */}
-        {/* {settings?.showTableOfContents && (
-          <TableOfContents content={tableOfContents} />
-        )} */}
-        {/* TODO: Implement categories for MDX */}
-        {/* {settings?.showPostsByCategory && (
-          <PostCategories categories={categories}/>
-        )} */}
+        {siteCategories.length > 0 && (
+          <PostCategories categories={siteCategories} />
+        )}
       </aside>
     </div>
   )

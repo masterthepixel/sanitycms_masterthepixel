@@ -4,6 +4,7 @@ import { MDXProvider } from '@mdx-js/react'
 import Image from 'next/image'
 import { Hero, LogoBlock, FeatureGrid, FeaturesMinimal, MediaBlock, LatestPosts, Testimonial, FreeformBlock, CallToActionBlock, Services } from '@/components/mdx'
 import { PageBuilder } from '@/components/page-builder'
+import PlayVideo from '@/components/shared/play-video'
 
 export const mdxComponents = {
   Image: ({ src, alt, ...props }: any) => (
@@ -19,6 +20,7 @@ export const mdxComponents = {
   FreeformBlock,
   CallToActionBlock,
   Services,
+  PlayVideo,
   PageBuilder,
   Callout: ({ type, children }: { type?: string; children: React.ReactNode }) => (
     <div className={`p-4 rounded-lg border ${
