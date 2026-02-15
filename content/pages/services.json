@@ -41,7 +41,7 @@
       "_key": "6fcd1e5928a5",
       "_type": "servicesBlock",
       "background": "white",
-      "heading": "Data and Analytics",
+      "heading": "Web, Mobile and App development",
       "paddingBottom": "default",
       "paddingTop": "default",
       "services": [
@@ -78,6 +78,11 @@
         {
           "_key": "9bcc5bcac3ea",
           "_ref": "ad4c8601-9c9e-46e5-afaa-d9c861e9ffe5",
+          "_type": "reference"
+        },
+        {
+          "_key": "cybersecurity-ref-2026",
+          "_ref": "cybersecurity-service-2026",
           "_type": "reference"
         }
       ]

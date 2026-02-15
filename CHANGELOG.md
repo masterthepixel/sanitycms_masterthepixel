@@ -20,6 +20,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - MDX page-builder wrappers (`LogoBlock`, `FeaturesMinimal`, `MediaBlock`, `FreeformBlock`, `CallToActionBlock`) to restore homepage block parity
 - MDX client-side renderer enhancement to forward `frontmatter.latestPosts` into MDX components
 - Playwright E2E assertion to validate latest posts render on the homepage
+- **SEO Infrastructure**: Added robots.txt and dynamic XML sitemap generation for improved search engine crawling
+- **Service Portfolio Overhaul**: Complete restructuring of service offerings with specialized, client-focused content
 
 ### Changed
 - **Legal pages refactoring**: Converted privacy-policy, terms-of-use, and acknowledgements from MDX format to simple JSON files for easier maintenance
@@ -32,6 +34,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Replaced the homepage Freeform area with `LatestPosts` (homepage now shows dynamic/latest blog entries)
 - Homepage server now injects latest posts (top 3, non-draft) into MDX frontmatter at render-time
 - Restored original page-builder block ordering and improved MDX ↔ page-builder parity
+- **Service Section Labels**: Updated "Data and Analytics" to "Web, mobile and App development" in services page
+- **Service Portfolio Transformation**:
+  - "Technology Strategy" → "Custom AI Applications" (SMB AI Strategy & Consulting)
+  - "Hardware Procurement" → "IT Consulting" (Strategic IT consulting services)
+  - "Data Visualization" → "Custom Web Development" (Full-stack web development)
+  - "Big Data Consulting" → "Digital Marketing Services" (SEO, social media, PPC)
+  - "Business Intelligence" → "App & Portal Development" (Mobile apps, web portals, PWAs)
 
 ### Fixed
 - Legal page content styling issues by simplifying rendering approach
