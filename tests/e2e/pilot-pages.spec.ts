@@ -9,6 +9,9 @@ PILOT_PAGES.forEach((slug) => {
     // Check that the page loads without errors
     await expect(page).toHaveURL(`http://localhost:3000/${slug}`)
 
+    // Wait for client-side MDX to finish hydrating (remove the loading placeholder)
+    await page.waitForSelector('text=Loading content…', { state: 'detached', timeout: 5000 })
+
     // Check that the page has content (basic smoke test)
     const bodyText = await page.locator('body').textContent()
     expect(bodyText?.length).toBeGreaterThan(100)
