@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import Container from './container';
@@ -5,7 +7,7 @@ import { Button } from '../ui/button';
 import useScroll from '@/hooks/use-scroll';
 import SiteLogo from '../shared/site-logo';
 import SlideOutMenu from './slide-out-menu';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { cn, resolveHref } from '@/lib/utils';
 import { ChevronRight, Menu } from 'lucide-react';
 import AnimatedText from '../shared/animated-text';
@@ -19,11 +21,16 @@ interface NavbarProps {
 export default function Navbar({ settings, navigationSettings }: NavbarProps) {
 
   const pathname = usePathname();
+  const router = useRouter();
   const hasScrolled = useScroll();
 
   const { navbarMenuItems } = (navigationSettings as any) ?? {};
   const { showSlideOutMenu } = (navigationSettings as any) ?? {};
   
+  const handleGroupItemClick = (item: any) => {
+    const href = resolveHref(item?.pageReference?._type ?? '', item?.pageReference?.slug ?? '') ?? '/';
+    router.push(href);
+  };
   return (
     <header 
       className={cn('z-40 fixed top-0 left-0 w-full py-6 rounded-b-xl border-b border-b-gray-100 bg-white/80 backdrop-blur-lg transition-all duration-300 ease-in-out', {
@@ -41,7 +48,10 @@ export default function Navbar({ settings, navigationSettings }: NavbarProps) {
                     <>
                       {item.menuItemType === 'group' ? (
                         <NavigationMenuItem>
-                          <NavigationMenuTrigger className='group-hover/nav:opacity-40 hover:!opacity-100'>
+                          <NavigationMenuTrigger 
+                            onClick={() => handleGroupItemClick(item)}
+                            className='group-hover/nav:opacity-40 hover:!opacity-100 cursor-pointer'
+                          >
                             {item.title}
                           </NavigationMenuTrigger>
                           <NavigationMenuContent className='min-w-[180px] text-nowrap py-3 px-3 flex flex-col gap-2 bg-white'>
