@@ -23,7 +23,8 @@ export default async function ServicesPage() {
   const page = await getPageBySlug('services');
 
   // If the page has MDX content, render it (contains Hero + Services MDX components)
-  if (page.content && page.content.length > 0) {
+  const hasMdxContent = page.content && page.content.trim().length > 0;
+  if (hasMdxContent) {
     return (
       <div>
         <MDXRenderer>{page.content}</MDXRenderer>

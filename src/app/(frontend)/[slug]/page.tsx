@@ -40,30 +40,33 @@ export default async function Page({ params }: PageProps) {
 
   try {
     const page = await getPageBySlug(slug);
-
-    // If page has no MDX content but has pageBuilder blocks, render those instead
-    if ((!page.content || page.content.length === 0) && page.pageBuilder && page.pageBuilder.length > 0) {
+    
+    // Check if we have actual MDX content to render
+    const hasMdxContent = page.content && page.content.trim().length > 0;
+    
+    if (hasMdxContent) {
       return (
         <div>
-          <PageBuilder 
-            pageBuilder={normalizePageBuilder(page.pageBuilder)} 
-            id={page._id || slug} 
-            type={page._type || 'page'} 
+          <MDXClientRenderer 
+            content={page.content} 
+            components={mdxComponents} 
+            frontmatter={page}
           />
         </div>
       );
     }
-
-    // Otherwise render MDX content
-    return (
-      <div>
-        <MDXClientRenderer 
-          content={page.content} 
-          components={mdxComponents} 
-          frontmatter={page}
-        />
-      </div>
-    );
+    
+    // Fallback to rendering pageBuilder JSON if no MDX content
+    if (page.pageBuilder && page.pageBuilder.length > 0) {
+      return (
+        <div>
+          <PageBuilder pageBuilder={normalizePageBuilder(page.pageBuilder)} id={page._id || slug} type={page._type || 'page'} />
+        </div>
+      );
+    }
+    
+    // If neither MDX nor pageBuilder exists, show 404
+    notFound();
   } catch (error) {
     notFound();
   }
