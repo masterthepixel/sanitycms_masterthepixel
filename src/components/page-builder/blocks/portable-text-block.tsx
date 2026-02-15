@@ -27,7 +27,7 @@ export default function PortableTextBlock(props: PortableTextBlockProps) {
       className='px-4 md:px-10'
     >
       <Container
-        className={cn('py-16 md:py-28 flex border-x border-dashed', {
+        className={cn('py-16 md:py-28 flex border-x border-dashed border-dashed-light', {
           'justify-start': alignment === 'left',
           'justify-center': alignment === 'center',
           'justify-end': alignment === 'right',
@@ -35,8 +35,8 @@ export default function PortableTextBlock(props: PortableTextBlockProps) {
       >
         <div
           className={cn('max-w-[48rem]', {
-            'pl-10 border-l border-dashed': alignment === 'left',
-            'border-r border-dashed': alignment === 'right',
+            'pl-10 border-l border-dashed border-dashed-light': alignment === 'left',
+            'border-r border-dashed border-dashed-light': alignment === 'right',
           })}
         >
           <div className='text-balance text-gray-600'>

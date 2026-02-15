@@ -25,7 +25,7 @@ export default function CallToActionBlock(props: CallToActionBlockProps) {
       {...(anchorId ? { id: anchorId } : {})}
       className='xl:px-10 pattern-bg--2 border-t border-t-gray-200/60'
     >
-      <Container className='py-16 md:py-28 border-x border-dashed'>
+      <Container className='py-16 md:py-28 border-x border-dashed border-dashed-light'>
         <div className='flex flex-col lg:flex-row lg:items-center justify-between gap-x-16'>
           <div>
             <Heading tag="h2" size="xl" className='max-w-[40rem] text-balance leading-tight'>

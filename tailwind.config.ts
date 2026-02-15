@@ -14,6 +14,10 @@ const config: Config = {
       borderRadius: {
         '4xl': '2.4rem'
       },
+      borderColor: {
+        'dashed': 'rgb(107 114 128)', // gray-500 for more visible dashed borders
+        'dashed-light': 'rgb(156 163 175)', // gray-400 for medium visibility
+      },
       fontFamily: {
         geistSans: ['var(--font-geist-sans)'],
         geistMono: ['var(--font-geist-mono)']

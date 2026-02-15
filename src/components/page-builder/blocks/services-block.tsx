@@ -34,9 +34,9 @@ export default function ServicesBlock(props: ServicesBlockProps) {
       <Container 
         paddingTop={(paddingTop) ?? undefined}
         paddingBottom={(paddingBottom) ?? undefined}
-        className='space-y-10 border-x border-dashed'
+        className='space-y-10 border-x border-dashed border-dashed-light'
       >
-        <div className='py-4 flex items-center justify-between gap-6 border-y border-dashed'>
+        <div className='py-4 flex items-center justify-between gap-6 border-y border-dashed border-dashed-light'>
           <Heading tag="h2" size="xl" className='max-w-[40rem] text-balance leading-tight'>
             {heading}
           </Heading>
@@ -68,9 +68,9 @@ function ServiceCard({ service }: {
   const { title, slug, shortDescription, image } = service;
 
   return (
-    <div aria-label={title ?? ''} className='relative pb-8 group border-b border-dashed'>
+    <div aria-label={title ?? ''} className='relative pb-8 group border-b border-dashed border-dashed-light'>
       <Link href={`/services/${slug}`} className='relative space-y-4 md:space-y-6'>
-        <div className='p-4 rounded-3xl border border-dashed backdrop-blur-md backdrop-opacity-50'>
+          <div className='p-4 rounded-3xl border border-dashed border-dashed-light backdrop-blur-md backdrop-opacity-50'>
           <Image
             src={image?.asset?.url || image?.url || '/assets/placeholder-cover.jpg'}
             width={800}
