@@ -6,6 +6,12 @@
     "excerpt": "Curae dapibus interdum convallis cursus quam nulla, tincidunt pulvinar. In urna eget iaculis posuere sodales at malesuada mi.",
     "date": "2024-12-03T18:11:39Z",
     "coverImage": "/uploads/production/blog-how-we-increased-revenue-by-300-with-one-simple-hack/4d3aab04b351bf872980bb210c4a5e44a29d1a0d-1920x1459.jpg",
+    "categories": ["Growth"],
+    "author": {
+      "name": "James Rea",
+      "username": "jamesrea",
+      "avatar": { "asset": { "url": "/uploads/production/home/4cb082608a5ce534905f2a468e1dd96b9b52d290-2560x318.png" } }
+    },
     "draft": false,
     "_createdAt": "2024-12-03T18:11:39Z",
     "_updatedAt": "2025-03-09T13:11:40Z"
@@ -17,6 +23,12 @@
     "excerpt": "Nulla facilisi. Mauris consectetur, tellus at sodales tincidunt, nulla lorem efficitur nunc, in tincidunt nisi neque at metus. Phasellus tristique auctor.",
     "date": "2024-12-03T18:11:16Z",
     "coverImage": "/uploads/production/blog-the-ultimate-guide-to-scaling-your-startup-in-90-days/4d3aab04b351bf872980bb210c4a5e44a29d1a0d-1920x1459.jpg",
+    "categories": ["Growth"],
+    "author": {
+      "name": "James Rea",
+      "username": "jamesrea",
+      "avatar": { "asset": { "url": "/uploads/production/home/4cb082608a5ce534905f2a468e1dd96b9b52d290-2560x318.png" } }
+    },
     "draft": false,
     "_createdAt": "2024-12-03T18:11:16Z",
     "_updatedAt": "2025-03-09T13:11:30Z"
@@ -28,6 +40,12 @@
     "excerpt": "Libero placerat hac nisi libero tempus metus in ullamcorper. Semper porta vulputate facilisis cursus mi molestie dignissim taciti nisis.",
     "date": "2024-12-03T18:10:32Z",
     "coverImage": "/uploads/production/blog-5-proven-strategies-to-skyrocket-your-conversion-rates/cb47a49bf4ca63cf39d5c353829026021ce9cd6e-4096x3112.jpg",
+    "categories": ["CRO"],
+    "author": {
+      "name": "James Rea",
+      "username": "jamesrea",
+      "avatar": { "asset": { "url": "/uploads/production/home/4cb082608a5ce534905f2a468e1dd96b9b52d290-2560x318.png" } }
+    },
     "draft": false,
     "_createdAt": "2024-12-03T18:10:32Z",
     "_updatedAt": "2025-03-09T13:11:35Z"

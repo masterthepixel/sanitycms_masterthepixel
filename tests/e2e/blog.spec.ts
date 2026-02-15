@@ -6,6 +6,15 @@ test('blog listing page loads', async ({ page }) => {
   // Check that posts are displayed
   const postCards = page.locator('article[role="link"]')
   await expect(postCards.first()).toBeVisible()
+  // categories toolbar should include post categories (derived from content)
+  const growthLink = page.locator('a:has-text("Growth")').first()
+  await expect(growthLink).toBeVisible()
+  await expect(growthLink).toHaveAttribute('href', '/blog/category/growth')
+  const croLink = page.locator('a:has-text("CRO")').first()
+  await expect(croLink).toBeVisible()
+  await expect(croLink).toHaveAttribute('href', '/blog/category/cro')
+  // post card should show author avatar (rounded)
+  await expect(page.locator('article[role="link"] img[alt="James Rea"]').first()).toBeVisible()
 })
 
 test('blog post page loads', async ({ page }) => {

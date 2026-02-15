@@ -6,6 +6,7 @@ import { ChevronRight } from 'lucide-react';
 import AnimatedUnderline from '@/components/shared/animated-underline';
 import Date from '@/components/ui/date';
 import Heading from '@/components/shared/heading';
+import Author from '@/components/ui/author';
 import { Post } from '@/types/content';
 
 interface PostCardProps {
@@ -38,6 +39,15 @@ export default function PostCard({ post }: PostCardProps) {
     >
       <div className='relative'>
         <Thumbnail image={coverImage} />
+        {/* category pill */}
+        {post.categories && post.categories.length > 0 && (
+          <div className='absolute left-6 top-6 z-10'>
+            <span className='inline-flex items-center gap-2 bg-white/95 text-xs font-semibold px-3 py-1 rounded-full border border-gray-200 shadow-sm'>
+              {post.categories[0]}
+            </span>
+          </div>
+        )}
+
         <Heading tag="h2" size="md" className='mt-5 md:mt-6 text-balance'>
           {title}
         </Heading>
@@ -46,6 +56,7 @@ export default function PostCard({ post }: PostCardProps) {
         </Excerpt>
         <div className='mt-5 md:mt-6 flex items-center justify-between'>
           <div className='flex items-center gap-3.5'>
+            <Author author={(post as any).author ?? null} />
             <Date date={date} />
           </div>
           <ChevronRight
