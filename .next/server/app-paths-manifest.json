@@ -1,6 +1,8 @@
 {
   "/(frontend)/blog/[slug]/page": "app/(frontend)/blog/[slug]/page.js",
+  "/(frontend)/blog/category/[slug]/page": "app/(frontend)/blog/category/[slug]/page.js",
   "/(frontend)/blog/page": "app/(frontend)/blog/page.js",
   "/(frontend)/page": "app/(frontend)/page.js",
+  "/(frontend)/projects/[slug]/page": "app/(frontend)/projects/[slug]/page.js",
   "/(frontend)/projects/page": "app/(frontend)/projects/page.js"
 }
