@@ -100,9 +100,25 @@ export async function getPageBySlug(slug: string): Promise<Page> {
     console.log('[getPageBySlug] parsed frontmatter:', JSON.stringify(data, null, 2));
     console.log('[getPageBySlug] parsed content length:', content.length);
     console.log('[getPageBySlug] serving MDX for', slug, 'content preview:', (content || '').slice(0,200));
+    
+    // For top-level pages: extract pageBuilder array from the JSX content if present
+    let pageBuilder: any[] = [];
+    if (content && content.includes('<PageBuilder pageBuilder=')) {
+      try {
+        const match = content.match(/<PageBuilder\s+pageBuilder=\{(\[[\s\S]*?\])\}\s*\/>/);
+        if (match && match[1]) {
+          const jsonStr = match[1];
+          pageBuilder = eval('(' + jsonStr + ')'); // Using eval since it's valid JavaScript
+        }
+      } catch (e) {
+        console.warn('[getPageBySlug] Failed to extract pageBuilder from top-level page:', slug, e);
+      }
+    }
+    
     return {
       ...data as PageFrontmatter,
-      content,
+      content: pageBuilder.length > 0 ? '' : content, // Clear content if pageBuilder was extracted
+      pageBuilder,
     };
   }
 
