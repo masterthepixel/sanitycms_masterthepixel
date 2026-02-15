@@ -44,16 +44,19 @@ export default function HeroBlock(props: HeroBlockProps) {
       })}
     >
       <Container
-        variant={fullWidth ? 'fullWidth' : 'contained'}
+        variant={'contained'}
         className={cn('space-y-10 xl:-space-y-6', {
           'pb-7 md:pb-12': mediaType === 'image',
-          'max-w-7xl': !fullWidth
+          // ensure hero content aligns with Services container even when hero image is full-bleed
+          'max-w-8xl': true,
+          'px-6 md:px-10': true,
+          'border-x border-dashed border-dashed-light': true
         })}
       >
         {/* center the hero grid so the textual content stays constrained */}
         <div className="mx-auto w-full max-w-7xl">
           <div
-            className={cn('pt-36 md:pt-52 pb-16 md:pb-24 xl:pb-36 grid grid-cols-12 gap-3 md:gap-6 xl:gap-14 md:px-14 md:border-x md:border-dashed', {
+            className={cn('pt-36 md:pt-52 pb-16 md:pb-24 xl:pb-36 grid grid-cols-12 gap-3 md:gap-6 xl:gap-14 md:px-10', {
               'pb-6': mediaType === 'image'
             })}
           >
