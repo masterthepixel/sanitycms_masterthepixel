@@ -88,7 +88,50 @@
       ]
     },
     {
-      "_key": "4e2a04b14c74",
+      "_key": "design-services-section-2026",
+      "_type": "servicesBlock",
+      "heading": "Design Services",
+      "paddingBottom": "default",
+      "paddingTop": "none",
+      "services": [
+        {
+          "_key": "logo-design-ref-2026",
+          "_ref": "logo-design-service-2026",
+          "_type": "reference"
+        },
+        {
+          "_key": "social-graphics-ref-2026",
+          "_ref": "social-graphics-service-2026",
+          "_type": "reference"
+        },
+        {
+          "_key": "landing-pages-ref-2026",
+          "_ref": "landing-pages-service-2026",
+          "_type": "reference"
+        },
+        {
+          "_key": "packaging-design-ref-2026",
+          "_ref": "packaging-design-service-2026",
+          "_type": "reference"
+        },
+        {
+          "_key": "print-design-ref-2026",
+          "_ref": "print-design-service-2026",
+          "_type": "reference"
+        },
+        {
+          "_key": "presentation-design-ref-2026",
+          "_ref": "presentation-design-service-2026",
+          "_type": "reference"
+        },
+        {
+          "_key": "branding-kit-ref-2026",
+          "_ref": "branding-kit-service-2026",
+          "_type": "reference"
+        }
+      ]
+    },
+    {
       "_type": "callToActionBlock",
       "buttons": [
         {
