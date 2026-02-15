@@ -84,6 +84,7 @@ export default function HeroBlock(props: HeroBlockProps) {
                   priority
                   width={2000}
                   height={900}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   src={image?.asset?.url || image?.url || '/assets/placeholder-cover.jpg'}
                   alt={image?.asset?.altText || image?.altText || 'Hero image'}
                   className={cn('w-full h-auto object-cover', {
@@ -106,6 +107,7 @@ export default function HeroBlock(props: HeroBlockProps) {
                   priority
                   width={1400}
                   height={800}
+                  sizes="(max-width: 640px) 100vw, 700px"
                   src={image?.asset?.url || image?.url || '/assets/placeholder-cover.jpg'}
                   alt={image?.asset?.altText || image?.altText || 'Hero image'}
                   className={cn('w-full h-auto object-cover rounded-2xl md:rounded-3xl', {

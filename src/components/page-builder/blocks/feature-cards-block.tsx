@@ -67,8 +67,7 @@ function FeatureCard({ feature }: {
         <Image
           src={feature.image?.asset?.url || feature.image?.url || '/assets/placeholder-cover.jpg'}
           width={600}
-          height={400}
-          alt={feature.title ?? ''}
+          height={400}          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"          alt={feature.title ?? ''}
           className='rounded-2xl h-[280px] object-cover overflow-hidden'
         />
       </div>

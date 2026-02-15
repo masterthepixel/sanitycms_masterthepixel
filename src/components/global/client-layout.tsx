@@ -2,8 +2,9 @@
 import Navbar from './navbar';
 import Footer from './footer';
 import localFont from "next/font/local";
-import { Toaster } from 'react-hot-toast';
+import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
+const Toaster = dynamic(() => import('react-hot-toast').then(mod => mod.Toaster), { ssr: false });
 
 interface ClientLayoutProps {
   children: React.ReactNode;

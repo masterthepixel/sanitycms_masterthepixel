@@ -1,20 +1,12 @@
-import { motion } from "framer-motion";
-
 export default function AnimatedText({ children }: { 
   children: React.ReactNode 
 }) {
+  // Lightweight CSS-based hover micro-interaction (replaces framer-motion)
   return (
-    <motion.div
-      whileHover={{ y: -20 }}
-      transition={{ ease: [0.6, 0.05, -0.01, 0.9], duration: 0.4 }}
-      className="h-5"
-    >
-      <span className="flex items-center h-5">
+    <span className="inline-block overflow-hidden h-5">
+      <span className="inline-block transition-transform duration-300 ease-out transform hover:-translate-y-1">
         {children}
       </span>
-      <span className="flex items-center h-5">
-        {children}
-      </span>
-    </motion.div>
+    </span>
   )
 }
