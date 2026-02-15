@@ -11,7 +11,8 @@ const mobile = {
 test.describe('Production performance (approx)', () => {
   test('collect core timing metrics on / (mobile)', async ({ page }) => {
     await page.setViewportSize(mobile.viewport)
-    await page.setUserAgent(mobile.userAgent)
+    // set user agent via the BrowserContext (Playwright API)
+    await page.context().setExtraHTTPHeaders({ 'user-agent': mobile.userAgent })
 
     // Navigate to production site and wait for load
     await page.goto('https://www.masterthepixel.io', { waitUntil: 'load' })
