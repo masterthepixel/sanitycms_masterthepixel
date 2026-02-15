@@ -6,184 +6,123 @@
     - banner [ref=e3]:
       - generic [ref=e4]:
         - button "Go to home page" [ref=e5] [cursor=pointer]:
-          - img "masterthepixel Logo" [ref=e6]
-        - generic [ref=e7]:
-          - navigation "Main" [ref=e8]:
-            - list [ref=e10]:
-              - listitem [ref=e11]:
-                - button "About" [ref=e12] [cursor=pointer]:
+          - generic [ref=e6]:
+            - img "masterthepixel Logo" [ref=e7]
+            - generic [ref=e8]: masterthepixel
+        - generic [ref=e9]:
+          - navigation "Main" [ref=e10]:
+            - list [ref=e12]:
+              - listitem [ref=e13]:
+                - button "About" [ref=e14] [cursor=pointer]:
                   - text: About
-                  - img [ref=e13]
-              - listitem [ref=e15]:
-                - button "Services" [ref=e16] [cursor=pointer]:
+                  - img [ref=e15]
+              - listitem [ref=e17]:
+                - button "Services" [ref=e18] [cursor=pointer]:
                   - text: Services
-                  - img [ref=e17]
-              - listitem [ref=e19]:
-                - link "Projects Projects" [ref=e20] [cursor=pointer]:
+                  - img [ref=e19]
+              - listitem [ref=e21]:
+                - link "Projects" [ref=e22] [cursor=pointer]:
                   - /url: /projects
-                  - generic [ref=e21]:
-                    - generic [ref=e22]: Projects
-                    - generic [ref=e23]: Projects
-              - listitem [ref=e24]:
-                - link "Blog Blog" [ref=e25] [cursor=pointer]:
+                  - generic [ref=e24]: Projects
+              - listitem [ref=e25]:
+                - link "Blog" [ref=e26] [cursor=pointer]:
                   - /url: /blog
-                  - generic [ref=e26]:
-                    - generic [ref=e27]: Blog
-                    - generic [ref=e28]: Blog
+                  - generic [ref=e28]: Blog
               - listitem [ref=e29]:
                 - link "Get Started" [ref=e30] [cursor=pointer]:
                   - /url: /contact
           - button "Open menu" [ref=e31] [cursor=pointer]:
             - img [ref=e32]
-    - main [ref=e33]:
-      - generic [ref=e35]:
-        - generic [ref=e38]:
-          - generic [ref=e40]:
-            - heading "Our Services" [level=1] [ref=e42]
-            - generic [ref=e44]: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lectus non metus gravida malesuada. Phasellus vulputate nec nisi sed elementum.
-          - img "Services hero" [ref=e47]
-        - generic [ref=e50]:
-          - heading "Data and Analytics" [level=2] [ref=e52]
-          - generic [ref=e53]:
-            - generic "Data Visualization" [ref=e54]:
-              - link "Service image Data Visualization Nunc vestibulum, dolor at tristique viverra, magna elit bibendum massa." [ref=e55] [cursor=pointer]:
-                - /url: /services/data-visualization
-                - img "Service image" [ref=e57]
-                - heading "Data Visualization" [level=2] [ref=e58]
-                - paragraph [ref=e59]: Nunc vestibulum, dolor at tristique viverra, magna elit bibendum massa.
-            - generic "Business Intelligence" [ref=e60]:
-              - link "Service image Business Intelligence Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh." [ref=e61] [cursor=pointer]:
-                - /url: /services/business-intelligence
-                - img "Service image" [ref=e63]
-                - heading "Business Intelligence" [level=2] [ref=e64]
-                - paragraph [ref=e65]: Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.
-            - generic "Big Data Consulting" [ref=e66]:
-              - link "Service image Big Data Consulting Maecenas sed diam eget risus varius blandit sit amet non magna. Integer posuere." [ref=e67] [cursor=pointer]:
-                - /url: /services/big-data-consulting
-                - img "Service image" [ref=e69]
-                - heading "Big Data Consulting" [level=2] [ref=e70]
-                - paragraph [ref=e71]: Maecenas sed diam eget risus varius blandit sit amet non magna. Integer posuere.
-        - generic [ref=e74]:
-          - heading "IT Consulting and Support" [level=2] [ref=e76]
-          - generic [ref=e77]:
-            - generic "Hardware Procurement" [ref=e78]:
-              - link "Service image Hardware Procurement Donec ullamcorper nulla non metus auctor fringilla. Aenean lacinia bibendum nulla." [ref=e79] [cursor=pointer]:
-                - /url: /services/hardware-procurement
-                - img "Service image" [ref=e81]
-                - heading "Hardware Procurement" [level=2] [ref=e82]
-                - paragraph [ref=e83]: Donec ullamcorper nulla non metus auctor fringilla. Aenean lacinia bibendum nulla.
-            - generic "Technology Strategy" [ref=e84]:
-              - link "Service image Technology Strategy Praesent commodo cursus magna, vel scelerisque nisl consectetur et nullam quis." [ref=e85] [cursor=pointer]:
-                - /url: /services/technology-strategy
-                - img "Service image" [ref=e87]
-                - heading "Technology Strategy" [level=2] [ref=e88]
-                - paragraph [ref=e89]: Praesent commodo cursus magna, vel scelerisque nisl consectetur et nullam quis.
-        - generic [ref=e93]:
-          - generic [ref=e94]:
-            - heading "Ready to take masterthepixel for a spin?" [level=2] [ref=e95]
-            - generic [ref=e96]: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lectus non metus gravida malesuada. Phasellus vulputate nec nisi sed elementum dolor sit.
-          - generic [ref=e98]:
-            - link "Learn More" [ref=e99] [cursor=pointer]:
-              - /url: /
-              - text: Learn More
-              - img [ref=e100]
-            - link "Star on GitHub" [ref=e102] [cursor=pointer]:
-              - /url: https://github.com/jamesreaco
-              - text: Star on GitHub
-              - img [ref=e103]
-    - contentinfo [ref=e105]:
-      - generic [ref=e106]:
-        - generic [ref=e107]:
-          - button "Go to home page" [ref=e109] [cursor=pointer]:
-            - img "masterthepixel Logo" [ref=e110]
-          - list [ref=e111]:
-            - listitem [ref=e112]:
-              - heading "Features" [level=2] [ref=e113]: Features
-              - list [ref=e117]:
-                - listitem [ref=e118]:
-                  - link "Visual Editing" [ref=e119] [cursor=pointer]:
+    - main
+    - contentinfo [ref=e33]:
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - button "Go to home page" [ref=e37] [cursor=pointer]:
+            - generic [ref=e38]:
+              - img "masterthepixel Logo" [ref=e39]
+              - generic [ref=e40]: masterthepixel
+          - list [ref=e41]:
+            - listitem [ref=e42]:
+              - heading "Features" [level=2] [ref=e43]: Features
+              - list [ref=e47]:
+                - listitem [ref=e48]:
+                  - link "Visual Editing" [ref=e49] [cursor=pointer]:
                     - /url: /about
                     - text: Visual Editing
-                - listitem [ref=e120]:
-                  - link "Global Settings" [ref=e121] [cursor=pointer]:
+                - listitem [ref=e50]:
+                  - link "Global Settings" [ref=e51] [cursor=pointer]:
                     - /url: /about
                     - text: Global Settings
-                - listitem [ref=e122]:
-                  - link "Form Builder" [ref=e123] [cursor=pointer]:
+                - listitem [ref=e52]:
+                  - link "Form Builder" [ref=e53] [cursor=pointer]:
                     - /url: /about
                     - text: Form Builder
-                - listitem [ref=e124]:
-                  - link "SEO Ready" [ref=e125] [cursor=pointer]:
+                - listitem [ref=e54]:
+                  - link "SEO Ready" [ref=e55] [cursor=pointer]:
                     - /url: /about
                     - text: SEO Ready
-                - listitem [ref=e126]:
-                  - link "+ More" [ref=e127] [cursor=pointer]:
+                - listitem [ref=e56]:
+                  - link "+ More" [ref=e57] [cursor=pointer]:
                     - /url: /about
                     - text: + More
-            - listitem [ref=e128]:
-              - heading "Explore" [level=2] [ref=e129]: Explore
-              - list [ref=e133]:
-                - listitem [ref=e134]:
-                  - link "Services" [ref=e135] [cursor=pointer]:
+            - listitem [ref=e58]:
+              - heading "Explore" [level=2] [ref=e59]: Explore
+              - list [ref=e63]:
+                - listitem [ref=e64]:
+                  - link "Services" [ref=e65] [cursor=pointer]:
                     - /url: /services
                     - text: Services
-                - listitem [ref=e136]:
-                  - link "Projects" [ref=e137] [cursor=pointer]:
+                - listitem [ref=e66]:
+                  - link "Projects" [ref=e67] [cursor=pointer]:
                     - /url: /about
                     - text: Projects
-                - listitem [ref=e138]:
-                  - link "Acknowledgements" [ref=e139] [cursor=pointer]:
+                - listitem [ref=e68]:
+                  - link "Acknowledgements" [ref=e69] [cursor=pointer]:
                     - /url: /acknowledgements
                     - text: Acknowledgements
-            - listitem [ref=e140]:
-              - heading "Company" [level=2] [ref=e141]: Company
-              - list [ref=e145]:
-                - listitem [ref=e146]:
-                  - link "About" [ref=e147] [cursor=pointer]:
+            - listitem [ref=e70]:
+              - heading "Company" [level=2] [ref=e71]: Company
+              - list [ref=e75]:
+                - listitem [ref=e76]:
+                  - link "About" [ref=e77] [cursor=pointer]:
                     - /url: /about
                     - text: About
-                - listitem [ref=e148]:
-                  - link "Contact" [ref=e149] [cursor=pointer]:
+                - listitem [ref=e78]:
+                  - link "Contact" [ref=e79] [cursor=pointer]:
                     - /url: /contact
                     - text: Contact
-                - listitem [ref=e150]:
-                  - link "Blog" [ref=e151] [cursor=pointer]:
+                - listitem [ref=e80]:
+                  - link "Blog" [ref=e81] [cursor=pointer]:
                     - /url: /blog
                     - text: Blog
-            - listitem [ref=e152]:
-              - heading "Socials" [level=2] [ref=e153]: Socials
-              - list [ref=e157]:
-                - listitem [ref=e158]:
-                  - link "LinkedIn" [ref=e159] [cursor=pointer]:
+            - listitem [ref=e82]:
+              - heading "Socials" [level=2] [ref=e83]: Socials
+              - list [ref=e87]:
+                - listitem [ref=e88]:
+                  - link "LinkedIn" [ref=e89] [cursor=pointer]:
                     - /url: https://linkedin.com
-                    - generic [ref=e160]: LinkedIn
-                    - img [ref=e161]
-                - listitem [ref=e165]:
-                  - link "X (Twitter)" [ref=e166] [cursor=pointer]:
+                    - generic [ref=e90]: LinkedIn
+                    - img [ref=e91]
+                - listitem [ref=e95]:
+                  - link "X (Twitter)" [ref=e96] [cursor=pointer]:
                     - /url: https://x.com
-                    - generic [ref=e167]: X (Twitter)
-                    - img [ref=e168]
-        - generic [ref=e172]:
-          - generic [ref=e173]:
-            - text: masterthepixel © 2026 - Design + Code by
-            - link "James Rea." [ref=e174] [cursor=pointer]:
-              - /url: https://jamesrea.co
-              - text: James Rea.
-          - list [ref=e175]:
-            - listitem [ref=e176]:
-              - link "Terms of Use" [ref=e177] [cursor=pointer]:
+                    - generic [ref=e97]: X (Twitter)
+                    - img [ref=e98]
+        - generic [ref=e102]:
+          - generic [ref=e103]: masterthepixel © 2026
+          - list [ref=e104]:
+            - listitem [ref=e105]:
+              - link "Terms of Use" [ref=e106] [cursor=pointer]:
                 - /url: /terms-of-use
                 - text: Terms of Use
-            - listitem [ref=e178]:
-              - link "Acknowledgements" [ref=e179] [cursor=pointer]:
-                - /url: /acknowledgements
-                - text: Acknowledgements
+            - listitem [ref=e107]:
+              - link "Credits" [ref=e108] [cursor=pointer]:
+                - /url: /credits
+                - text: Credits
               - text: /
-            - listitem [ref=e180]:
-              - link "Privacy Policy" [ref=e181] [cursor=pointer]:
+            - listitem [ref=e109]:
+              - link "Privacy Policy" [ref=e110] [cursor=pointer]:
                 - /url: /privacy-policy
                 - text: Privacy Policy
-  - button "Open Next.js Dev Tools" [ref=e190] [cursor=pointer]:
-    - img [ref=e191]
-  - alert [ref=e194]
+  - alert [ref=e114]
 ```

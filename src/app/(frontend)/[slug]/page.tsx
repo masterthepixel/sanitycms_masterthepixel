@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import { getPageBySlug } from '@/lib/content';
 import { mdxComponents } from '@/components/MDXRenderer';
 import MDXClientRenderer from '@/components/mdx/MDXClientRenderer';
+import { PageBuilder } from '@/components/page-builder';
+import { normalizePageBuilder } from '@/lib/utils';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -38,6 +40,21 @@ export default async function Page({ params }: PageProps) {
 
   try {
     const page = await getPageBySlug(slug);
+
+    // If page has no MDX content but has pageBuilder blocks, render those instead
+    if ((!page.content || page.content.length === 0) && page.pageBuilder && page.pageBuilder.length > 0) {
+      return (
+        <div>
+          <PageBuilder 
+            pageBuilder={normalizePageBuilder(page.pageBuilder)} 
+            id={page._id || slug} 
+            type={page._type || 'page'} 
+          />
+        </div>
+      );
+    }
+
+    // Otherwise render MDX content
     return (
       <div>
         <MDXClientRenderer 
