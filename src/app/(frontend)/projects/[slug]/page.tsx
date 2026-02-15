@@ -12,6 +12,8 @@ import projectsData from '../../../../../content/projects.json';
 import { getPageBySlug } from '@/lib/content';
 import { mdxComponents } from '@/components/MDXRenderer';
 import MDXClientRenderer from '@/components/mdx/MDXClientRenderer';
+import { PageBuilder } from '@/components/page-builder';
+import { normalizePageBuilder } from '@/lib/utils';
 
 export async function generateStaticParams() {
   const items = projectsData ?? [];
@@ -79,36 +81,78 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     );
   }
 
-  // If MDX page exists, render metadata + MDX renderer (PageBuilder will render blocks inside the MDX)
-  return (
-    <Container className="py-16">
-      <div className="max-w-4xl mx-auto">
-        <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            {page.client && (
-              page.clientUrl ? (
-                <a href={page.clientUrl} target="_blank" rel="noopener noreferrer" className="font-medium underline">
-                  {page.client}
-                </a>
-              ) : (
-                <span className="font-medium">{page.client}</span>
-              )
-            )}
-            {page.year && (
-              <span className="px-2 py-1 rounded bg-gray-100 text-xs">{page.year}</span>
+  // Check if MDX page has actual markdown content or is component-based
+  const hasMarkdownContent = page.content && page.content.trim().length > 0 && !page.content.trim().startsWith('import');
+
+  // If page has pageBuilder blocks in frontmatter, render those instead of MDX
+  if (page.pageBuilder && page.pageBuilder.length > 0 && !hasMarkdownContent) {
+    return (
+      <Container className="py-16">
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+              {page.client && (
+                page.clientUrl ? (
+                  <a href={page.clientUrl} target="_blank" rel="noopener noreferrer" className="font-medium underline">
+                    {page.client}
+                  </a>
+                ) : (
+                  <span className="font-medium">{page.client}</span>
+                )
+              )}
+              {page.year && (
+                <span className="px-2 py-1 rounded bg-gray-100 text-xs">{page.year}</span>
+              )}
+            </div>
+            {page.tags?.length > 0 && (
+              <div className="flex items-center gap-2 flex-wrap">
+                {page.tags.map((t: string) => (
+                  <span key={t} className="text-xs bg-gray-100 px-3 py-1 rounded-full">{t}</span>
+                ))}
+              </div>
             )}
           </div>
-          {page.tags?.length > 0 && (
-            <div className="flex items-center gap-2 flex-wrap">
-              {page.tags.map((t: string) => (
-                <span key={t} className="text-xs bg-gray-100 px-3 py-1 rounded-full">{t}</span>
-              ))}
-            </div>
-          )}
-        </div>
 
-        <MDXClientRenderer content={page.content} components={mdxComponents} frontmatter={page} />
-      </div>
-    </Container>
-  );
+          <PageBuilder pageBuilder={normalizePageBuilder(page.pageBuilder)} id={page._id || slug} type={page._type || 'page'} />
+        </div>
+      </Container>
+    );
+  }
+
+  // If MDX page has actual markdown content, render via MDXClientRenderer
+  if (hasMarkdownContent) {
+    return (
+      <Container className="py-16">
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+              {page.client && (
+                page.clientUrl ? (
+                  <a href={page.clientUrl} target="_blank" rel="noopener noreferrer" className="font-medium underline">
+                    {page.client}
+                  </a>
+                ) : (
+                  <span className="font-medium">{page.client}</span>
+                )
+              )}
+              {page.year && (
+                <span className="px-2 py-1 rounded bg-gray-100 text-xs">{page.year}</span>
+              )}
+            </div>
+            {page.tags?.length > 0 && (
+              <div className="flex items-center gap-2 flex-wrap">
+                {page.tags.map((t: string) => (
+                  <span key={t} className="text-xs bg-gray-100 px-3 py-1 rounded-full">{t}</span>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <MDXClientRenderer content={page.content} components={mdxComponents} frontmatter={page} />
+        </div>
+      </Container>
+    );
+  }
+
+  notFound();
 }

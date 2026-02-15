@@ -111,9 +111,26 @@ export async function getPageBySlug(slug: string): Promise<Page> {
     console.log('[getPageBySlug] nestedMdxPath:', nestedMdxPath);
     const fileContents = fs.readFileSync(nestedMdxPath, 'utf8');
     const { data, content } = matter(fileContents);
+    
+    // For project pages: extract pageBuilder array from the JSX content if present
+    let pageBuilder: any[] = [];
+    if (content && content.includes('<PageBuilder pageBuilder=')) {
+      try {
+        const match = content.match(/<PageBuilder\s+pageBuilder=\{(\[[\s\S]*?\])\}\s*\/>/);
+        if (match && match[1]) {
+          // Note: This is a simplified extraction. JSON.parse should work for valid JS objects as JSON
+          const jsonStr = match[1];
+          pageBuilder = eval('(' + jsonStr + ')'); // Using eval since it's valid JavaScript
+        }
+      } catch (e) {
+        console.warn('[getPageBySlug] Failed to extract pageBuilder from project page:', slug, e);
+      }
+    }
+    
     return {
       ...data as PageFrontmatter,
-      content,
+      content: '', // Clear content for project pages that use PageBuilder
+      pageBuilder,
     };
   }
 
