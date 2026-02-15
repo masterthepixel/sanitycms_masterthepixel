@@ -12,23 +12,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Credits page (renamed from Acknowledgements) with improved structure
 - masterthepixel logo SVG for branding
 - Logo + text branding combination in navbar
-
-### Changed
-- **Legal pages refactoring**: Converted privacy-policy, terms-of-use, and acknowledgements from MDX format to simple JSON files for easier maintenance
-- **Page renaming**: Acknowledgements page renamed to "Credits" with updated navigation links
-- **Branding updates**: Replaced Tailwind CSS logo with masterthepixel logo in homepage featured tech section
-- **Navbar logo**: Reduced logo size by 75%, added text branding next to logo with matching menu text size
-- **Site configuration**: Updated siteLogo URL to use masterthepixel_logo.svg
-- **MDXClientRenderer**: Removed unnecessary `parseFrontmatter` option from serialize configuration
-- **Footer**: Updated Credits link in footer legal menu items to reference new `/credits` route
-
-### Fixed
-- Legal page content styling issues by simplifying rendering approach
-- MDX parsing issues with inline JSX by switching to native markdown syntax
-- Navbar logo size consistency with previous design specifications
-- Navigation menu references from "Acknowledgements" to "Credits" throughout the site
-
-### Added
 - Dark mode implementation story and comprehensive documentation
 - Design system documentation with component patterns and guidelines
 - SEO audit report with findings and prioritized action plan
@@ -39,11 +22,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Playwright E2E assertion to validate latest posts render on the homepage
 
 ### Changed
+- **Legal pages refactoring**: Converted privacy-policy, terms-of-use, and acknowledgements from MDX format to simple JSON files for easier maintenance
+- **Page renaming**: Acknowledgements page renamed to "Credits" with updated navigation links
+- **Branding updates**: Replaced Tailwind CSS logo with masterthepixel logo in homepage featured tech section
+- **Navbar logo**: Reduced logo size by 75%, added text branding next to logo with matching menu text size
+- **Site configuration**: Updated siteLogo URL to use masterthepixel_logo.svg
+- **MDXClientRenderer**: Removed unnecessary `parseFrontmatter` option from serialize configuration
+- **Footer**: Updated Credits link in footer legal menu items to reference new `/credits` route
 - Replaced the homepage Freeform area with `LatestPosts` (homepage now shows dynamic/latest blog entries)
 - Homepage server now injects latest posts (top 3, non-draft) into MDX frontmatter at render-time
 - Restored original page-builder block ordering and improved MDX ↔ page-builder parity
 
 ### Fixed
+- Legal page content styling issues by simplifying rendering approach
+- MDX parsing issues with inline JSX by switching to native markdown syntax
+- Navbar logo size consistency with previous design specifications
+- Navigation menu references from "Acknowledgements" to "Credits" throughout the site
+- Removed missing `/acknowledgements` route from build process (consolidated with `/credits`)
 - Resolved MDX runtime ReferenceError by moving page-builder block objects into YAML frontmatter (client MDX no longer references inline JS objects)
 - Fixed MDX serialization/component injection edge-cases so page-builder blocks receive their frontmatter reliably
 - Updated E2E test to avoid flaky selectors when asserting LatestPosts

@@ -1,11 +1,16 @@
 {
-  "/(frontend)/[slug]/page": "app/(frontend)/[slug]/page.js",
-  "/(frontend)/acknowledgements/page": "app/(frontend)/acknowledgements/page.js",
-  "/(frontend)/blog/[slug]/page": "app/(frontend)/blog/[slug]/page.js",
-  "/(frontend)/blog/page": "app/(frontend)/blog/page.js",
-  "/(frontend)/page": "app/(frontend)/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/dev/page": "app/dev/page.js",
+  "/(frontend)/credits/page": "app/(frontend)/credits/page.js",
   "/(frontend)/privacy-policy/page": "app/(frontend)/privacy-policy/page.js",
-  "/(frontend)/services/[slug]/page": "app/(frontend)/services/[slug]/page.js",
+  "/(frontend)/page": "app/(frontend)/page.js",
   "/(frontend)/services/page": "app/(frontend)/services/page.js",
-  "/(frontend)/terms-of-use/page": "app/(frontend)/terms-of-use/page.js"
+  "/(frontend)/terms-of-use/page": "app/(frontend)/terms-of-use/page.js",
+  "/(frontend)/[slug]/page": "app/(frontend)/[slug]/page.js",
+  "/(frontend)/services/[slug]/page": "app/(frontend)/services/[slug]/page.js",
+  "/(frontend)/blog/page": "app/(frontend)/blog/page.js",
+  "/(frontend)/projects/page": "app/(frontend)/projects/page.js",
+  "/(frontend)/blog/[slug]/page": "app/(frontend)/blog/[slug]/page.js",
+  "/(frontend)/projects/[slug]/page": "app/(frontend)/projects/[slug]/page.js",
+  "/(frontend)/blog/category/[slug]/page": "app/(frontend)/blog/category/[slug]/page.js"
 }
