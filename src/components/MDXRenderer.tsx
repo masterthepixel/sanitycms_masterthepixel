@@ -31,10 +31,19 @@ export const mdxComponents = {
       {children}
     </div>
   ),
-  // Common HTML elements styling
-  h1: ({ children }: any) => <h1 className="text-4xl font-bold mb-6">{children}</h1>,
-  h2: ({ children }: any) => <h2 className="text-3xl font-semibold mb-4">{children}</h2>,
-  h3: ({ children }: any) => <h3 className="text-2xl font-medium mb-3">{children}</h3>,
+  // Common HTML elements styling (include id on headings for TOC links)
+  h1: ({ children }: any) => {
+    const id = String(children).toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
+    return <h1 id={id} className="text-4xl font-bold mb-6">{children}</h1>
+  },
+  h2: ({ children }: any) => {
+    const id = String(children).toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
+    return <h2 id={id} className="text-3xl font-semibold mb-4">{children}</h2>
+  },
+  h3: ({ children }: any) => {
+    const id = String(children).toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
+    return <h3 id={id} className="text-2xl font-medium mb-3">{children}</h3>
+  },
   p: ({ children }: any) => <p className="mb-4">{children}</p>,
 }
 

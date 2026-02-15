@@ -53,6 +53,26 @@ export default function PostContent({ post }: PostContentProps) {
   });
   const siteCategories = Object.values(siteCategoryMap);
 
+  // build table of contents from MDX source headings (h2-h4)
+  const tableOfContents = React.useMemo(() => {
+    const items: Array<{ id: string; text: string; level: number }> = [];
+    if (!content) return items;
+    const regex = /^(#{2,4})\s+(.*)$/gm;
+    let m;
+    const seen = new Set<string>();
+    while ((m = regex.exec(content)) !== null) {
+      const level = m[1].length;
+      const text = m[2].trim();
+      const id = String(text).toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
+      const key = `${level}:${id}`;
+      if (!seen.has(key)) {
+        seen.add(key);
+        items.push({ id, text, level });
+      }
+    }
+    return items;
+  }, [content]);
+
   return (
     <div className='order-0 grid grid-cols-12 gap-y-10 xl:gap-20'>
       <aside className='col-span-12 xl:col-span-2 xl:sticky xl:top-28 h-fit -translate-x-1 md:-translate-x-0'>
@@ -72,6 +92,19 @@ export default function PostContent({ post }: PostContentProps) {
           {title}
         </Heading>
         <aside className='xl:hidden mt-8 order-1 xl:order-2 col-span-12 xl:col-span-3 xl:sticky xl:top-28 h-fit space-y-5'>
+          {tableOfContents.length > 0 && (
+            <div className='p-4 rounded-lg border border-dashed'>
+              <div className='font-semibold mb-2'>Table of contents</div>
+              <ul className='space-y-2 text-sm'>
+                {tableOfContents.map((it) => (
+                  <li key={it.id} className={`pl-${(it.level - 1) * 2}`}>
+                    <a href={`#${it.id}`} className='text-gray-700 hover:underline'>{it.text}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           {siteCategories.length > 0 && (
             <PostCategories categories={siteCategories} />
           )}
@@ -85,6 +118,19 @@ export default function PostContent({ post }: PostContentProps) {
         </div>
       </div>
       <aside className='hidden xl:block order-1 xl:order-2 col-span-12 xl:col-span-3 xl:sticky xl:top-28 h-fit space-y-5'>
+        {tableOfContents.length > 0 && (
+          <div className='p-4 rounded-lg border border-dashed'>
+            <div className='font-semibold mb-2'>Table of contents</div>
+            <ul className='space-y-2 text-sm'>
+              {tableOfContents.map((it) => (
+                <li key={it.id} className={`pl-${(it.level - 1) * 2}`}>
+                  <a href={`#${it.id}`} className='text-gray-700 hover:underline'>{it.text}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         {siteCategories.length > 0 && (
           <PostCategories categories={siteCategories} />
         )}
