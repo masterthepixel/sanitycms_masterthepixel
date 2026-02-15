@@ -74,7 +74,7 @@ export default function FreeformBlock(props: FreeformBlockProps) {
                       {renderContent(item?.richTextContent)}
                     </div>
                   )}
-                  {(item?._type === 'singleImageObject' && item?.image?.asset?.url) && (
+                  {(item?._type === 'singleImageObject' && (item?.image?.asset?.url || item?.image?.url)) && (
                     <div className='p-3 border border-dashed rounded-3xl pattern-bg--2'>
                       <Image
                         src={item?.image?.asset?.url || item?.image?.url || '/assets/placeholder-cover.jpg'}
