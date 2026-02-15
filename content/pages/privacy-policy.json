@@ -1,0 +1,46 @@
+{
+  "title": "Privacy Policy",
+  "slug": "privacy-policy",
+  "seo": {
+    "title": "Privacy Policy",
+    "description": "Learn how we collect, use, and protect your personal information"
+  },
+  "sections": [
+    {
+      "heading": "Privacy Policy",
+      "type": "intro",
+      "content": "This Privacy Policy describes how we collect, use, and disclose your personal information when you use the masterthepixel sample site."
+    },
+    {
+      "heading": "Information We Collect",
+      "type": "section",
+      "content": "We may collect information you provide directly, such as contact form submissions, and automatically via cookies and analytics."
+    },
+    {
+      "heading": "Use of Information",
+      "type": "section",
+      "content": "We use the information to operate and improve our services, respond to inquiries, and for analytics."
+    },
+    {
+      "heading": "Third-Party Services",
+      "type": "section",
+      "content": "We may use third-party services (e.g., analytics, hosting) that process data on our behalf."
+    },
+    {
+      "heading": "Contact",
+      "type": "section",
+      "content": "If you have questions about this policy, contact: privacy@masterthepixel.io"
+    }
+  ],
+  "cta": {
+    "heading": "Questions?",
+    "content": "Have questions about our privacy practices? Get in touch.",
+    "buttons": [
+      {
+        "text": "Contact Us",
+        "href": "/contact",
+        "variant": "primary"
+      }
+    ]
+  }
+}

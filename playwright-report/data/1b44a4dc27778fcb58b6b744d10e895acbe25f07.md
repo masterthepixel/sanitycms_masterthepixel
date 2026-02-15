@@ -1,0 +1,319 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - button "Go to home page" [ref=e5] [cursor=pointer]:
+          - img "masterthepixel Logo" [ref=e6]
+        - generic [ref=e7]:
+          - navigation "Main" [ref=e8]:
+            - list [ref=e10]:
+              - listitem [ref=e11]:
+                - button "About" [ref=e12] [cursor=pointer]:
+                  - text: About
+                  - img [ref=e13]
+              - listitem [ref=e15]:
+                - button "Services" [ref=e16] [cursor=pointer]:
+                  - text: Services
+                  - img [ref=e17]
+              - listitem [ref=e19]:
+                - link "Projects Projects" [ref=e20] [cursor=pointer]:
+                  - /url: /projects
+                  - generic [ref=e21]:
+                    - generic [ref=e22]: Projects
+                    - generic [ref=e23]: Projects
+              - listitem [ref=e24]:
+                - link "Blog Blog" [ref=e25] [cursor=pointer]:
+                  - /url: /blog
+                  - generic [ref=e26]:
+                    - generic [ref=e27]: Blog
+                    - generic [ref=e28]: Blog
+              - listitem [ref=e29]:
+                - link "Get Started" [ref=e30] [cursor=pointer]:
+                  - /url: /contact
+          - button "Open menu" [ref=e31] [cursor=pointer]:
+            - img [ref=e32]
+    - main [ref=e33]:
+      - generic [ref=e34]:
+        - generic [ref=e36]:
+          - generic [ref=e38]:
+            - heading "The Open Source Marketing Website." [level=1] [ref=e40]
+            - generic [ref=e41]:
+              - generic [ref=e42]: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lectus non metus gravida malesuada. Phasellus vulputate nec nisi sed elementum.
+              - generic [ref=e44]:
+                - link "Learn More" [ref=e45] [cursor=pointer]:
+                  - /url: "#features"
+                  - text: Learn More
+                  - img [ref=e46]
+                - link "Star on GitHub" [ref=e48] [cursor=pointer]:
+                  - /url: https://github.com/jamesreaco
+                  - text: Star on GitHub
+                  - img [ref=e49]
+          - generic [ref=e52]:
+            - img "Product Demo" [ref=e53]
+            - button "Play video" [ref=e57] [cursor=pointer]:
+              - generic [ref=e60]: Play Video
+        - generic [ref=e62]: "LogoBlock component: block data not provided"
+        - generic [ref=e64]:
+          - generic [ref=e65]:
+            - heading "All the features you need" [level=2] [ref=e66]
+            - link "Get Started" [ref=e68] [cursor=pointer]:
+              - /url: https://github.com/jamesreaco
+              - text: Get Started
+              - img [ref=e69]
+          - generic [ref=e74]:
+            - generic [ref=e76]:
+              - img "Magna Aliqua" [ref=e78]
+              - generic [ref=e80]:
+                - heading "Magna Aliqua" [level=3] [ref=e81]
+                - paragraph [ref=e82]: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lectus non metus.
+              - generic [ref=e83]:
+                - generic [ref=e84]:
+                  - img [ref=e85]
+                  - generic [ref=e88]: Excepteur nisi proident sunt aliquip ipsum dolore.
+                - generic [ref=e89]:
+                  - img [ref=e90]
+                  - generic [ref=e93]: Veniam exercitation dolor magna laboris ut officia.
+                - generic [ref=e94]:
+                  - img [ref=e95]
+                  - generic [ref=e98]: Nulla pariatur sint labore adipisicing consectetur.
+              - link "Get Started" [ref=e100] [cursor=pointer]:
+                - /url: https://github.com/jamesreaco
+                - text: Get Started
+                - img [ref=e101]
+            - generic [ref=e104]:
+              - img "Nulla Pariatur" [ref=e106]
+              - generic [ref=e108]:
+                - heading "Nulla Pariatur" [level=3] [ref=e109]
+                - paragraph [ref=e110]: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lectus non metus.
+              - generic [ref=e111]:
+                - generic [ref=e112]:
+                  - img [ref=e113]
+                  - generic [ref=e116]: Minim voluptate dolore aliqua fugiat duis proident.
+                - generic [ref=e117]:
+                  - img [ref=e118]
+                  - generic [ref=e121]: Irure dolor magna aliqua nisi excepteur adipisicing.
+                - generic [ref=e122]:
+                  - img [ref=e123]
+                  - generic [ref=e126]: Cillum dolore fugiat nulla pariatur sint occaecat.
+              - link "Get Started" [ref=e128] [cursor=pointer]:
+                - /url: https://github.com/jamesreaco
+                - text: Get Started
+                - img [ref=e129]
+            - generic [ref=e131]:
+              - generic [ref=e132]:
+                - generic [ref=e133]: Want to take masterthepixel for a spin?
+                - generic [ref=e134]: Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.
+              - generic [ref=e136]:
+                - link "Learn More" [ref=e137] [cursor=pointer]:
+                  - /url: /
+                  - text: Learn More
+                  - img [ref=e138]
+                - link "Star on GitHub" [ref=e140] [cursor=pointer]:
+                  - /url: https://github.com/jamesreaco
+                  - text: Star on GitHub
+                  - img [ref=e141]
+        - generic [ref=e145]:
+          - generic [ref=e146]:
+            - generic [ref=e147]:
+              - heading "Build your marketing website with masterthepixel" [level=2] [ref=e148]: Build your marketing website with masterthepixel
+              - generic [ref=e152]: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lectus non metus.
+            - link "Get Started" [ref=e154] [cursor=pointer]:
+              - /url: /
+              - text: Get Started
+              - img [ref=e155]
+          - generic [ref=e158]:
+            - generic [ref=e159]:
+              - img [ref=e160]
+              - generic [ref=e162]: Consectetur adipiscing sed
+            - generic [ref=e163]:
+              - img [ref=e164]
+              - generic [ref=e166]: Tempor incididunt labore ut
+            - generic [ref=e167]:
+              - img [ref=e168]
+              - generic [ref=e170]: Magna aliqua enim ad minim
+            - generic [ref=e171]:
+              - img [ref=e172]
+              - generic [ref=e174]: Nostrud exercitation labor
+            - generic [ref=e175]:
+              - img [ref=e176]
+              - generic [ref=e178]: Ullamco nisi aliquip ex ea
+            - generic [ref=e179]:
+              - img [ref=e180]
+              - generic [ref=e182]: Duis aute irure dolor est
+            - generic [ref=e183]:
+              - img [ref=e184]
+              - generic [ref=e186]: Velit esse cillum magna ut
+            - generic [ref=e187]:
+              - img [ref=e188]
+              - generic [ref=e190]: Pariatur excepteur sint in
+            - generic [ref=e191]:
+              - img [ref=e192]
+              - generic [ref=e194]: Occaecat cupidatat non es
+            - generic [ref=e195]:
+              - img [ref=e196]
+              - generic [ref=e198]: Excepteur occaecat elit ut
+        - generic [ref=e200]:
+          - img "Lorem Ipsum Dolor Amit" [ref=e202]
+          - button "Play video" [ref=e206] [cursor=pointer]:
+            - generic [ref=e209]: Play Video
+        - generic [ref=e212]:
+          - generic [ref=e213]:
+            - generic [ref=e214]: Testimonials
+            - heading "Our Happy Customers" [level=2] [ref=e215]
+          - region [ref=e216]:
+            - generic [ref=e218]:
+              - group [ref=e219]:
+                - generic [ref=e220]:
+                  - heading [level=2]
+                  - generic [ref=e221]:
+                    - generic [ref=e222]:
+                      - generic:
+                        - heading [level=3]
+                        - paragraph
+                    - img "undefined Logo" [ref=e224]
+              - group [ref=e225]:
+                - generic [ref=e226]:
+                  - heading [level=2]
+                  - generic [ref=e227]:
+                    - generic [ref=e228]:
+                      - generic:
+                        - heading [level=3]
+                        - paragraph
+                    - img "undefined Logo" [ref=e230]
+              - group [ref=e231]:
+                - generic [ref=e232]:
+                  - heading [level=2]
+                  - generic [ref=e233]:
+                    - generic [ref=e234]:
+                      - generic:
+                        - heading [level=3]
+                        - paragraph
+                    - img "undefined Logo" [ref=e236]
+            - button "Previous slide" [disabled] [ref=e237]:
+              - img [ref=e238]
+              - generic [ref=e240]: Previous slide
+            - button "Next slide" [ref=e241] [cursor=pointer]:
+              - img [ref=e242]
+              - generic [ref=e244]: Next slide
+        - generic [ref=e245]: No recent posts available.
+        - generic [ref=e248]:
+          - generic [ref=e249]:
+            - heading [level=2]
+            - generic [ref=e250]: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lectus non metus gravida malesuada. Phasellus vulputate nec nisi sed elementum dolor sit.
+          - generic [ref=e252]:
+            - link "Learn More" [ref=e253] [cursor=pointer]:
+              - /url: /
+              - text: Learn More
+              - img [ref=e254]
+            - link "Star on GitHub" [ref=e256] [cursor=pointer]:
+              - /url: https://github.com/jamesreaco
+              - text: Star on GitHub
+              - img [ref=e257]
+    - contentinfo [ref=e259]:
+      - generic [ref=e260]:
+        - generic [ref=e261]:
+          - button "Go to home page" [ref=e263] [cursor=pointer]:
+            - img "masterthepixel Logo" [ref=e264]
+          - list [ref=e265]:
+            - listitem [ref=e266]:
+              - heading "Features" [level=2] [ref=e267]: Features
+              - list [ref=e271]:
+                - listitem [ref=e272]:
+                  - link "Visual Editing" [ref=e273] [cursor=pointer]:
+                    - /url: /about
+                    - text: Visual Editing
+                - listitem [ref=e274]:
+                  - link "Global Settings" [ref=e275] [cursor=pointer]:
+                    - /url: /about
+                    - text: Global Settings
+                - listitem [ref=e276]:
+                  - link "Form Builder" [ref=e277] [cursor=pointer]:
+                    - /url: /about
+                    - text: Form Builder
+                - listitem [ref=e278]:
+                  - link "SEO Ready" [ref=e279] [cursor=pointer]:
+                    - /url: /about
+                    - text: SEO Ready
+                - listitem [ref=e280]:
+                  - link "+ More" [ref=e281] [cursor=pointer]:
+                    - /url: /about
+                    - text: + More
+            - listitem [ref=e282]:
+              - heading "Explore" [level=2] [ref=e283]: Explore
+              - list [ref=e287]:
+                - listitem [ref=e288]:
+                  - link "Services" [ref=e289] [cursor=pointer]:
+                    - /url: /services
+                    - text: Services
+                - listitem [ref=e290]:
+                  - link "Projects" [ref=e291] [cursor=pointer]:
+                    - /url: /about
+                    - text: Projects
+                - listitem [ref=e292]:
+                  - link "Acknowledgements" [ref=e293] [cursor=pointer]:
+                    - /url: /acknowledgements
+                    - text: Acknowledgements
+            - listitem [ref=e294]:
+              - heading "Company" [level=2] [ref=e295]: Company
+              - list [ref=e299]:
+                - listitem [ref=e300]:
+                  - link "About" [ref=e301] [cursor=pointer]:
+                    - /url: /about
+                    - text: About
+                - listitem [ref=e302]:
+                  - link "Contact" [ref=e303] [cursor=pointer]:
+                    - /url: /contact
+                    - text: Contact
+                - listitem [ref=e304]:
+                  - link "Blog" [ref=e305] [cursor=pointer]:
+                    - /url: /blog
+                    - text: Blog
+            - listitem [ref=e306]:
+              - heading "Socials" [level=2] [ref=e307]: Socials
+              - list [ref=e311]:
+                - listitem [ref=e312]:
+                  - link "LinkedIn" [ref=e313] [cursor=pointer]:
+                    - /url: https://linkedin.com
+                    - generic [ref=e314]: LinkedIn
+                    - img [ref=e315]
+                - listitem [ref=e319]:
+                  - link "X (Twitter)" [ref=e320] [cursor=pointer]:
+                    - /url: https://x.com
+                    - generic [ref=e321]: X (Twitter)
+                    - img [ref=e322]
+        - generic [ref=e326]:
+          - generic [ref=e327]:
+            - text: masterthepixel © 2026 - Design + Code by
+            - link "James Rea." [ref=e328] [cursor=pointer]:
+              - /url: https://jamesrea.co
+              - text: James Rea.
+          - list [ref=e329]:
+            - listitem [ref=e330]:
+              - link "Terms of Use" [ref=e331] [cursor=pointer]:
+                - /url: /terms-of-use
+                - text: Terms of Use
+            - listitem [ref=e332]:
+              - link "Acknowledgements" [ref=e333] [cursor=pointer]:
+                - /url: /acknowledgements
+                - text: Acknowledgements
+              - text: /
+            - listitem [ref=e334]:
+              - link "Privacy Policy" [ref=e335] [cursor=pointer]:
+                - /url: /privacy-policy
+                - text: Privacy Policy
+  - generic [ref=e343] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e344]:
+      - img [ref=e345]
+    - generic [ref=e348]:
+      - button "Open issues overlay" [ref=e349]:
+        - generic [ref=e350]:
+          - generic [ref=e351]: "0"
+          - generic [ref=e352]: "1"
+        - generic [ref=e353]: Issue
+      - button "Collapse issues badge" [ref=e354]:
+        - img [ref=e355]
+  - alert [ref=e357]
+```

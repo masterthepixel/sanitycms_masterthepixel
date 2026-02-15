@@ -3,9 +3,185 @@ title: "Contact"
 slug: "contact"
 date: "2024-11-21T11:34:37Z"
 seo:
-  title: "Contact"
+  title: "Contact | masterthepixel"
   description: "Lorem ipsum dolor sit amet"
   image: null
 coverImage: "/uploads/production/contact/dab35595dfa8b8ca7dcb216115b654a3f5e71e6f-2400x1600.jpg"
+heroBlock:
+  _key: 89de7b09186b
+  _type: heroBlock
+  bottomCornerRadius: rounded
+  buttons:
+    - _key: b05065f661e7
+      _type: buttonObject
+      buttonAnchorId: contact-form
+      buttonAnchorLocation: currentPage
+      buttonPageReference:
+        _ref: 77931144-b855-47a4-981f-e914f1c787c2
+        _type: reference
+      buttonText: "Send a Message"
+      buttonType: anchor
+      buttonVariant: primary
+      buttonWidth: auto
+      showButton: true
+    - _key: b0e96819dcf4
+      _type: buttonObject
+      buttonEmailAddress: hello@jamesrea.co
+      buttonExternalUrl: mailto:hello@masterthepixel.org
+      buttonPageReference:
+        _ref: 97854198-13ae-465a-a7f0-3fbc869d9324
+        _type: reference
+      buttonText: "Send an Email"
+      buttonType: emailAddress
+      buttonVariant: outline
+      buttonWidth: auto
+      showButton: true
+  content:
+    - _key: f423c69a8119
+      _type: block
+      children:
+        - _key: b0b36f4a106f
+          _type: span
+          marks: []
+          text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lectus non metus gravida malesuada. Phasellus vulputate nec nisi sed elementum dolor sit."
+      markDefs: []
+      style: normal
+  heading: "Contact Us"
+  image:
+    _type: image
+    url: "/uploads/production/contact/dab35595dfa8b8ca7dcb216115b654a3f5e71e6f-2400x1600.jpg"
+    altText: "Lorem ipsum dolor sit amet"
+    cornerRadius: rounded
+    height: short
+  mediaType: image
 ---
+
+import { PageBuilder } from '@/components/page-builder';
+
+<PageBuilder pageBuilder={[
+  {
+    "_key": "89de7b09186b",
+    "_type": "heroBlock",
+    "bottomCornerRadius": "rounded",
+    "buttons": [
+      {
+        "_key": "b05065f661e7",
+        "_type": "buttonObject",
+        "buttonAnchorId": "contact-form",
+        "buttonAnchorLocation": "currentPage",
+        "buttonPageReference": { "_ref": "77931144-b855-47a4-981f-e914f1c787c2", "_type": "reference" },
+        "buttonText": "Send a Message",
+        "buttonType": "anchor",
+        "buttonVariant": "primary",
+        "buttonWidth": "auto",
+        "showButton": true
+      },
+      {
+        "_key": "b0e96819dcf4",
+        "_type": "buttonObject",
+        "buttonEmailAddress": "hello@jamesrea.co",
+        "buttonExternalUrl": "mailto:hello@masterthepixel.org",
+        "buttonPageReference": { "_ref": "97854198-13ae-465a-a7f0-3fbc869d9324", "_type": "reference" },
+        "buttonText": "Send an Email",
+        "buttonType": "emailAddress",
+        "buttonVariant": "outline",
+        "buttonWidth": "auto",
+        "showButton": true
+      }
+    ],
+    "content": [
+      {
+        "_key": "f423c69a8119",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "b0b36f4a106f",
+            "_type": "span",
+            "marks": [],
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lectus non metus gravida malesuada. Phasellus vulputate nec nisi sed elementum dolor sit."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "heading": "Contact Us",
+    "image": { "_type": "image", "url": "/uploads/production/contact/dab35595dfa8b8ca7dcb216115b654a3f5e71e6f-2400x1600.jpg", "altText": "Lorem ipsum dolor sit amet", "cornerRadius": "rounded", "height": "short" },
+    "mediaType": "image"
+  },
+  {
+    "_key": "902550746897",
+    "_type": "formBlock",
+    "anchorId": "contact-form",
+    "content": [
+      {
+        "_key": "aae97a7c7a0d",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "8f51291e4698",
+            "_type": "span",
+            "marks": [],
+            "text": "Complete the form and we will be in touch."
+          }
+        ],
+        "markDefs": [],
+        "style": "normal"
+      }
+    ],
+    "form": {
+      "_type": "form",
+      "_id": "ce93b127-474d-43cb-b3a8-f10fa3292224",
+      "title": "Contact Form",
+      "submitButtonText": "Submit Form",
+      "fields": [
+        { "_key": "54406da906b0", "inputType": "text", "isRequired": true, "name": "Your Name", "placeholder": "John Doe" },
+        { "_key": "34cbf3458d73", "inputType": "email", "isRequired": true, "name": "Your Email", "placeholder": "johndoe@email.com" },
+        { "_key": "638c45b9f8e0", "inputType": "textarea", "isRequired": true, "name": "Your Message", "placeholder": "How can we help?" }
+      ]
+    },
+    "heading": "Let's Chat."
+  },
+  {
+    "_key": "08d507121ba0",
+    "_type": "callToActionBlock",
+    "buttons": [
+      {
+        "_key": "fafb181ae5e0",
+        "_type": "buttonObject",
+        "buttonPageReference": { "_ref": "77931144-b855-47a4-981f-e914f1c787c2", "_type": "reference" },
+        "buttonText": "Learn More",
+        "buttonType": "internal",
+        "buttonVariant": "primary",
+        "buttonWidth": "auto",
+        "showButton": true
+      },
+      {
+        "_key": "ca9bd30f843d",
+        "_type": "buttonObject",
+        "buttonExternalUrl": "https://github.com/jamesreaco",
+        "buttonText": "Star on GitHub",
+        "buttonType": "external",
+        "buttonVariant": "outline",
+        "buttonWidth": "auto",
+        "showButton": true
+      }
+    ],
+    "content": [
+      {
+        "_key": "f76f7ca3853c",
+        "_type": "block",
+        "children": [
+          {
+            "_key": "40a212cdeb29",
+            "_type": "span",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae lectus non metus gravida malesuada. Phasellus vulputate nec nisi sed elementum dolor sit."
+          }
+        ],
+        "style": "normal"
+      }
+    ],
+    "heading": "Ready to take masterthepixel for a spin?"
+  }
+]} />
 

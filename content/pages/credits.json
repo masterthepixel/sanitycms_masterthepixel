@@ -1,0 +1,40 @@
+{
+  "title": "Credits",
+  "slug": "credits",
+  "seo": {
+    "title": "Credits",
+    "description": "Credits for technologies and tools used"
+  },
+  "sections": [
+    {
+      "heading": "Credits",
+      "type": "intro",
+      "content": "We're grateful for the amazing technologies and communities that made this project possible."
+    },
+    {
+      "heading": "Core Technologies",
+      "type": "section",
+      "content": "This project is built with Next.js, React, TypeScript, and Tailwind CSS, leveraging modern web standards and best practices."
+    },
+    {
+      "heading": "Content Management",
+      "type": "section",
+      "content": "Sanity provides a powerful headless CMS that enables flexible content modeling and real-time collaboration."
+    },
+    {
+      "heading": "Styling & UI",
+      "type": "section",
+      "content": "Tailwind CSS provides utility-first styling, and Radix UI components offer accessible primitives for building interfaces."
+    },
+    {
+      "heading": "Community & Support",
+      "type": "section",
+      "content": "The open-source community continuously improves the tools and libraries we rely on daily."
+    },
+    {
+      "heading": "Special Thanks",
+      "type": "section",
+      "content": "Special thanks to all contributors, maintainers, and the broader developer community for making this ecosystem possible."
+    }
+  ]
+}

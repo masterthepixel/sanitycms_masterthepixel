@@ -26,9 +26,10 @@ export default function MDXClientRenderer({
       const OriginalComponent = components[componentName];
       
       // Special handling for our MDX components that need block data
-      if (['Hero', 'FeatureGrid', 'Testimonial', 'FeaturesMinimal', 'MediaBlock', 'FreeformBlock', 'CallToActionBlock', 'LatestPosts'].includes(componentName) && frontmatter) {
+      if (['Hero', 'LogoBlock', 'FeatureGrid', 'Testimonial', 'FeaturesMinimal', 'MediaBlock', 'FreeformBlock', 'CallToActionBlock', 'LatestPosts'].includes(componentName) && frontmatter) {
         enhanced[componentName] = (props: any) => {
           const blockKey = componentName === 'Hero' ? 'heroBlock' :
+                          componentName === 'LogoBlock' ? 'logoBlock' :
                           componentName === 'FeatureGrid' ? 'featureGridBlock' :
                           componentName === 'Testimonial' ? 'testimonialBlock' :
                           componentName === 'FeaturesMinimal' ? 'featuresMinimalBlock' :
@@ -38,6 +39,10 @@ export default function MDXClientRenderer({
                           componentName === 'LatestPosts' ? 'latestPosts' : null;
           
           const blockData = blockKey ? frontmatter[blockKey] : null;
+          
+          if (!blockData) {
+            console.warn(`[MDXClientRenderer] No data found for ${componentName} (blockKey: ${blockKey})`);
+          }
           
           return <OriginalComponent {...props} {...(componentName === 'LatestPosts' ? { posts: blockData } : { block: blockData })} />;
         };
@@ -49,6 +54,23 @@ export default function MDXClientRenderer({
     return enhanced;
   }, [components, frontmatter]);
 
+  // Prepare scope data to pass to MDXRemote
+  const scope = useMemo(() => {
+    return {
+      ...frontmatter,
+      // Also expose individual blocks at root level if needed
+      heroBlock: frontmatter?.heroBlock,
+      logoBlock: frontmatter?.logoBlock,
+      featureGridBlock: frontmatter?.featureGridBlock,
+      testimonialBlock: frontmatter?.testimonialBlock,
+      featuresMinimalBlock: frontmatter?.featuresMinimalBlock,
+      mediaBlock: frontmatter?.mediaBlock,
+      freeformBlock: frontmatter?.freeformBlock,
+      callToActionBlock: frontmatter?.callToActionBlock,
+      latestPosts: frontmatter?.latestPosts,
+    };
+  }, [frontmatter]);
+
   useEffect(() => {
     console.debug('[MDXClientRenderer] content preview:', (content || '').slice(0,2000));
     console.debug('[MDXClientRenderer] available components:', Object.keys(components || {}));
@@ -58,7 +80,6 @@ export default function MDXClientRenderer({
       try {
         setError(null);
         const src = await serialize(content || '', {
-          parseFrontmatter: true,
           mdxOptions: {
             remarkPlugins: [],
             rehypePlugins: [],
@@ -86,5 +107,5 @@ export default function MDXClientRenderer({
 
   if (!mdxSource) return <div>Loading content…</div>;
 
-  return <MDXRemote {...mdxSource} components={enhancedComponents} />;
+  return <MDXRemote {...mdxSource} components={enhancedComponents} scope={scope} />;
 }

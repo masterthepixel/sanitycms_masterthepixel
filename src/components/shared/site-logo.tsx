@@ -33,14 +33,17 @@ export default function SiteLogo({ settings, location, theme }: {
           {siteTitle}
         </span>
       ): (
-        <Image
-          priority
-          width={140}
-          height={140}
-          src={siteLogo?.asset?.url || siteLogo?.url || '/assets/placeholder-cover.jpg'}
-          alt={`${siteTitle} Logo`}
-          className='w-[140px] h-auto object-contain'
-        />
+        <div className='flex items-center gap-2'>
+          <Image
+            priority
+            width={45}
+            height={11}
+            src={siteLogo?.asset?.url || siteLogo?.url || '/assets/placeholder-cover.jpg'}
+            alt={`${siteTitle} Logo`}
+            className='w-[45px] h-auto object-contain'
+          />
+          <span className='font-semibold'>{siteTitle}</span>
+        </div>
       )}
     </button>
   )

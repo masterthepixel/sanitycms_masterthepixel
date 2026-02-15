@@ -12,15 +12,15 @@ async function getPageData(slug: string) {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  const page = await getPageData('terms-of-use');
+  const page = await getPageData('credits');
   return {
     title: page.seo?.title,
     description: page.seo?.description,
   };
 }
 
-export default async function TermsOfUsePage() {
-  const page = await getPageData('terms-of-use');
+export default async function CreditsPage() {
+  const page = await getPageData('credits');
 
   return <LegalPageRenderer page={page} />;
 }

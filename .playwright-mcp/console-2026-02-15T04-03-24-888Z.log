@@ -1,0 +1,9 @@
+[    1171ms] [WARNING] Image with src "/uploads/production/home/4cb082608a5ce534905f2a468e1dd96b9b52d290-2560x318.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio. @ http://localhost:3000/_next/static/chunks/16630_next_dist_aaf84379._.js:968
+[    1822ms] [WARNING] Image with src "/uploads/production/home/3b6d05638ce7cef7153b329556c0f850292d9ea3-1920x1280.jpg" was detected as the Largest Contentful Paint (LCP). Please add the "priority" property if this image is above the fold.
+Read more: https://nextjs.org/docs/api-reference/next/image#priority @ http://localhost:3000/_next/static/chunks/16630_next_dist_aaf84379._.js:968
+[   13667ms] [WARNING] Detected `scroll-behavior: smooth` on the `<html>` element. In a future version, Next.js will no longer automatically disable smooth scrolling during route transitions. To prepare for this change, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior @ http://localhost:3000/_next/static/chunks/16630_next_dist_aaf84379._.js:968
+[  190106ms] [ERROR] MDX serialize failed Error: [next-mdx-remote] error compiling MDX:
+Could not parse expression with acorn
+
+More information: https://mdxjs.com/docs/troubleshooting-mdx @ http://localhost:3000/_next/static/chunks/16630_next_dist_aaf84379._.js:2359
+[  190110ms] [WARNING] Image with src "/uploads/production/home/4cb082608a5ce534905f2a468e1dd96b9b52d290-2560x318.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio. @ http://localhost:3000/_next/static/chunks/16630_next_dist_aaf84379._.js:968

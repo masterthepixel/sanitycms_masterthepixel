@@ -38,8 +38,8 @@ export default function TestimonialBlock(props: TestimonialBlockProps) {
         {testimonials && testimonials.length > 1 ? (
           <Carousel className="w-full max-w-[38rem] xl:max-w-[44rem] mx-auto">
             <CarouselContent>
-              {testimonials?.map((testimonial) => (
-                <CarouselItem key={testimonial._id}>
+              {testimonials?.map((testimonial, index) => (
+                <CarouselItem key={testimonial._id || testimonial._key || `testimonial-${index}`}>
                   <TestimonialCard testimonial={testimonial} />
                 </CarouselItem>
               ))}

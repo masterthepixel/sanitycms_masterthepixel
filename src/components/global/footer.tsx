@@ -31,15 +31,7 @@ export default function Footer({ settings, navigationSettings }: FooterProps) {
         </div>
         <div className='relative mt-10 md:mt-20 mb-8 py-6 flex flex-col md:flex-row md:items-center justify-between gap-1 md:gap-0 border-y border-dashed text-xs pattern-bg--2'>
           <div className='z-20 relative'>
-          {copyright} © {new Date().getFullYear()}  - Design + Code by
-            <a 
-              href="https://jamesrea.co" 
-              rel="noopener noreferrer" target="_blank"
-              className='relative ml-1 font-semibold tracking-tight text-blue-600 group'
-            >
-              <span>James Rea.</span> 
-              <AnimatedUnderline className='bg-blue-600'/>
-            </a>
+            {copyright} © {new Date().getFullYear()}
           </div>
           <LegalMenuItems legalMenuItems={legalMenuItems ?? []} />
           <EdgeBlur />
@@ -128,7 +120,7 @@ function LegalMenuItems({ legalMenuItems }: {
 
   const fallbacks = [
     { slug: 'terms-of-use', title: 'Terms of Use' },
-    { slug: 'acknowledgements', title: 'Acknowledgements' },
+    { slug: 'credits', title: 'Credits' },
     { slug: 'privacy-policy', title: 'Privacy Policy' },
   ].filter(f => !existingSlugs.includes(f.slug));
 
