@@ -138,9 +138,25 @@ export async function getPageBySlug(slug: string): Promise<Page> {
   if (fs.existsSync(nestedServicesMdxPath)) {
     const fileContents = fs.readFileSync(nestedServicesMdxPath, 'utf8');
     const { data, content } = matter(fileContents);
+    
+    // For service pages: extract pageBuilder array from the JSX content if present
+    let pageBuilder: any[] = [];
+    if (content && content.includes('<PageBuilder pageBuilder=')) {
+      try {
+        const match = content.match(/<PageBuilder\s+pageBuilder=\{(\[[\s\S]*?\])\}\s*\/>/);
+        if (match && match[1]) {
+          const jsonStr = match[1];
+          pageBuilder = eval('(' + jsonStr + ')');
+        }
+      } catch (e) {
+        console.warn('[getPageBySlug] Failed to extract pageBuilder from service page:', slug, e);
+      }
+    }
+    
     return {
       ...data as PageFrontmatter,
-      content,
+      content: '', // Clear content for service pages that use PageBuilder
+      pageBuilder,
     };
   }
 

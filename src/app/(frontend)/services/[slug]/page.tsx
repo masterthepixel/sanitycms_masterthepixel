@@ -34,8 +34,32 @@ export default async function ServicePage({ params }: ServicePageProps) {
   try {
     const page = await import('@/lib/content').then((m) => m.getPageBySlug(slug));
 
-    // If MDX content present, render via the client MDX renderer (serialize + MDX components)
-    if (page.content && page.content.length > 0) {
+    // Check if page has actual markdown content or is component-based
+    const hasMarkdownContent = page.content && page.content.trim().length > 0 && !page.content.trim().startsWith('import');
+
+    // If pageBuilder exists and no markdown content, render PageBuilder
+    if (page.pageBuilder && page.pageBuilder.length > 0 && !hasMarkdownContent) {
+      const { PageBuilder } = await import('@/components/page-builder');
+      const { normalizePageBuilder } = await import('@/lib/utils');
+      
+      return (
+        <Container className="py-16">
+          <div className="max-w-7xl mx-auto">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back to Services
+            </Link>
+            <PageBuilder pageBuilder={normalizePageBuilder(page.pageBuilder)} id={page._id || slug} type={page._type || 'service'} />
+          </div>
+        </Container>
+      );
+    }
+
+    // If MDX content present, render via the client MDX renderer
+    if (hasMarkdownContent) {
       const MDXClientRenderer = (await import('@/components/mdx/MDXClientRenderer')).default;
       const { mdxComponents } = await import('@/components/MDXRenderer');
       return (
@@ -54,23 +78,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
       );
     }
 
-    // If pageBuilder exists, render that
-    const { PageBuilder } = await import('@/components/page-builder');
-    return (
-      <Container className="py-16">
-        <div className="max-w-7xl mx-auto">
-          <Link
-            href="/services"
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Services
-          </Link>
-          <h1 className="text-4xl font-bold mb-4">{page.title}</h1>
-          <PageBuilder pageBuilder={page.pageBuilder || []} id={page._id || slug} type={page._type || 'service'} />
-        </div>
-      </Container>
-    );
+    notFound();
   } catch (err) {
     notFound();
   }
