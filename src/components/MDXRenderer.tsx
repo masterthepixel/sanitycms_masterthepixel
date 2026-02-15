@@ -44,6 +44,10 @@ export const mdxComponents = {
     const id = String(children).toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
     return <h3 id={id} className="text-2xl font-medium mb-3">{children}</h3>
   },
+  h4: ({ children }: any) => {
+    const id = String(children).toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
+    return <h4 id={id} className="text-xl font-medium mb-2">{children}</h4>
+  },
   p: ({ children }: any) => <p className="mb-4">{children}</p>,
 }
 

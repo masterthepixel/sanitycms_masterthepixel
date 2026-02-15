@@ -26,9 +26,11 @@ test('blog post page loads', async ({ page }) => {
   await expect(mainContent.locator('h2')).toContainText('Lorem Ipsume Dolor Simit')
   // video should render as PlayVideo trigger (not raw JSON)
   await expect(page.locator('button[aria-label="Play video"]')).toBeVisible()
-  // Table of contents should be present and link to a heading
-  // Table of contents should be present in the DOM and link to a heading
+  // Table of contents should be present and link to headings (including h4)
   await expect(page.locator('a[href="#lorem-ipsume-dolor-simit"]').first()).toHaveAttribute('href', '#lorem-ipsume-dolor-simit')
+  await expect(page.locator('a[href="#dolor-rutrum-sit-vitae-euismod"]').first()).toHaveAttribute('href', '#dolor-rutrum-sit-vitae-euismod')
+  // the target heading exists and contains the expected text
+  await expect(page.locator('#dolor-rutrum-sit-vitae-euismod')).toHaveText(/Dolor rutrum sit, vitae euismod/)
   // category pill should be visible near the top of the post
   await expect(page.locator('text=Growth')).toBeVisible()
 })
