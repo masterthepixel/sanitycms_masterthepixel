@@ -5,3 +5,4 @@ dist
 site-engine-main/
 site-engine-main.zip
 production-export-*/
+.vercel
