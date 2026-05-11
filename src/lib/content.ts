@@ -1,9 +1,11 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import type { Post, Page, PostFrontmatter, PageFrontmatter, SiteSettings } from '@/types/content'
+import type { Post, News, CaseStudy, Page, PostFrontmatter, NewsFrontmatter, CaseStudyFrontmatter, PageFrontmatter, SiteSettings } from '@/types/content'
 
 const postsDirectory = path.join(process.cwd(), 'content', 'posts')
+const newsDirectory = path.join(process.cwd(), 'content', 'news')
+const caseStudiesDirectory = path.join(process.cwd(), 'content', 'case-studies')
 const pagesDirectory = path.join(process.cwd(), 'content', 'pages')
 const siteConfigPath = path.join(process.cwd(), 'content', 'site.json')
 
@@ -24,6 +26,48 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   const { data, content } = matter(fileContents)
   return {
     ...data as PostFrontmatter,
+    content,
+  }
+}
+
+export async function getAllNews(): Promise<News[]> {
+  if (!fs.existsSync(newsDirectory)) return []
+  const fileNames = fs.readdirSync(newsDirectory).filter((f) => f.endsWith('.mdx'))
+  const news = fileNames.map((fileName) => {
+    const slug = fileName.replace(/\.mdx$/, '')
+    return getNewsBySlug(slug)
+  })
+  return Promise.all(news)
+}
+
+export async function getNewsBySlug(slug: string): Promise<News> {
+  const fullPath = path.join(newsDirectory, `${slug}.mdx`)
+  if (!fs.existsSync(fullPath)) throw new Error(`News item not found: ${slug}`)
+  const fileContents = fs.readFileSync(fullPath, 'utf8')
+  const { data, content } = matter(fileContents)
+  return {
+    ...data as NewsFrontmatter,
+    content,
+  }
+}
+
+export async function getAllCaseStudies(): Promise<CaseStudy[]> {
+  if (!fs.existsSync(caseStudiesDirectory)) return []
+  const fileNames = fs.readdirSync(caseStudiesDirectory).filter((f) => f.endsWith('.mdx'))
+  const caseStudies = fileNames.map((fileName) => {
+    const slug = fileName.replace(/\.mdx$/, '')
+    return getCaseStudyBySlug(slug)
+  })
+  return Promise.all(caseStudies)
+}
+
+export async function getCaseStudyBySlug(slug: string): Promise<CaseStudy> {
+  const fullPath = path.join(caseStudiesDirectory, `${slug}.mdx`)
+  if (!fs.existsSync(fullPath)) throw new Error(`Case study not found: ${slug}`)
+  const fileContents = fs.readFileSync(fullPath, 'utf8')
+  const { data, content } = matter(fileContents)
+  return {
+    ...data as CaseStudyFrontmatter,
     content,
   }
 }

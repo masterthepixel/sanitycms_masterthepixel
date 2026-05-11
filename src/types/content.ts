@@ -13,6 +13,35 @@ export interface PostFrontmatter {
   draft?: boolean
 }
 
+export interface NewsFrontmatter extends PostFrontmatter {
+  isPinned?: boolean
+}
+
+export interface CaseStudyFrontmatter {
+  title: string
+  slug: string
+  date: string
+  excerpt: string
+  seo: {
+    title: string
+    description: string
+    keywords?: string[]
+  }
+  coverImage: string
+  client: string
+  challenge: string
+  solution: string
+  results: string
+  metrics?: Array<{
+    label: string
+    value: string | number
+  }>
+  category: string
+  services?: string[]
+  featured?: boolean
+  draft?: boolean
+}
+
 export interface PageFrontmatter {
   title: string
   slug: string
@@ -32,6 +61,14 @@ export interface PageFrontmatter {
 }
 
 export interface Post extends PostFrontmatter {
+  content: string
+}
+
+export interface News extends NewsFrontmatter {
+  content: string
+}
+
+export interface CaseStudy extends CaseStudyFrontmatter {
   content: string
 }
 
