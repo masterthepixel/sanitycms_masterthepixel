@@ -112,7 +112,7 @@ Create `content/case-studies/<slug>.mdx` with fields including `client`, `challe
 src/
 ├── app/
 │   ├── (frontend)/     # Public-facing pages
-│   └── (backend)/      # API routes (OG images, email, draft mode)
+│   └── (backend)/      # API routes (OG images, analytics)
 ├── components/         # Shared React components
 ├── hooks/              # Custom React hooks
 ├── lib/                # Content loaders, utilities
@@ -120,22 +120,68 @@ src/
 content/                # MDX + JSON content (primary source of truth)
 docs/                   # Standards, plans, migration notes
 public/                 # Static assets and uploads
+scripts/                # Validation utilities
 tests/                  # Unit and e2e test suites
 ```
 
 ---
 
+## Content Authoring (Local MDX Workflow)
+
+This site uses a **file-based, Git-driven publishing workflow**. All content lives in the `content/` directory and is authored directly in VS Code.
+
+### Adding a blog post
+
+1. **Create file:** `content/posts/<slug>.mdx`
+
+2. **Add frontmatter** (see example below):
+
+```yaml
+---
+title: "Your Post Title"
+slug: "your-post-slug"
+date: "2024-05-18"
+excerpt: "Brief description for archives"
+coverImage: "/uploads/production/blog-your-post/image.jpg"
+seo:
+  title: "Post Title | masterthepixel"
+  description: "SEO description"
+draft: false
+---
+```
+
+3. **Add image:** Place cover image in `/public/uploads/production/blog-<slug>/`
+4. **Write content:** Use MDX below frontmatter
+5. **Preview:** `bun run dev` at `http://localhost:3000`
+6. **Deploy:** Commit to `main` → Vercel auto-deploys
+
+### Adding a news article
+
+Same as blog posts, but in `content/news/<slug>.mdx` with fields: `title`, `slug`, `date`, `excerpt`, `coverImage`, `category`.
+
+### Adding a case study
+
+Create `content/case-studies/<slug>.mdx` with:
+
+```yaml
+title, slug, date, excerpt, client, challenge, solution, results, category
+```
+
+Optional: `metrics[]`, `services[]`, `featured`.
+
+### Adding a static page
+
+Create `content/pages/<slug>.mdx` (e.g., `/pages/custom-page.mdx` → `/custom-page` route).
+
+For pages with page builder blocks (hero, feature grid, etc.), include the block data in YAML frontmatter and render MDX components (e.g., `<Hero />`).
+
+---
+
 ## Deployment
 
-The site is deployed to **Vercel** (`sanitycmsmasterthepixel` project). Push to `main` triggers a production deploy automatically.
+The site is deployed to **Vercel** (`sanitycmsmasterthepixel` project). Push to `main` triggers a production build automatically.
 
-Required environment variables:
-
-```
-NEXT_PUBLIC_SANITY_PROJECT_ID=5ywyt4ng
-NEXT_PUBLIC_SANITY_DATASET=production
-SANITY_API_READ_TOKEN=<viewer token>
-```
+**No environment variables required.** All content is local and self-contained.
 
 ---
 
