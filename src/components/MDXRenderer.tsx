@@ -7,8 +7,14 @@ import { PageBuilder } from '@/components/page-builder'
 import PlayVideo from '@/components/shared/play-video'
 
 export const mdxComponents = {
-  Image: ({ src, alt, ...props }: any) => (
-    <Image src={src} alt={alt} {...props} />
+  Image: ({ src, alt, width, height, ...props }: any) => (
+    width && height ? (
+      <Image src={src} alt={alt ?? ''} width={Number(width)} height={Number(height)} {...props} />
+    ) : (
+      <span className="block relative w-full aspect-video">
+        <Image src={src} alt={alt ?? ''} fill className="object-cover" {...props} />
+      </span>
+    )
   ),
   Hero,
   LogoBlock,

@@ -44,25 +44,23 @@ export default async function RootLayout({
   )
   
   return (
-    <html lang="en">
-      <body>
-        <ClientLayout 
-          settings={settings}
-          navigationSettings={navigationSettings}
-        >
-          {children}
-        </ClientLayout>
-        {marketingSettings?.googleAnalyticsId && (
-          <GoogleAnalytics 
-            gaId={marketingSettings.googleAnalyticsId} 
-          />
-        )}
-        {marketingSettings?.googleTagManagerId && (
-          <GoogleTagManager 
-            gtmId={marketingSettings?.googleTagManagerId} 
-          />
-        )}
-      </body>
-    </html>
+    <>
+      <ClientLayout 
+        settings={settings}
+        navigationSettings={navigationSettings}
+      >
+        {children}
+      </ClientLayout>
+      {marketingSettings?.googleAnalyticsId && (
+        <GoogleAnalytics 
+          gaId={marketingSettings.googleAnalyticsId} 
+        />
+      )}
+      {marketingSettings?.googleTagManagerId && (
+        <GoogleTagManager 
+          gtmId={marketingSettings?.googleTagManagerId} 
+        />
+      )}
+    </>
   );
 }

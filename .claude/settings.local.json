@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm run *)",
+      "Bash(git checkout *)",
+      "Bash(npx tsc *)",
+      "Bash(xargs cat)",
+      "Bash(xargs rm -f)",
+      "Bash(git add *)",
+      "Bash(git restore *)",
+      "Bash(git commit -m ' *)",
+      "Bash(bun run *)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(curl -s http://localhost:3000/projects)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(curl -s http://localhost:3000/projects/category/energy-and-utilities)",
+      "Bash(curl -s http://localhost:3000/projects/category/telecommunications)",
+      "Bash(curl -s http://localhost:3000/projects/category/engineering)",
+      "Bash(git commit -m 'fix: implement project category filtering route *)",
+      "Bash(git merge *)",
+      "Bash(git push *)",
+      "Bash(git commit -m 'docs: comprehensive documentation for file-based architecture *)",
+      "Bash(pnpm install *)",
+      "Bash(git commit -m 'chore: upgrade Next.js to 15.5.9 \\(latest stable\\) *)",
+      "Bash(pnpm add *)",
+      "Bash(git commit -m 'chore: upgrade Tailwind CSS to v4.3.0 *)",
+      "Bash(git commit *)",
+      "Bash(curl -s http://localhost:3001)",
+      "Bash(curl -s http://localhost:3001/_next/static/chunks/src_c28fc744._.css)",
+      "WebFetch(domain:localhost)",
+      "Bash(netstat -tulpn)"
+    ]
+  }
+}

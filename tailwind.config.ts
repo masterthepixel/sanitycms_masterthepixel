@@ -1,44 +1,13 @@
 import type { Config } from "tailwindcss";
-import typography from "@tailwindcss/typography";
-import animate from "tailwindcss-animate";
 
+// In Tailwind v4, theme and plugins are configured in globals.css via @theme and @plugin.
+// This file is retained only for any tooling that still reads a JS config.
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  theme: {
-    extend: {
-      maxWidth: {
-        '8xl': '90rem',
-      },
-      borderRadius: {
-        '4xl': '2.4rem'
-      },
-      borderColor: {
-        'dashed': 'rgb(107 114 128)', // gray-500 for more visible dashed borders
-        'dashed-light': 'rgb(156 163 175)', // gray-400 for medium visibility
-      },
-      fontFamily: {
-        geistSans: ['var(--font-geist-sans)'],
-        geistMono: ['var(--font-geist-mono)']
-      },
-      keyframes: {
-        'logo-marquee-move': {
-          to: {
-            transform: 'translateX(-50%)'
-          }
-        },
-      },
-      animation: {
-        'logo-marquee': 'logo-marquee-move 60s linear infinite',
-      },
-    },
-  },
-  plugins: [
-    typography,
-    animate,
+    "./content/**/*.{md,mdx}",
   ],
 };
 

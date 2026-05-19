@@ -1,4 +1,29 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "tailwindcss-animate";
+
+@theme {
+  --font-geist-sans: var(--font-geist-sans);
+  --font-geist-mono: var(--font-geist-mono);
+
+  --max-width-8xl: 90rem;
+
+  --radius-4xl: 2.4rem;
+
+  --color-border-dashed: rgb(107 114 128);
+  --color-border-dashed-light: rgb(156 163 175);
+
+  --animate-logo-marquee: logo-marquee-move 60s linear infinite;
+
+  @keyframes logo-marquee-move {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* Class-based dark mode — toggled by .dark on <html> */
+@variant dark (&:is(.dark *));
 
 @layer utilities {
   .text-balance {
