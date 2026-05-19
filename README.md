@@ -2,7 +2,9 @@
 
 The official website for [masterthepixel](https://www.masterthepixel.io) — a digital studio specialising in AI integration, design, and web development.
 
-Built with **Next.js 15** (App Router, Turbopack) and powered by **MDX** for content authoring.
+Built with **Next.js 15** (App Router, Turbopack) and powered by **local MDX + JSON** for content authoring. **No external CMS required.**
+
+> **Migration complete**: Sanity CMS fully removed. This is now a pure, file-based Next.js application.
 
 ---
 
@@ -11,13 +13,14 @@ Built with **Next.js 15** (App Router, Turbopack) and powered by **MDX** for con
 | Layer | Technology |
 |---|---|
 | Framework | Next.js 15 (App Router) |
-| Rendering | SSR + on-demand ISR |
-| Content | MDX + JSON (file-based) |
+| Rendering | SSG (static generation) + on-demand ISR |
+| Content | MDX + JSON (file-based, zero external CMS) |
 | Styling | Tailwind CSS v3 + `tailwindcss-animate` |
 | UI primitives | Radix UI |
 | Forms | React Hook Form + Zod |
 | Package manager | Bun |
 | Testing | Jest (unit) + Playwright (e2e) |
+| Deployment | Vercel (zero env vars required) |
 
 ---
 
@@ -126,62 +129,227 @@ tests/                  # Unit and e2e test suites
 
 ---
 
+## Architecture & Migration
+
+This repository **completed a full Sanity CMS → file-based migration** (Epic MIG-009). 
+
+**What changed:**
+
+- ❌ Removed: Sanity runtime, Studio, migration scripts, external dependencies
+- ✅ Added: Local file-based content, Git-driven workflow, static generation
+
+**Why:**
+- Simpler deployment (zero external APIs)
+- Faster content iteration (edit → commit → deploy)
+- Full version control of all content
+- No vendor lock-in
+
+See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for technical details.
+
+---
+
 ## Content Authoring (Local MDX Workflow)
 
 This site uses a **file-based, Git-driven publishing workflow**. All content lives in the `content/` directory and is authored directly in VS Code.
+
+### Quick start
+
+```bash
+# Create a new blog post
+cp content/posts/sample-post.mdx content/posts/my-new-post.mdx
+
+# Edit the file
+# - Change frontmatter (title, slug, date, excerpt, etc.)
+# - Write your MDX content below the ---
+
+# Add cover image
+# Place image at: /public/uploads/production/blog-my-new-post/image.jpg
+
+# Preview locally
+bun run dev
+# Visit: http://localhost:3000/blog/my-new-post
+
+# Deploy
+git add content/posts/my-new-post.mdx
+git add public/uploads/production/blog-my-new-post/
+git commit -m "content: add blog post about ..."
+git push origin main
+# Vercel auto-deploys → live in ~60s
+```
 
 ### Adding a blog post
 
 1. **Create file:** `content/posts/<slug>.mdx`
 
-2. **Add frontmatter** (see example below):
+2. **Add frontmatter:**
 
 ```yaml
 ---
 title: "Your Post Title"
 slug: "your-post-slug"
 date: "2024-05-18"
-excerpt: "Brief description for archives"
+excerpt: "Brief summary for archive pages"
 coverImage: "/uploads/production/blog-your-post/image.jpg"
 seo:
   title: "Post Title | masterthepixel"
-  description: "SEO description"
+  description: "SEO meta description (160 chars)"
+  keywords: ["optional", "keywords"]
+categories: ["category-slug"]
 draft: false
 ---
 ```
 
-3. **Add image:** Place cover image in `/public/uploads/production/blog-<slug>/`
-4. **Write content:** Use MDX below frontmatter
-5. **Preview:** `bun run dev` at `http://localhost:3000`
+3. **Add image:**
+   - Place cover image in `/public/uploads/production/blog-<slug>/`
+   - Update `coverImage` path in frontmatter
+   - Images are optimized via Next.js Image
+
+4. **Write content:** Use MDX syntax below frontmatter
+
+5. **Preview:** `bun run dev` → visit `http://localhost:3000/blog/<slug>`
+
 6. **Deploy:** Commit to `main` → Vercel auto-deploys
+
+**See** [`docs/CONTENT_STANDARDS.md`](docs/CONTENT_STANDARDS.md) for detailed naming conventions and SEO best practices.
 
 ### Adding a news article
 
-Same as blog posts, but in `content/news/<slug>.mdx` with fields: `title`, `slug`, `date`, `excerpt`, `coverImage`, `category`.
+Create `content/news/<slug>.mdx` with frontmatter fields:
+- `title`, `slug`, `date`, `excerpt`, `coverImage`, `seo`, `isPinned` (optional)
+
+News articles are cached and updated on-demand.
 
 ### Adding a case study
 
 Create `content/case-studies/<slug>.mdx` with:
 
 ```yaml
-title, slug, date, excerpt, client, challenge, solution, results, category
+---
+title: "Case Study Title"
+slug: "case-study-slug"
+date: "2024-05-18"
+excerpt: "One-line description"
+client: "Client Name"
+clientUrl: "https://example.com"
+challenge: "Business challenge or problem statement"
+solution: "How we solved it"
+results: "Outcomes and impact"
+category: "Industry category"
+services: ["Service A", "Service B"]
+metrics:
+  - label: "Metric Label"
+    value: "123"
+featured: true
+---
 ```
 
-Optional: `metrics[]`, `services[]`, `featured`.
+### Adding a project (portfolio)
+
+Edit or add entries to `content/projects.json`:
+
+```json
+{
+  "_id": "unique-id",
+  "title": "Project Title",
+  "slug": "project-slug",
+  "client": "Client Name",
+  "year": 2024,
+  "services": ["Engineering", "Design"],
+  "category": {
+    "slug": "engineering",
+    "title": "Engineering"
+  },
+  "image": {
+    "url": "/uploads/production/home/image-hash-1920x1280.jpg",
+    "altText": "Alt text"
+  },
+  "excerpt": "Brief description"
+}
+```
+
+Available categories: `Engineering`, `Energy & Utilities`, `Telecommunications`, `Healthcare`
+
+Projects render with:
+- Full project grid at `/projects`
+- Category filtering: `/projects/category/<slug>`
+- Individual detail pages: `/projects/<slug>`
 
 ### Adding a static page
 
-Create `content/pages/<slug>.mdx` (e.g., `/pages/custom-page.mdx` → `/custom-page` route).
+Create `content/pages/<slug>.mdx`:
 
-For pages with page builder blocks (hero, feature grid, etc.), include the block data in YAML frontmatter and render MDX components (e.g., `<Hero />`).
+```yaml
+---
+title: "Page Title"
+slug: "page-slug"
+seo:
+  title: "Page Title | masterthepixel"
+  description: "SEO description"
+---
+```
+
+This auto-creates route: `/<slug>`
+
+**For complex pages:** Include page builder blocks in frontmatter:
+
+```yaml
+---
+title: "Home"
+heroBlock:
+  heading: "Welcome"
+  content: "Page content"
+  buttons: [...]
+featureGridBlock:
+  features: [...]
+---
+
+import { Hero, FeatureGrid } from '@/components/mdx';
+
+<Hero />
+<FeatureGrid />
+```
 
 ---
 
 ## Deployment
 
-The site is deployed to **Vercel** (`sanitycmsmasterthepixel` project). Push to `main` triggers a production build automatically.
+The site is deployed to **Vercel**. Push to `main` triggers a production build automatically.
 
-**No environment variables required.** All content is local and self-contained.
+### Environment variables
+
+**None required.** All content is local and self-contained.
+
+### Deployment workflow
+
+```bash
+# Local development
+bun run dev
+
+# Build for production
+bun run build
+
+# Verify locally
+bun run start
+
+# Deploy to Vercel
+git push origin main
+# Automatic → deployed at https://masterthepixel.io
+```
+
+**Build time:** ~2-3 minutes (42 static pages + assets)
+
+### Rollback
+
+If something breaks:
+
+```bash
+# Revert to previous commit
+git revert HEAD
+
+# Vercel auto-deploys the revert
+```
+
+See [`docs/rollback-procedures.md`](docs/rollback-procedures.md) for emergency procedures.
 
 ---
 
