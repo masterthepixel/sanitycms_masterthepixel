@@ -7,7 +7,6 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import Image from 'next/image';
 import Date from '@/components/ui/date';
-import { serialize } from 'next-mdx-remote/serialize';
 
 interface NewsPageProps {
   params: Promise<{ slug: string }>;
@@ -41,7 +40,6 @@ export default async function NewsDetailPage({ params }: NewsPageProps) {
   const { slug } = await params;
   try {
     const newsItem = await getNewsBySlug(slug);
-    const mdxSource = await serialize(newsItem.content);
 
     return (
       <Container className="py-16">
@@ -77,7 +75,7 @@ export default async function NewsDetailPage({ params }: NewsPageProps) {
             </div>
           )}
 
-          <NewsContent mdxSource={mdxSource} />
+          <NewsContent content={newsItem.content} />
         </div>
       </Container>
     );
