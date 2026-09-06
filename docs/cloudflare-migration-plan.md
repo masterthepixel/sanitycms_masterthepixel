@@ -1,7 +1,15 @@
 # Vercel → Cloudflare migration plan (masterthepixel.io)
 
-Status: PLAN ONLY — nothing below has been executed.
-Drafted: 2026-09-05. Source of truth for facts: audit run on that date.
+Status: Phases 0–5 EXECUTED and merged into `migrate/cloudflare`. Phases 6–7 not started.
+Drafted: 2026-09-05. Last updated: 2026-09-06. Source of truth for facts: audit run on the drafting date.
+
+Execution log with dates, PR numbers, and post-merge verification: `docs/cloudflare-migration-log.md`.
+
+`main` is untouched, so Vercel keeps serving production throughout. The one action gating a first
+live Cloudflare deploy is owner-only: create a Cloudflare API token ("Edit Cloudflare Workers"
+template) and add it as the `CLOUDFLARE_API_TOKEN` repository secret under Settings > Secrets and
+variables > Actions. Phase 6 (DNS and email cut-over) is deliberately reserved for the owner and
+must not begin until the site has been seen running on Cloudflare.
 
 ## 0. Decisions and fixed facts
 

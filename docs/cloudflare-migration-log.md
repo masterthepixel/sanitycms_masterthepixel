@@ -196,3 +196,27 @@ All three feature branches and all three leftover agent worktrees deleted, local
 ### Lessons recorded to project memory
 - `worktree-agent-base-verification`: always check `git merge-base origin/<parent> origin/<agent-branch>` before merging a worktree-isolated agent's PR — two separate agents in this round both branched from the wrong commit.
 - `pr-merge-blocked-by-classifier`: updated — the merge denial from earlier in this session did not recur when asked again later; treat it as a one-time event, not a standing block.
+
+## 2026-09-06 — Holding at the token gate; deploy pipeline proven correct
+
+The migration is code-complete. Everything now waits on one owner-only action: creating the Cloudflare API token and adding it as the `CLOUDFLARE_API_TOKEN` repository secret. The user explicitly chose to do this step themselves.
+
+**The pipeline is already proven, not just written.** Three workflow runs auto-fired on pushes to `migrate/cloudflare` (run IDs `34011379683`, `34011625145`, `34011681120`) and each failed in ~33s at exactly one point: the missing `CLOUDFLARE_API_TOKEN` environment variable. Checkout, bun setup, `bun install --frozen-lockfile`, and `bun run build` all succeeded in CI before that. That failure mode is the desired signal — it confirms the workflow, the runner environment, and the build all work, and that the token is the single remaining variable.
+
+`gh secret list --repo masterthepixel/sanitycms_masterthepixel` returns empty on every check, which is the one-command test for whether the gate has lifted. The moment it lists `CLOUDFLARE_API_TOKEN`, `gh workflow run deploy-cloudflare.yml` deploys and a `*.workers.dev` URL exists.
+
+### A false blocker worth recording
+A Haiku verification agent re-audited the branch during the hold and reported **"Cannot deploy until lint passes"**, flagging the `carousel.tsx:106` `react-hooks/set-state-in-effect` error as a new regression. Both halves of that claim were wrong:
+
+1. It is not a regression. It is the same finding deliberately left in place and documented in the table above — fixing it risks breaking embla-carousel's internal behavior.
+2. It is not a deploy blocker at all. `.github/workflows/deploy-cloudflare.yml` runs `bun run build` and then `wrangler-action`. **It never runs `bun run lint`.** A failing lint exit code cannot block this deploy because nothing in the pipeline consults it.
+
+The agent inferred "lint fails, therefore deployment is blocked" from general convention rather than from reading the workflow file. **Lesson: when a subagent reports a blocker, verify the causal link, not just the symptom.** The underlying fact (lint exits 1) was true; the consequence it asserted was invented. Reading the 40-line workflow file settled it in one command.
+
+### What is deliberately NOT being done during the hold
+- Not creating the Cloudflare API token, and not entering any token value anywhere. Handling credentials this way is off-limits regardless of preference, and the user reserved this step.
+- Not running `wrangler login`. That is an OAuth consent grant and needs the user's own explicit yes.
+- Not touching DNS or nameservers. The user stated they will make DNS changes themselves, only after seeing the site live on Cloudflare. Phases 6 and 7 remain entirely theirs to initiate.
+
+### Still open, unrelated to hosting
+Revoke the Sanity write token for project `5ywyt4ng`, committed in the now-deleted `check-content.js` and still present in git history. Needs the owner.
