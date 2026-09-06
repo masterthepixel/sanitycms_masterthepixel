@@ -11,9 +11,15 @@ const nextConfig: NextConfig = {
   // `/new-redirect-path`) was placeholder test data, not a real route, and
   // has been dropped rather than ported to public/_redirects.
   output: 'export',
+  // `/cdn-cgi/image/` resizing only works when a request is proxied through
+  // a Cloudflare zone with Image Transformations enabled — not on the
+  // *.workers.dev preview subdomain, and this static export ships one build
+  // to both, with no way to tell them apart at build time. Serving the
+  // original asset unoptimized works everywhere; a custom `/cdn-cgi/image/`
+  // loader broke every image on the preview URL (404s, since that path
+  // isn't intercepted there at all).
   images: {
-    loader: 'custom',
-    loaderFile: './src/lib/cf-image-loader.ts',
+    unoptimized: true,
   },
 };
 
