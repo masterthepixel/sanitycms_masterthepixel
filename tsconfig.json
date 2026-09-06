@@ -16,8 +16,7 @@
     "moduleResolution": "bundler",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "sanity.types": ["./sanity.types.ts"]
+      "@/*": ["src/*"]
     },
     "resolveJsonModule": true,
     "isolatedModules": true,
