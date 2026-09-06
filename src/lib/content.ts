@@ -136,15 +136,9 @@ export async function getPageBySlug(slug: string): Promise<Page> {
 
   // Try MDX in top-level pages
   if (fs.existsSync(mdxPath)) {
-    console.log('[getPageBySlug] mdxPath:', mdxPath);
     const fileContents = fs.readFileSync(mdxPath, 'utf8');
-    console.log('[getPageBySlug] raw file contents length:', fileContents.length);
-    console.log('[getPageBySlug] raw file contents preview:', fileContents.slice(0, 500));
     const { data, content } = matter(fileContents);
-    console.log('[getPageBySlug] parsed frontmatter:', JSON.stringify(data, null, 2));
-    console.log('[getPageBySlug] parsed content length:', content.length);
-    console.log('[getPageBySlug] serving MDX for', slug, 'content preview:', (content || '').slice(0,200));
-    
+
     // For top-level pages: extract pageBuilder array from the JSX content if present
     let pageBuilder: any[] = [];
     if (content && content.includes('<PageBuilder pageBuilder=')) {
@@ -158,7 +152,7 @@ export async function getPageBySlug(slug: string): Promise<Page> {
         console.warn('[getPageBySlug] Failed to extract pageBuilder from top-level page:', slug, e);
       }
     }
-    
+
     return {
       ...data as PageFrontmatter,
       content: pageBuilder.length > 0 ? '' : content, // Clear content if pageBuilder was extracted
@@ -168,10 +162,9 @@ export async function getPageBySlug(slug: string): Promise<Page> {
 
   // Try MDX in nested `pages/projects/` (projects now live under pages/projects)
   if (fs.existsSync(nestedMdxPath)) {
-    console.log('[getPageBySlug] nestedMdxPath:', nestedMdxPath);
     const fileContents = fs.readFileSync(nestedMdxPath, 'utf8');
     const { data, content } = matter(fileContents);
-    
+
     // For project pages: extract pageBuilder array from the JSX content if present
     let pageBuilder: any[] = [];
     if (content && content.includes('<PageBuilder pageBuilder=')) {
@@ -186,7 +179,7 @@ export async function getPageBySlug(slug: string): Promise<Page> {
         console.warn('[getPageBySlug] Failed to extract pageBuilder from project page:', slug, e);
       }
     }
-    
+
     return {
       ...data as PageFrontmatter,
       content: '', // Clear content for project pages that use PageBuilder
