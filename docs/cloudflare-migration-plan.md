@@ -168,13 +168,28 @@ vinext (Cloudflare's newer recommended path) is beta; run `bunx vinext check` af
 
 ## 6. Phase 5 — CI/CD on Cloudflare
 
-Branch `ci/workers-builds`, but most of this is dashboard/API work:
+**Chosen path: GitHub Actions with `cloudflare/wrangler-action`, not native Workers Builds.** Native Workers Builds needs a one-time interactive authorization of the Cloudflare GitHub App from the dashboard (Workers & Pages → a Worker → Settings → Builds → Connect) — a real click only the account owner can do, with no API path around it. `cloudflare/wrangler-action` is Cloudflare's own documented alternative: it authenticates with a plain API token stored as a GitHub Actions secret, entered directly into GitHub's own secrets UI, never touching a chat session or an agent. This is `.github/workflows/deploy-cloudflare.yml`, already added to `migrate/cloudflare`.
+
+One-time setup (2 minutes, entirely in the browser, owner-only):
+1. https://dash.cloudflare.com/profile/api-tokens → **Create Token** → the built-in **Edit Cloudflare Workers** template → scope it to the account → create, copy the token (shown once).
+2. This repo → **Settings → Secrets and variables → Actions → New repository secret** → name it `CLOUDFLARE_API_TOKEN`, paste the value.
+3. Only if the token can see more than one Cloudflare account: also add `CLOUDFLARE_ACCOUNT_ID` (found on the Cloudflare dashboard's right sidebar). Most single-account setups don't need this.
+
+Once the secret exists, trigger the first deploy either by pushing to `migrate/cloudflare` (the workflow's push trigger) or on demand: `gh workflow run deploy-cloudflare.yml` or the Actions tab's **Run workflow** button. It builds with bun, then deploys via `wrangler deploy` using the token — no interactive login, no browser click from an agent. First deploy lands on `<name>.<subdomain>.workers.dev`; smoke-test there before touching DNS.
+
+Once the DNS cut-over (Phase 6) is done and `main` becomes the Cloudflare-serving branch, change the workflow's push trigger from `migrate/cloudflare` to `main`.
+
+Native Workers Builds remains available later if preferred (per-PR preview URLs, GitHub PR status comments) — see the abandoned draft below for that path.
+
+<details>
+<summary>Alternative: native Workers Builds (needs the manual GitHub App click)</summary>
 
 1. Cloudflare dashboard → Workers & Pages → Create → Import repository → `masterthepixel/sanitycms_masterthepixel`.
 2. Build settings: build command `bun run build`, deploy command `bunx wrangler deploy`, root `/`. Production branch `main`. Enable non-production branch builds (preview URLs + PR comments).
 3. No build variables needed (site has no env vars). Optionally set `NEXT_PUBLIC_SITE_NAME`.
 4. Keep the GitHub Actions job for `validate:frontmatter`, `validate:images`, Playwright. It does not deploy.
 5. First deploy lands on `masterthepixel-io.<subdomain>.workers.dev`. Smoke-test there before touching DNS.
+</details>
 
 ## 7. Phase 6 — DNS, email, and cut-over
 

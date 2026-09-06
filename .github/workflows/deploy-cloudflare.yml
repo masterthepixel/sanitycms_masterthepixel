@@ -1,0 +1,54 @@
+name: "Deploy to Cloudflare Workers"
+
+# Runs the static export and deploys it to Cloudflare Workers via
+# cloudflare/wrangler-action, which authenticates with an API token —
+# no interactive `wrangler login` needed, so this works entirely inside
+# CI without anyone clicking through an OAuth consent screen.
+#
+# One-time setup (see docs/cloudflare-migration-plan.md §6 for detail):
+#   1. Create an API token at https://dash.cloudflare.com/profile/api-tokens
+#      with "Edit Cloudflare Workers" permissions (the built-in template
+#      covers this).
+#   2. In this repo: Settings > Secrets and variables > Actions, add a
+#      repository secret named CLOUDFLARE_API_TOKEN with that token's value.
+#   3. If the token can see more than one Cloudflare account, also add a
+#      CLOUDFLARE_ACCOUNT_ID secret (Cloudflare dashboard > right sidebar).
+#      Most personal accounts don't need this — wrangler infers it from
+#      the token, and the deploy step below only passes it when set.
+#
+# Once those secrets exist, this workflow can be run on demand from the
+# Actions tab ("Run workflow") or the CLI (`gh workflow run deploy-cloudflare.yml`)
+# without waiting for a push, so you can trigger the first deploy whenever
+# you're ready to see it live.
+
+on:
+  push:
+    branches: [migrate/cloudflare]
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: .bun-version
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build static export
+        run: bun run build
+
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
