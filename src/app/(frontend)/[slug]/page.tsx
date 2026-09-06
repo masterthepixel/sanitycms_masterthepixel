@@ -38,36 +38,37 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function Page({ params }: PageProps) {
   const { slug } = await params;
 
+  let page: Awaited<ReturnType<typeof getPageBySlug>>;
   try {
-    const page = await getPageBySlug(slug);
-    
-    // Check if we have actual MDX content to render
-    const hasMdxContent = page.content && page.content.trim().length > 0;
-    
-    if (hasMdxContent) {
-      return (
-        <div>
-          <MDXClientRenderer 
-            content={page.content} 
-            components={mdxComponents} 
-            frontmatter={page}
-          />
-        </div>
-      );
-    }
-    
-    // Fallback to rendering pageBuilder JSON if no MDX content
-    if (page.pageBuilder && page.pageBuilder.length > 0) {
-      return (
-        <div>
-          <PageBuilder pageBuilder={normalizePageBuilder(page.pageBuilder)} id={page._id || slug} type={page._type || 'page'} />
-        </div>
-      );
-    }
-    
-    // If neither MDX nor pageBuilder exists, show 404
-    notFound();
+    page = await getPageBySlug(slug);
   } catch (error) {
     notFound();
   }
+
+  // Check if we have actual MDX content to render
+  const hasMdxContent = page.content && page.content.trim().length > 0;
+
+  if (hasMdxContent) {
+    return (
+      <div>
+        <MDXClientRenderer
+          content={page.content}
+          components={mdxComponents}
+          frontmatter={page}
+        />
+      </div>
+    );
+  }
+
+  // Fallback to rendering pageBuilder JSON if no MDX content
+  if (page.pageBuilder && page.pageBuilder.length > 0) {
+    return (
+      <div>
+        <PageBuilder pageBuilder={normalizePageBuilder(page.pageBuilder)} id={page._id || slug} type={page._type || 'page'} />
+      </div>
+    );
+  }
+
+  // If neither MDX nor pageBuilder exists, show 404
+  notFound();
 }
