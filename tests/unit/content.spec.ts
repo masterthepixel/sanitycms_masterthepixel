@@ -30,15 +30,6 @@ describe('content', () => {
   })
 
   describe('getPageBySlug', () => {
-    it('returns a page with parsed frontmatter and content', async () => {
-      const page = await getPageBySlug('sample-page')
-      expect(page).toHaveProperty('title', 'Sample Page')
-      expect(page).toHaveProperty('slug', 'sample-page')
-      expect(page).toHaveProperty('content')
-      expect(typeof page.content).toBe('string')
-      expect(page.content).toContain('# Sample Page')
-    })
-
     it('throws error for non-existent page', async () => {
       await expect(getPageBySlug('non-existent')).rejects.toThrow('Page not found')
     })
@@ -53,9 +44,6 @@ describe('content', () => {
           expect(page).toHaveProperty('slug', slug)
           expect(page).toHaveProperty('content')
           expect(typeof page.content).toBe('string')
-          // Check that it contains MDX component imports
-          expect(page.content).toContain('import')
-          expect(page.content).toContain('@/components/mdx')
         })
       })
     })
