@@ -8,24 +8,17 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import Image from 'next/image';
 import Date from '@/components/ui/date';
-import { serialize } from 'next-mdx-remote/serialize';
 
 interface CaseStudyPageProps {
   params: Promise<{ slug: string }>;
 }
 
-// Temporarily disable static params to debug build issue
-// export async function generateStaticParams() {
-//   try {
-//     const caseStudies = await getAllCaseStudies();
-//     return caseStudies.map((cs) => ({ slug: cs.slug }));
-//   } catch (error) {
-//     console.error('Error fetching case study slugs:', error);
-//     return [];
-//   }
-// }
+export async function generateStaticParams() {
+  const caseStudies = await getAllCaseStudies();
+  return caseStudies.map((cs) => ({ slug: cs.slug }));
+}
 
-export const dynamicParams = true;
+export const dynamicParams = false;
 
 export async function generateMetadata({
   params,
@@ -71,7 +64,6 @@ export default async function CaseStudyDetailPage({
   const { slug } = await params;
   try {
     const caseStudy = await getCaseStudyBySlug(slug);
-    const mdxSource = await serialize(caseStudy.content);
 
     return (
       <Container className="py-16">
@@ -130,7 +122,7 @@ export default async function CaseStudyDetailPage({
 
           <MetricsDisplay metrics={caseStudy.metrics} />
 
-          <CaseStudyContent mdxSource={mdxSource} />
+          <CaseStudyContent content={caseStudy.content} />
         </div>
       </Container>
     );
