@@ -21,7 +21,9 @@
     "test:e2e:headed": "playwright test --headed",
     "test:e2e:install": "npx playwright install --with-deps",
     "validate:frontmatter": "node scripts/validate-frontmatter.js",
-    "validate:images": "node scripts/validate-content-images.js"
+    "validate:images": "node scripts/validate-content-images.js",
+    "preview": "bun run build && wrangler dev",
+    "deploy": "bun run build && wrangler deploy"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -66,7 +68,8 @@
     "postcss": "^8",
     "tailwindcss": "^4.3.0",
     "ts-jest": "^29.4.6",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.129.0"
   },
   "overrides": {
     "@types/react": "19.2.18",

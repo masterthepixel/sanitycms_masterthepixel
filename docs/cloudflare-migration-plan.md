@@ -158,7 +158,7 @@ Trade-offs of `output: "export"` and how each is handled:
   }
   ```
 - `package.json` scripts: `"preview": "bun run build && wrangler dev"`, `"deploy": "bun run build && wrangler deploy"`. Add `wrangler` as a devDependency.
-- Verify locally with `wrangler dev`: every route in the prerender manifest returns 200, `/blog/` redirects to `/blog`, unknown path returns the 404 page, images resolve through `/cdn-cgi/image/` (this only works on the real zone; locally they fall through to the original file).
+- Verify locally with `wrangler dev`: every route in the prerender manifest returns 200, `/blog/` redirects to `/blog`, unknown path returns the 404 page. `/cdn-cgi/image/...` requests 404 locally — `wrangler dev`'s local asset simulator doesn't implement Image Transformations or its `onerror=redirect` fallback, both real-edge-only features — confirmed this degrades safely (image containers keep their layout size, no broken-image icons) and will resolve once deployed to the real zone with Image Transformations enabled.
 
 ### 5.3 Plan B — OpenNext adapter
 
