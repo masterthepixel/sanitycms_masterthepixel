@@ -1,5 +1,8 @@
 import { defineConfig, devices } from '@playwright/test'
 
+const port = process.env.PORT || '3000'
+const baseURL = process.env.PW_BASE_URL || `http://localhost:${port}`
+
 export default defineConfig({
   testDir: 'tests/e2e',
   timeout: 30_000,
@@ -7,7 +10,7 @@ export default defineConfig({
   fullyParallel: false,
   reporter: [['list'], ['html', { open: 'never' }]],
   use: {
-    baseURL: process.env.PW_BASE_URL || 'http://localhost:3000',
+    baseURL,
     actionTimeout: 0,
     trace: 'on-first-retry',
   },
@@ -15,9 +18,10 @@ export default defineConfig({
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
   ],
   webServer: {
-    command: 'pnpm run dev',
-    url: 'http://localhost:3000',
-    reuseExistingServer: true,
+    command: 'bun run dev',
+    url: baseURL,
+    env: { PORT: port },
+    reuseExistingServer: !process.env.CI,
     timeout: 120_000,
     stdout: 'pipe',
     stderr: 'pipe',
