@@ -56,6 +56,7 @@ No open PRs, no stashes, no tags, no branch protection on `main`.
 - Remove the dangling `sanity.types` path alias from `tsconfig.json:20`.
 - Remove `content/pages/*.backup.json` (home, about, services) or move them to `docs/archive/`.
 - README, `docs/ARCHITECTURE.md`, `docs/rollback-procedures.md` all describe Vercel. Rewrite after §7, not before.
+- Build/test artifacts (`.next/`, `playwright-report/`, `test-results/`) were tracked in git. Untrack and ignore (done in Phase 1).
 
 ## 2. Phase 1 — bun as the only package manager
 
