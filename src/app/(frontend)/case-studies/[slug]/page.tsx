@@ -62,72 +62,74 @@ export default async function CaseStudyDetailPage({
   params,
 }: CaseStudyPageProps) {
   const { slug } = await params;
+
+  let caseStudy: Awaited<ReturnType<typeof getCaseStudyBySlug>>;
   try {
-    const caseStudy = await getCaseStudyBySlug(slug);
-
-    return (
-      <Container className="py-16">
-        <div className="max-w-4xl mx-auto">
-          <Link
-            href="/case-studies"
-            className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-900 mb-8"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Case Studies
-          </Link>
-
-          <header className="mb-8">
-            <p className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-2">
-              {caseStudy.category}
-            </p>
-            <h1 className="text-4xl font-bold mb-4">{caseStudy.title}</h1>
-            <div className="flex items-center gap-4 text-sm text-gray-600 flex-wrap">
-              <span className="font-semibold text-gray-900">{caseStudy.client}</span>
-              <span className="text-gray-400">•</span>
-              <Date date={caseStudy.date} />
-              {caseStudy.services && caseStudy.services.length > 0 && (
-                <>
-                  <span className="text-gray-400">•</span>
-                  <div className="flex flex-wrap gap-2">
-                    {caseStudy.services.map((service, index) => (
-                      <span
-                        key={index}
-                        className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded"
-                      >
-                        {service}
-                      </span>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
-          </header>
-
-          {caseStudy.coverImage && (
-            <div className="relative w-full h-96 rounded-lg overflow-hidden mb-8">
-              <Image
-                src={caseStudy.coverImage}
-                alt={caseStudy.title}
-                fill
-                className="object-cover"
-              />
-            </div>
-          )}
-
-          <CaseStudyHighlight
-            challenge={caseStudy.challenge}
-            solution={caseStudy.solution}
-            results={caseStudy.results}
-          />
-
-          <MetricsDisplay metrics={caseStudy.metrics} />
-
-          <CaseStudyContent content={caseStudy.content} />
-        </div>
-      </Container>
-    );
+    caseStudy = await getCaseStudyBySlug(slug);
   } catch (error) {
     console.error('Error fetching case study:', error);
     notFound();
   }
+
+  return (
+    <Container className="py-16">
+      <div className="max-w-4xl mx-auto">
+        <Link
+          href="/case-studies"
+          className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-900 mb-8"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Case Studies
+        </Link>
+
+        <header className="mb-8">
+          <p className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-2">
+            {caseStudy.category}
+          </p>
+          <h1 className="text-4xl font-bold mb-4">{caseStudy.title}</h1>
+          <div className="flex items-center gap-4 text-sm text-gray-600 flex-wrap">
+            <span className="font-semibold text-gray-900">{caseStudy.client}</span>
+            <span className="text-gray-400">•</span>
+            <Date date={caseStudy.date} />
+            {caseStudy.services && caseStudy.services.length > 0 && (
+              <>
+                <span className="text-gray-400">•</span>
+                <div className="flex flex-wrap gap-2">
+                  {caseStudy.services.map((service, index) => (
+                    <span
+                      key={index}
+                      className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded"
+                    >
+                      {service}
+                    </span>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        </header>
+
+        {caseStudy.coverImage && (
+          <div className="relative w-full h-96 rounded-lg overflow-hidden mb-8">
+            <Image
+              src={caseStudy.coverImage}
+              alt={caseStudy.title}
+              fill
+              className="object-cover"
+            />
+          </div>
+        )}
+
+        <CaseStudyHighlight
+          challenge={caseStudy.challenge}
+          solution={caseStudy.solution}
+          results={caseStudy.results}
+        />
+
+        <MetricsDisplay metrics={caseStudy.metrics} />
+
+        <CaseStudyContent content={caseStudy.content} />
+      </div>
+    </Container>
+  );
 }

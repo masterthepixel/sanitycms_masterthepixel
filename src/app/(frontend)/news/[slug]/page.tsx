@@ -38,49 +38,51 @@ export async function generateMetadata({ params }: NewsPageProps): Promise<Metad
 
 export default async function NewsDetailPage({ params }: NewsPageProps) {
   const { slug } = await params;
+
+  let newsItem: Awaited<ReturnType<typeof getNewsBySlug>>;
   try {
-    const newsItem = await getNewsBySlug(slug);
-
-    return (
-      <Container className="py-16">
-        <div className="max-w-4xl mx-auto">
-          <Link
-            href="/news"
-            className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-900 mb-8"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to News
-          </Link>
-
-          <header className="mb-8">
-            <h1 className="text-4xl font-bold mb-4">{newsItem.title}</h1>
-            <div className="flex items-center gap-4 text-sm text-gray-600">
-              <Date date={newsItem.date} />
-              {newsItem.isPinned && (
-                <span className="inline-flex items-center gap-1 bg-yellow-50 text-yellow-900 px-2 py-1 rounded text-xs font-semibold border border-yellow-200">
-                  Featured
-                </span>
-              )}
-            </div>
-          </header>
-
-          {newsItem.coverImage && (
-            <div className="relative w-full h-96 rounded-lg overflow-hidden mb-8">
-              <Image
-                src={newsItem.coverImage}
-                alt={newsItem.title}
-                fill
-                className="object-cover"
-              />
-            </div>
-          )}
-
-          <NewsContent content={newsItem.content} />
-        </div>
-      </Container>
-    );
+    newsItem = await getNewsBySlug(slug);
   } catch (error) {
     console.error('Error fetching news item:', error);
     notFound();
   }
+
+  return (
+    <Container className="py-16">
+      <div className="max-w-4xl mx-auto">
+        <Link
+          href="/news"
+          className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-900 mb-8"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to News
+        </Link>
+
+        <header className="mb-8">
+          <h1 className="text-4xl font-bold mb-4">{newsItem.title}</h1>
+          <div className="flex items-center gap-4 text-sm text-gray-600">
+            <Date date={newsItem.date} />
+            {newsItem.isPinned && (
+              <span className="inline-flex items-center gap-1 bg-yellow-50 text-yellow-900 px-2 py-1 rounded text-xs font-semibold border border-yellow-200">
+                Featured
+              </span>
+            )}
+          </div>
+        </header>
+
+        {newsItem.coverImage && (
+          <div className="relative w-full h-96 rounded-lg overflow-hidden mb-8">
+            <Image
+              src={newsItem.coverImage}
+              alt={newsItem.title}
+              fill
+              className="object-cover"
+            />
+          </div>
+        )}
+
+        <NewsContent content={newsItem.content} />
+      </div>
+    </Container>
+  );
 }

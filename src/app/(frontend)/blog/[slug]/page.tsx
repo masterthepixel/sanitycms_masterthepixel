@@ -38,23 +38,25 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
 
 export default async function PostPage({ params }: PostPageProps) {
   const { slug } = await params;
+  let post: Awaited<ReturnType<typeof getPostBySlug>>;
   try {
-    const post = await getPostBySlug(slug);
-    // TODO: Handle related posts - MDX doesn't have this data yet
-    const showRelatedPosts = false; // post?.relatedPosts && post.relatedPosts.length > 0 && post.settings?.showRelatedPosts;
-
-    return (
-      <Container className="py-16">
-        <div className="max-w-7xl mx-auto">
-          <PostContent post={post} />
-          {showRelatedPosts && (
-            <RelatedPosts posts={[]} /> // TODO: Implement related posts
-          )}
-        </div>
-      </Container>
-    );
+    post = await getPostBySlug(slug);
   } catch (error) {
     console.error('Error fetching post:', error);
     notFound();
   }
+
+  // TODO: Handle related posts - MDX doesn't have this data yet
+  const showRelatedPosts = false; // post?.relatedPosts && post.relatedPosts.length > 0 && post.settings?.showRelatedPosts;
+
+  return (
+    <Container className="py-16">
+      <div className="max-w-7xl mx-auto">
+        <PostContent post={post} />
+        {showRelatedPosts && (
+          <RelatedPosts posts={[]} /> // TODO: Implement related posts
+        )}
+      </div>
+    </Container>
+  );
 }
