@@ -1,0 +1,19 @@
+---
+title: "masterthepixel.io Moves to Cloudflare Workers"
+slug: "masterthepixel-io-migrates-to-cloudflare"
+date: "2026-09-05T00:00:00Z"
+excerpt: "We're migrating masterthepixel.io off Vercel and onto Cloudflare Workers, moving to a fully static build served for free at the edge."
+categories:
+  - "Company News"
+seo:
+  title: "masterthepixel.io Moves to Cloudflare Workers"
+  description: "masterthepixel.io is migrating from Vercel to Cloudflare Workers, adopting a static-export build served for free at the edge."
+coverImage: "/uploads/production/home/3b6d05638ce7cef7153b329556c0f850292d9ea3-1920x1280.jpg"
+draft: false
+---
+
+We're moving masterthepixel.io off Vercel and onto Cloudflare Workers.
+
+The site is a pure Next.js build with no CMS backend, no server-side API routes, and no environment variables, which makes it a strong fit for a static export served entirely from Cloudflare's edge network. Static asset requests on Cloudflare Workers are free and unlimited, so hosting costs stay at zero.
+
+The migration is happening in stages: dependency and framework upgrades first, then content and build fixes, then the static export configuration, and finally the DNS cut-over. This news post marks the point where the `/news` section went from empty to live.
