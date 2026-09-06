@@ -1,5 +1,9 @@
 import { MetadataRoute } from 'next'
 
+// Required for `output: "export"`: this sitemap has no per-request data, so
+// it is safe to bake into the static build.
+export const dynamic = 'force-static'
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.masterthepixel.io'
 

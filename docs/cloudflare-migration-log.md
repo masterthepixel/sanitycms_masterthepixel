@@ -104,3 +104,36 @@ Root cause: every other content route in this codebase (`blog/[slug]`'s `PostCon
 - macOS Playwright screenshot baselines — policy decision needed.
 - `src/lib/content.ts` debug `console.log` calls — not yet removed.
 - Sanity token revocation — still open, owner action.
+
+## 2026-09-05 — Phase 4: static export configuration
+
+Branch: `feat/static-export` (from `content/fix-missing-assets`).
+
+### Config added
+- `next.config.ts`: `output: 'export'`; `images.loader: 'custom'` pointing at a new `src/lib/cf-image-loader.ts`; dropped the `redirects()` function and its `data/redirects.json` import (the one entry, `/test-redirect` → `/new-redirect-path`, was placeholder test data — not supported under `output: 'export'` anyway).
+- `src/lib/cf-image-loader.ts`: routes `next/image` through Cloudflare's URL-based Image Transformations (`/cdn-cgi/image/width=…,quality=…,format=auto,onerror=redirect/<src>`). **Skips the transform for `.svg` sources** — Cloudflare Image Transformations does not accept SVG as input and would 404 the site's own logo otherwise. Found by actually loading the homepage in a browser against `wrangler dev`, not by reading docs.
+- `wrangler.jsonc`: assets-only Worker (no `main` script), `directory: "./out"`, `html_handling: "auto-trailing-slash"`, `not_found_handling: "404-page"`, matching the plan's §5.2 draft.
+- Added `wrangler` as a devDependency (pinned `^4.129.0` — `^4.130.0` doesn't exist yet, corrected after a failed install); added `preview`/`deploy` scripts (`bun run build && wrangler dev` / `wrangler deploy`).
+
+### Bugs surfaced by the static-export requirement (not previously visible)
+Static export requires every dynamic route's `generateStaticParams` to return at least one entry, and errors immediately if it can't — this caught two more dead-code leftovers from the Sanity migration that the normal server build never exercised:
+1. **`blog/category/[slug]`**: `generateStaticParams` was hardcoded to `return []` with the comment "For now, return empty since we're migrating," never finished. Real categories exist in post frontmatter (`CRO`, `Growth`). Fixed to derive unique category slugs from `getAllPosts()`, using the exact same slugify function (`toLowerCase().replace(/[^a-z0-9]+/gi, '-')`) the sidebar's category links already use in `post-content.tsx`, so generated params match real links.
+2. **`sitemap.ts`**: needs an explicit `export const dynamic = 'force-static'` under `output: 'export'`. Added it. Did **not** fix the sitemap's own content, which is a separate, pre-existing accuracy problem — it hardcodes 6 of 18 services and omits case-studies, news, and both category routes entirely. Logged below, not fixed (content-completeness, not a migration blocker).
+
+### Also removed
+- `src/app/dev/page.tsx` — a "Dev Preview: MDX Content System" debug page left over from the Sanity migration, currently live and publicly reachable on the Vercel production site today. It exposed no secrets, only public post titles/excerpts, but had no reason to ship to the new host. Deleting it required clearing a stale `.next/dev/types` cache reference before the build would pass again.
+
+### Verification
+| Check | Result |
+|---|---|
+| `bun run build` | exit 0, static export to `out/`: 47 HTML pages, 27 MB total (well under the free plan's 20,000-file / 25 MiB-per-file limits) |
+| `wrangler dev` (local, offline, no Cloudflare account contact — same as running any other local dev server) | home page 200, `/blog/` redirects to `/blog` (307), `/case-studies/ai-chatbot-ecommerce` 200, `/news/masterthepixel-io-migrates-to-cloudflare` 200, unknown path 404, `/dev` now 404 |
+| Browser check (per project convention: verify UI in-browser, not just curl) | Loaded the homepage, the case study, and the news item in the actual browser pane. All render real content — confirms the Phase 2/3 client-side-serialize fix works end-to-end, not just at build time. Logo SVG loads (200) after the loader fix. |
+| `/cdn-cgi/image/...` requests locally | 404, **expected** — Cloudflare Image Transformations is a real-edge-only feature; `wrangler dev`'s local asset simulator doesn't implement it or the `onerror=redirect` fallback. Screenshot confirms this degrades safely: the image container keeps its layout size, no broken-image icons, no layout shift. Will resolve once deployed to the real zone with Image Transformations enabled (§7 step 6 of the plan). |
+| `bun run validate:frontmatter` / `validate:images` | both pass |
+| `bun run test` (jest) | 3 failed / 5 passed — same pre-existing failures as every prior phase |
+| `next dev` (regular server mode, what the e2e suite still uses) | still starts and serves 200 with `output: 'export'` set — confirms local dev workflow is unaffected |
+
+### Open (new)
+- Sitemap content accuracy (6/18 services listed, case-studies/news/category routes missing entirely) — pre-existing, not a migration blocker, not fixed here.
+- Everything from Phases 1–3's open list is still open.

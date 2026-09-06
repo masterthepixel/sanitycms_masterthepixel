@@ -7,9 +7,19 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+// Matches the slugification in ../../_components/post-content.tsx's sidebar
+// category links: lowercase, non-alphanumeric runs collapsed to a single "-".
+function slugifyCategory(category: string): string {
+  return category.toLowerCase().replace(/[^a-z0-9]+/gi, '-');
+}
+
 export async function generateStaticParams() {
-  // For now, return empty since we're migrating
-  return [];
+  const posts = await getAllPosts();
+  const slugs = new Set<string>();
+  posts.forEach((post) => {
+    post.categories?.forEach((category) => slugs.add(slugifyCategory(category)));
+  });
+  return Array.from(slugs).map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -27,10 +37,9 @@ export default async function PostsByCategoryPage(props: {
   const { slug } = params;
 
   const allPosts = await getAllPosts();
-  
-  // Filter posts by category
-  const posts = allPosts.filter(post => 
-    post.categories?.some((cat: string) => cat.toLowerCase() === slug.toLowerCase())
+
+  const posts = allPosts.filter((post) =>
+    post.categories?.some((category) => slugifyCategory(category) === slug)
   );
 
   if (posts.length === 0) {
