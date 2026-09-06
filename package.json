@@ -15,7 +15,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "test": "jest --passWithNoTests",
     "test:e2e": "playwright test",
     "test:e2e:headed": "playwright test --headed",
@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
-    "@next/third-parties": "^15.1.6",
+    "@next/third-parties": "16.3.4",
     "@portabletext/markdown": "^1.1.2",
     "@radix-ui/react-collapsible": "^1.1.2",
     "@radix-ui/react-dialog": "^1.1.4",
@@ -37,9 +37,9 @@
     "embla-carousel": "^8.5.1",
     "embla-carousel-react": "^8.5.1",
     "lucide-react": "^0.460.0",
-    "next": "^15.5.9",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
+    "next": "16.3.4",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
     "react-hook-form": "^7.54.2",
     "react-hot-toast": "^2.4.1",
     "react-player": "^2.16.1",
@@ -56,10 +56,10 @@
     "@tailwindcss/typography": "^0.5.15",
     "@types/jest": "^30.0.0",
     "@types/node": "^20",
-    "@types/react": "^19.2",
-    "@types/react-dom": "^19.2",
-    "eslint": "^8",
-    "eslint-config-next": "15.1.0",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.7",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "16.3.4",
     "gray-matter": "^4.0.3",
     "jest": "^30.2.0",
     "next-mdx-remote": "^6.0.0",
@@ -69,7 +69,7 @@
     "typescript": "^5"
   },
   "overrides": {
-    "@types/react": "^19.2",
-    "@types/react-dom": "^19.2"
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.7"
   }
 }
