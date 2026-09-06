@@ -35,6 +35,13 @@
       "skillPath": "skills/cloudflare-email-service/SKILL.md",
       "commit": "d924cd8f59e75e08fd3dd52843bb2776de35c77e",
       "computedHash": "5b4c4317a51dbb65afb4bd599d73ffe542d471ed9dc09c61d033f3a5a689ef40"
+    },
+    "migrate-to-vinext": {
+      "source": "cloudflare/vinext",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/migrate-to-vinext/SKILL.md",
+      "commit": "e91f3bd",
+      "computedHash": "0adaa622dea2646971fd54786a662f1cb427c7adad4930547c58b6482486dd54"
     }
   }
 }
